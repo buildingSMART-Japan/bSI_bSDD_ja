@@ -1,26 +1,26 @@
-# How to contribute
+# 投稿方法
 
-I'm really glad you're reading this, because we need contributors to help this project come to fruition. We want you working on things you're excited about.
+このプロジェクトを実現させるためには、貢献者が必要です。 あなたがワクワクするようなことに取り組んでほしいのです。
 
-This repository at GitHub is, where the creators and implementers of Open Standards of buildingSMART and other people work together. GitHub was usually a platform for IT oriented people. Now it is getting more and more also accessible for non-technical people. So, do not hesitate and learn the workflow. 
+GitHubのこのリポジトリは、buildingSMARTのオープンスタンダードの作成者や実装者、その他の人々が一緒に作業する場所です。 GitHubは通常、IT指向の人々のためのプラットフォームでしたが、今では技術者でない人々もアクセスできるようになってきています。 ですから、ためらわずにワークフローを学んでください。 
 
-Here are some important resources:
+重要な資料をいくつか紹介しよう：
 
-  * [Information about buildingSMART](https://www.buildingsmart.org/) tells you who we are,
-  * [This website](http://www.buildingsmart-tech.org/) is the publishing platform for our latest standards
-  * Our day to day exchange and discussions are on [our Discourse](https://forums.buildingsmart.org)
-  * Bugs? Yes they exist, we would like to know them, so [Github](https://github.com/buildingSMART/bSDD/issues) is where to report them
-  * Features? Again Yes, we need you ideas and comments. Feel free to share them with us [here]((https://github.com/buildingSMART/bSDD/issues))
+  * [buildingSMARTに関する情報](https://www.buildingsmart.org/)私たちが何者であるかを教えてくれる、
+  * [このウェブサイト](http://www.buildingsmart-tech.org/)は最新規格の出版プラットフォームです。
+  * 私たちの日々の交流や話し合いは[談話](https://forums.buildingsmart.org)
+  * バグは存在する。[ギズブ](https://github.com/buildingSMART/bSDD/issues)報告先
+  * ご意見、ご感想など、お気軽にお寄せください。[これ]((https://github.com/buildingSMART/bSDD/issues))
   
-## Submitting changes
+## 変更の提出
 
-Please send a [GitHub Pull Request](https://github.com/buildingSMART/bSDD/pull/new/master) with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests/)). When you send a pull request, we will love you forever if you include examples. We can always use more test coverage. Please follow our coding conventions (below) and make sure all of your commits are atomic (one feature per commit).
+をお送りください。[GitHub プルリクエスト](https://github.com/buildingSMART/bSDD/pull/new/master)何をしたかを明確にリストアップすること。[プルリクエスト](http://help.github.com/pull-requests/)プルリクエストを送信する際に、サンプルを含めていただければ、私たちはあなたを一生愛します。 私たちはいつでもテストカバレッジを増やすことができます。 私たちのコーディング規約（下記）に従い、すべてのコミットがアトミック（1つのコミットにつき1つの機能）であることを確認してください。）
 
-Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
+コミットには必ず明確なログメッセージを書くこと。 小さな変更であれば1行のメッセージでも構わないが、大きな変更であれば以下のようにする：
 
     $ git commit -m "A brief summary of the commit
     > 
     > A paragraph describing what changed and its impact."
 
-Thanks,
-bSIデジタル・インフラストラクチャー・チームおよびオープンBIMの導入に尽力するその他のすべての人々
+ありがとう、
+bSI Digital Infrastructure Team and all other people that work hard to bring Open BIM to work

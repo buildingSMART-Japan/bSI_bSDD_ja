@@ -22,7 +22,7 @@ bSDDでは、契約上の合意をサポートするために、各変更は完�
 | プロパティ/クラス: RevisionNumber | Property/GroupOfProperties: リビジョン番号 | xtdObject: マイナーバージョン | _リビジョン番号は bSDD では冗長だが、あるフィールドのリビジョンが何回行われたかを示すのに使われる。_ |
 | プロパティ/クラス: ReplacedObjectCodes | Property/GroupOfProperties: 置換されたプロパティのリスト | xtdObject: 置換オブジェクト |  |
 | プロパティ/クラス: ReplacingObjectCodes | Property/GroupOfProperties: 置換プロパティのリスト | ✖️ |  |
-| プロパティ/クラス: DeprecationExplanation | Property/GroupOfProperties：非推奨の説明 | xtdObject: 非推奨の説明 |  |
+| プロパティ/クラス: DeprecationExplanation | Property/GroupOfProperties: 非推奨の説明 | xtdObject: 非推奨の説明 |  |
 | プロパティ/クラス: CreatorLanguageIsoCode | Property/GroupOfProperties：クリエイターの言語 | xtdConcept: 作成者の言語 | _ISO では、xtdLanguage オブジェクトで、EnglishName （ISO 639 シリーズ準拠）、NativeName、Comments、Code を持つ。 bSDD では、bSI 管理リストで、IsoCode、Name （https://api.bsdd.buildingsmart.org/api/Language/v1 ）を持つ。_ |
 | プロパティ/クラス: 名前 | Property/GroupOfProperties: N言語の名前 | xtdObject: 名前 |  |
 | プロパティ/クラス: 定義 | Property/GroupOfProperties：言語Nでの定義 | xtdConcept: 定義 |  |
@@ -30,7 +30,7 @@ bSDDでは、契約上の合意をサポートするために、各変更は完�
 | プロパティ: 例 | 特性：言語Nでの例 | xtdConcept: 例 |  |
 | プロパティ: ConnectedPropertyCodes | プロパティ： 接続プロパティ | ✖️ |  |
 | (スキーマ/API) | 物件：物件グループ | ✖️ | _bSDD では、クラスプロパティはプロパティグループ（クラス型）の中にあることができます。_ |
-| プロパティ/クラス: VisualRepresentationUri | Property/GroupOfProperties：ビジュアル表現 | xtdConcept: ビジュアル表現 | _ISOではMediaオブジェクトだが、bSDDでは外部の視覚表現へのリンクのみが許される。_ |
+| プロパティ/クラス: VisualRepresentationUri | Property/GroupOfProperties：ビジュアル表現 | xtdConcept: ビジュアル表現 | _ISOではMediaオブジェクトだが、bSDDでは外部視覚表現へのリンクのみが許される。_ |
 | プロパティ/クラス: CountriesOfUse | プロパティ/グループ・オブ・プロパティ：使用国 | ✖️ | _bSDDでは、bSIによって管理される定義済みのリスト。_ |
 | プロパティ/クラス: SubdivisionsOfUse | 物件／物件グループ：用途の細分化 | ✖️ |  |
 | プロパティ/クラス: CountryOfOrigin | Property/GroupOfProperties：原産国 | xtdConcept: 原産国 | _bSDDでは、bSIによって管理される定義済みのリスト。_ |

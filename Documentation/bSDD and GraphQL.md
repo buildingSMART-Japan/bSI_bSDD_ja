@@ -1,38 +1,38 @@
-# bSDD and GraphQL
+# bSDDとGraphQL
 
-## Notification
+## お知らせ
 
-We've applied several changes in naming:
+ネーミングもいくつか変更した：
 
-1. "Domain" --> "Dictionary"
-2. "Classification" --> "Class"
-3. "NamespaceUri" --> "Uri"
+1. "ドメイン" --> "辞書"
+2. "分類" --> "クラス"
+3. "NamespaceUri"-->"Uri"
 4. "IncludeChilds" --> "IncludeChildren"
 
-To be consistent, names in our GraphQL API have also been changed.
-しかし、少なくとも2024年4月までは旧ネーミングをサポートする。
+一貫性を持たせるため、GraphQL APIの名前も変更された。
+But we do support the old naming until at least April 2024.
 
-## Short intro on GraphQL
+## GraphQL入門
 
-A 'regular' API is quite static: you do a request and it returns a predefined set of data. If you need some more info you probably need to do another API call. And then maybe another call until you have got all the data you want. GraphQL is designed to overcome that issue: it is a query language with which you can specify the data you need.
+通常の」APIは非常に静的である。 リクエストを行うと、あらかじめ定義されたデータセットが返される。 さらに情報が必要な場合は、おそらく別のAPIコールを行う必要がある。 そして、必要なデータをすべて取得するまで、さらに別のコールを行う必要があるかもしれない。 GraphQLはこの問題を克服するために設計されている。必要なデータを指定できるクエリー言語である。
 
-For more info on GraphQL have a look at, for example:
+GraphQLの詳細については、例えば以下を参照のこと：
 - https://dev.to/davinc/graphql-for-beginners-3f1a
 - https://www.freecodecamp.org/news/a-beginners-guide-to-graphql-60e43b0a41f5/
 
-For some scenario's using GraphQL can be more efficient, but there are still lots of scenario's where a regular API is the most efficient solution.
+シナリオによってはGraphQLを使用する方が効率的な場合もあるが、通常のAPIが最も効率的なソリューションであるシナリオもまだたくさんある。
 
-## bSDD GraphQL endpoints
+## bSDD GraphQLエンドポイント
 
-The bSDD API also provides a GraphQL endpoint and the test environment also has a playground:
+bSDD APIはGraphQLエンドポイントも提供しており、テスト環境にはプレイグラウンドもある：
 
-Playground: https://test.bsdd.buildingsmart.org/graphiql/
-テスト用GraphQLエンドポイント：https://test.bsdd.buildingsmart.org/graphql/
-テスト用GraphQLセキュアエンドポイント：https://test.bsdd.buildingsmart.org/graphqls/
+遊び場：https://test.bsdd.buildingsmart.org/graphiql/
+Test GraphQL endpoint: https://test.bsdd.buildingsmart.org/graphql/
+Test GraphQL secured endpoint: https://test.bsdd.buildingsmart.org/graphqls/
 
 本番用GraphQLセキュアエンドポイント：https://api.bsdd.buildingsmart.org/graphqls/
 
-セキュアなAPIにアクセスする方法については、ドキュメントhttps://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20API.md を参照してください。セキュアなGraphQLエンドポイントにアクセスする場合も同じです。
+セキュリティで保護されたAPIにアクセスする方法については、ドキュメントhttps://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20API.md を参照してください。セキュリティで保護されたGraphQLエンドポイントにアクセスする場合も同じです。
 
 ## データクエリの例
 

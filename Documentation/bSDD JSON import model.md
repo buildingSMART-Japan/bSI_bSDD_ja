@@ -1,48 +1,48 @@
 <h2 id="table-of-content">Table of contents</h2>
 
-* [Data model](#data-model)
-* [JSON format](#json-format)
-* [List of fields](#list-of-fields)
-    * [Dictionary](#Dictionary)  
-    * [Class](#Class)  
-    * [Property](#Property)  
-    * [ClassProperty](#ClassProperty)  
-    * [ClassRelation](#ClassRelation)  
-    * [AllowedValue](#AllowedValue)  
-    * [PropertyRelation](#PropertyRelation)  
-* [Additional explanations](#additional-explanations)
-* [Notifications](#notifications)
+* [データモデル](#data-model)
+* [JSONフォーマット](#json-format)
+* [フィールド一覧](#list-of-fields)
+    * [辞書](#Dictionary)  
+    * [クラス](#Class)  
+    * [プロパティ](#Property)  
+    * [クラスプロパティ](#ClassProperty)  
+    * [クラス関係](#ClassRelation)  
+    * [許容値](#AllowedValue)  
+    * [プロパティ関係](#PropertyRelation)  
+* [補足説明](#additional-explanations)
+* [お知らせ](#notifications)
 
 
 <h2 id="data-model">Data model</h2>
 
-The bSDD is a service to facilitate the distribution of data dictionaries (read below about what those are) published by independent organisations. The diagram below shows the simplified data model behind the bSDD:
+bSDDは、独立した組織によって発行されたデータ辞書（データ辞書とは何かについては以下をお読みください）の配布を容易にするためのサービスです。 下の図は、bSDDの背後にある簡略化されたデータモデルを示しています：
 
 <img src="https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/bSDD_data_model.png" alt="bSDD entity diagram" style="width: 650px"/>
 
-See our example demonstrating the usage of the above concepts: [bSDD data example](https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/bSDD_data_example.png):
+上記のコンセプトの使用例をご覧ください：[bSDDデータ例](https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/bSDD_data_example.png):
 <img src="https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/bSDD_data_example.png" alt="bSDD entity diagram" style="width: 700px"/>
 
-We also have a demonstration dictionary: ["Fruit and vegetables"](https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/1.1).
+デモンストレーション用の辞書もあります：[「果物と野菜](https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/1.1).
 
-📢 Read about the 最新 technical updates in the dedicated forum topic: [https://forums.buildingsmart.org/t/bsdd-tech-updates/4889](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889)
+📢 最新の技術アップデートについては、専用フォーラムトピックでお読みください：[https://forums.buildingsmart.org/t/bsdd-tech-updates/4889](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889)
 
 <h2 id="json-format">JSON format</h2>
 
-You can deliver data for the buildingSMART Data Dictionary in the JSON file following our standard, which we explain in this document. You can also find the JSON and Excel templates in [/Model/Import Model](https://github.com/buildingSMART/bSDD/tree/master/Model/Import%20Model).
+buildingSMARTデータディクショナリのデータは、JSONファイルで納品することができます。 JSONとExcelのテンプレートは、以下のリンクからダウンロードできます。[/モデル/インポートモデル](https://github.com/buildingSMART/bSDD/tree/master/Model/Import%20Model).
 
-Click on the link to get the list of allowed codes for [countries](https://api.bsdd.buildingsmart.org/api/Country/v1), [languages](https://api.bsdd.buildingsmart.org/api/Language/v1), [units](https://api.bsdd.buildingsmart.org/api/Unit/v1), [reference documents](https://api.bsdd.buildingsmart.org/api/ReferenceDocument/v1) and [ifc class](https://api.bsdd.buildingsmart.org/api/Dictionary/v2/Classes?uri=https%3A%2F%2Fidentifier.buildingsmart.org%2Furi%2Fbuildingsmart%2Fifc%2F4.3).
-参考資料が不足していると思われる場合は、次の方法でお知らせください。[問題掲載](https://github.com/buildingSMART/bSDD/issues)JSONのすべての値は、数値のExampleとAllowedValueフィールドを含め、二重引用符で囲まれた文字列でなければならない。
+リンクをクリックすると、以下のコードのリストが表示されます。[国々](https://api.bsdd.buildingsmart.org/api/Country/v1),[言語](https://api.bsdd.buildingsmart.org/api/Language/v1),[単位](https://api.bsdd.buildingsmart.org/api/Unit/v1),[参考文献](https://api.bsdd.buildingsmart.org/api/ReferenceDocument/v1)そして[ifcクラス](https://api.bsdd.buildingsmart.org/api/Dictionary/v2/Classes?uri=https%3A%2F%2Fidentifier.buildingsmart.org%2Furi%2Fbuildingsmart%2Fifc%2F4.3).
+If you think there are reference documents missing, please let us know by [posting an issue](https://github.com/buildingSMART/bSDD/issues). All values in JSON must be strings captured in double quotes, including for numeric Example and AllowedValue fields.
 
-If you are unfamiliar with JSON, we recommend reading [Introduction to JSON](https://javaee.github.io/tutorial/jsonp001.html). Please note that JSON is a format meant for computer systems to exchange data. If you have your dictionary data in a computer system, then it's best to let the system create the JSON for you.
+JSONに馴染みのない方は、以下を読むことをお勧めします。[JSON入門](https://javaee.github.io/tutorial/jsonp001.html)JSONは、コンピュータ・システムがデータを交換するためのフォーマットであることに注意してください。 辞書データがコンピュータ・システムにある場合は、システムにJSONを作成させるのが最善です。
 
 <h2 id="list-of-fields">List of fields</h2>
 
-NB Default values will only be applied if a field is not specified. If you specify a field value of "null"そのdefault will not be applied. Note that "null" is not allowed for all fields.
+NBデフォルト値は、フィールドが指定されていない場合にのみ適用される。 フィールド値に "null "を指定した場合、デフォルト値は適用されない。 すべてのフィールドに "null "を指定できるわけではないことに注意。
 
 <h3 id="Dictionary">Dictionary</h3>
 
-`Data dictionary` - '_a centralized repository of information about data such as meaning, relationships to other data, origin usage and format._' [ISO23386]. '_database that contains metadata_' [ISO12006-3]. Each `Dictionary` (previously `domain`) consists of `Classes` (previously `classifications`) and `Properties`, which could be related to each other or with other `Dictionaries`. Each `Dictionary` object contains general metadata about it, as listed in the table below.
+`Data dictionary` - '_データの意味、他のデータとの関係、出所、使用方法、形式など、データに関する情報を一元的に保管する場所。_iso23386]。_メタデータ・データベース_ISO12006-3]。`Dictionary`(以前は`domain`で構成されている。`Classes`(以前は`classifications`そして`Properties`それは互いに関連し合っているか、あるいは他のものと関連している可能性がある。`Dictionaries`それぞれ`Dictionary`オブジェクトには、そのオブジェクトに関する一般的なメタデータが含まれている。
 
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
 |------------------|------------------|-----------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -70,7 +70,7 @@ NB Default values will only be applied if a field is not specified. If you speci
 
 <h3 id="Class">Class</h3>
 
-`Class` - '_description of a set of objects that share the same characteristics._' [ISO23386]. A `Class` can be any object (examples: "wall", "window") or abstract concept (examples: "time", "room") or process (examples: "installation", "disassembly").
+`Class` - '_同じ特徴を共有するオブジェクトの集合の記述。_iso23386]。`Class`は、物体（例：「壁」、「窓」）、抽象概念（例：「時間」、「部屋」）、またはプロセス（例：「設置」、「分解」）である。
 
 
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
@@ -81,7 +81,7 @@ NB Default values will only be applied if a field is not specified. If you speci
 | <span id="Definition">定義</span>。 | テキスト |  | ✅ | クラス`の定義、意味的な意味を説明する。 ISOに従った必須フィールド。 二重四角括弧リンク](#double-square-bracket-links)をサポートする。 |
 | <span id="Description">説明</span>。 | テキスト |  | ✅ | 補足説明のための追加フィールド。 定義_が規格に由来し、さらに説明が必要な場合にのみ使用してください。 |
 | <span id="ParentClassCode">親クラスコード</span>。 | テキスト |  |  | 親クラス `Class` への参照。 このフィールドのIDは、配信されたデータの中に存在しなければなりません。 例: "ifc-00123-00" リレーションシップを定義するには](#defining-relations)を参照してください。 |
-| <span id="RelatedIfcEntityNamesList">関連Ifcエンティティ名リスト</span>。 | テキスト一覧 |  |  | この `Class` の表現として使用する IFC クラスのコード。 例: ['イフックウォール']. bSDD API [ifc classs](https://api.bsdd.buildingsmart.org/api/Dictionary/v3/Classes?uri=https%3A%2F%2Fidentifier.buildingsmart.org%2Furi%2Fbuildingsmart%2Fifc%2F4.3%2F) を参照。 [リレーションシップの定義方法](#defining-relations) を参照。 |
+| <span id="RelatedIfcEntityNamesList">関連Ifcエンティティ名リスト</span>。 | テキスト一覧 |  |  | この `Class` の表現として使用する IFC クラスのコード。 例: ['IfcWall']. bSDD API [ifc classs](https://api.bsdd.buildingsmart.org/api/Dictionary/v3/Classes?uri=https%3A%2F%2Fidentifier.buildingsmart.org%2Furi%2Fbuildingsmart%2Fifc%2F4.3%2F) を参照。 [リレーションシップの定義方法](#defining-relations) を参照。 |
 | <span id="類義語</span></span | テキスト一覧 |  | ✅ | 検索しやすいように、このクラスの代替名称のリスト。 |
 | <span id="ActivationDateUtc">アクティベーション日付Utc</span>。 | 日時 |  |  | 日付時刻フォーマット](#datetime-format)を参照。 |
 | <span id="ReferenceCode">参照コード</span>。 | テキスト |  |  | 参照コードは辞書固有の用法を持つことができる。 NULLの場合、`Code`の値がフィールドを埋めるために使用される。 参照コードを空にするには、空の文字列""を使用する。 |
@@ -109,7 +109,7 @@ Note: Since the release of November 2023, Materials are not treated separately a
 
 <h3 id="Property">Property</h3>
 
-`Property` - '_an inherent or acquired feature of an item [`Class`]. Example: Thermal efficiency, heat flow, (...), colour._' [ISO23386].  The assignment of `Properties` to `Classes` is handled through the interim [ClassProperty](#ClassProperty) object. 
+`Property` - '_アイテムに固有の、あるいは後天的な特徴`Class`例：熱効率、ヒートフロー、色。_の代入が必要である[ISO23386]。`Properties`への`Classes`は中間[クラスプロパティ](#ClassProperty)オブジェクトがある。 
 
 
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
@@ -125,7 +125,7 @@ Note: Since the release of November 2023, Materials are not treated separately a
 | <span id="ConnectedPropertyCodes">接続プロパティコード</span>。 | テキスト一覧 |  |  | 他の辞書のプロパティである場合は、コードの代わりに完全なURIを指定することもできます。 アセンブルプロパティ](#assembling-properties)を参照してください。 |
 | <span id="CountriesOfUse">使用国</span>。 | テキスト一覧 |  |  | この`プロパティ`が使用されている国のISOコードのリスト。 参照リスト[countries](https://api.bsdd.buildingsmart.org/api/Country/v1)を参照してください。 |
 | <span id="CountryOfOrigin">原産国</span>。 | テキスト |  |  | この`プロパティ`の原産国のISO国コード。参照リスト[countries](https://api.bsdd.buildingsmart.org//api/Country/v1)を参照。 |
-| <span id="CreatorLanguageIsoCode">クリエイター言語アイソコード</span>。 | テキスト |  |  | 作成者の言語ISOコード。 参照リスト（JSON）[languages](https://api.bsdd.buildingsmart.org/api/Language/v1)を参照。 |
+| <span id="CreatorLanguageIsoCode">CreatorLanguageIsoCode</span> です。 | テキスト |  |  | 制作者の言語ISOコード。 参考リスト参照（JSON）[languages](https://api.bsdd.buildingsmart.org/api/Language/v1) |
 | <span id="DeActivationDateUtc">DeActivationDateUtc</span>。 | 日時 |  |  | 日付時刻フォーマット](#datetime-format)を参照。 |
 | <span id="DeprecationExplanation">DeprecationExplanation</span>。 | テキスト |  | ✅ |  |
 | <span id="Dimension">ディメンション</span>。 | テキスト |  |  | 物理量の場合、ISO 80000-1 で定義されている [International_System_of_Quantities](https://en.wikipedia.org/wiki/International_System_of_Quantities) に従って次元を指定する。長さ`、質量`、時間`、電流`、熱力学的温度`、物質量`、光度`の順で指定する。 例えば、速度(m/s)は "1 0 -1 0 0 0 0" と表記する。その他の例は [IDS documentation](https://github.com/buildingSMART/IDS/blob/ver/1.0.x/Documentation/UserManual/units.md) を参照。 |
@@ -148,7 +148,7 @@ Note: Since the release of November 2023, Materials are not treated separately a
 | <span id="パターン">パターン</span>。 | テキスト |  |  | 許容値を制限するための[XMLスキーマ正規表現](https://www.regular-expressions.info/xml.html) |
 | <span id="PhysicalQuantity">物理量</span>。 | テキスト |  | ✅ | プロパティの物理量の名前、例："なし "または "質量" |
 | <span id="PropertyValueKind">プロパティ・バリュー・カインド</span>。 | テキスト |  |  | Single` (1つの値。これがデフォルト), `Range` (2つの値), `List` (複数の値), `Complex` (シングル/レンジ/リストのどちらでもない。例えば、IfcActorのようなオブジェクトや、連結されたプロパティの集合体 - [プロパティのアセンブル](#assembling-properties)を参照), `ComplexList` (複合値のリスト). |
-| <span id="ReplacedObjectCodes">ReplacedObjectCodes</span>。 | テキスト一覧 |  |  | この `Property` が置き換えるプロパティコードのリスト。 |
+| <span id="ReplacedObjectCodes">置換オブジェクトコード</span>。 | テキスト一覧 |  |  | この `Property` が置き換えるプロパティコードのリスト。 |
 | <span id="ReplacingObjectCodes">ReplacingObjectCodes</span>。 | テキスト一覧 |  |  | この `Property` が置き換わるプロパティコードのリスト |
 | <span id="RevisionDateUtc">リビジョンデートUtc</span>。 | 日時 |  |  | 日付時刻フォーマット](#datetime-format)を参照。 |
 | <span id="RevisionNumber">リビジョン番号</span>。 | 整数 |  |  |  |
@@ -164,9 +164,9 @@ Note: Since the release of November 2023, Materials are not treated separately a
 
 <h3 id="ClassProperty">ClassProperty</h3>
 
-Interim object to assign a `Property` to a `Class` it should describe. Each `Class` can have multiple properties, and each `Property` can be part of many `Classes`, but one `ClassProperty` is always a pair of one `Class` and one `Property`. 
+を割り当てる中間オブジェクト。`Property`への`Class`それぞれ`Class`は複数のプロパティを持つことができます。`Property`多くの`Classes`しかし、1つだけ`ClassProperty`は常に`Class`そして`Property`. 
 
-Through `ClassProperty`, one can further specify a 'Property' by defining its unit, property set it should be stored in, and value restrictions when applied to that particular `Class`. For example, a general 'Temperature' can be expressed in Celcius or Fahrenheit and can be any negative or positive value, but when applied to an indoor space, it might be restricted to a range of 5-40 degrees Celcius.   
+を通して`ClassProperty`を定義することによって、さらに「Property」を指定することができます。`Class`例えば、一般的な「温度」は摂氏または華氏で表すことができ、マイナス値でもプラス値でも構わないが、室内空間に適用する場合、摂氏5～40度の範囲に制限されることがある。   
 
 
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
@@ -177,10 +177,10 @@ Through `ClassProperty`, one can further specify a 'Property' by defining its un
 | <span id="Description">説明</span>。 | テキスト |  | ✅ | クラス固有のプロパティの説明を指定することができます。 省略した場合、プロパティの「一般的な」説明は、該当する場所に表示されます。 |
 | <span id="PropertySet">プロパティセット</span>。 | テキスト |  |  | プロパティがIFCデータに配置されるべきセットの名前。 接頭辞'Pset_'は公式IFCのために予約されています。 コードバリデーションが適用されます。詳しくは: [コードフォーマット](#code-format)を参照してください。 詳しくは: [プロパティのアセンブル](#assembling-properties)を参照してください。 |
 | <span id="Unit">ユニット</span | テキスト |  |  | 参考文献リスト(json) [単位](https://api.bsdd.buildingsmart.org/api/Unit/v1)を参照。 |
-| <span id="PredefinedValue">定義済み値</span>。 | テキスト |  |  | 例："イフックウォール" クラスのプロパティ "IsLoadBearing" の値は "true" になります。 |
+| <span id="PredefinedValue">定義済み値</span>。 | テキスト |  |  | 例："IfcWall" クラスのプロパティ "IsLoadBearing" の値は "true" になります。 |
 | <span id="IsRequired">必須</span>です。 | ブーリアン |  |  | これが `Class` の必須 `Property` であるかどうかを示す。 |
 | <span id="IsWritable">書き込み可能</span>。 | ブーリアン |  |  | クラス `` の `プロパティ`` の値を変更できるかどうかを示す。 |
-| <span id="MaxExclusive">マックスエクスクルーシブ</span>。 | リアル |  |  | 最大許容値(排他的) `Property`に定義された値を上書きする。 inclusive'と'exclusive'の両方の値を記入してはならない。 |
+| <span id="MaxExclusive">マックスエクスクルーシブ</span>。 | リアル |  |  | 最大許容値(排他的) `Property`に定義された値を上書きする。 'inclusive'と'exclusive'の両方を記入してはならない。 |
 | <span id="MaxInclusive">マックス・インクルーシブ</span>。 | リアル |  |  | Property`に定義された値よりも優先される。 inclusive'値と'exclusive'値の両方を埋めないでください。 |
 | <span id="MinExclusive">MinExclusive</span>。 | リアル |  |  | Property`に定義された値をオーバーライドする。 inclusive'値と'exclusive'値の両方を埋めないでください。 |
 | <span id="MinInclusive">ミニインクルーシブ</span>。 | リアル |  |  | Property`に定義された値をオーバーライドする。 inclusive'値と'exclusive'値の両方を記入してはならない。 |
@@ -189,12 +189,12 @@ Through `ClassProperty`, one can further specify a 'Property' by defining its un
 | <span id="PropertyType">プロパティタイプ</span>。 | テキスト |  |  | クラス `` の `プロパティ`` の種類: `プロパティ`` (デフォルト) または `依存関係`` (デフォルト) |
 | <span id="SortNumber">ソートナンバー</span>。 | 整数 |  |  | この `プロパティ` の `クラス` 内のソート番号。 |
 | <span id="Symbol">シンボル</span>。 | テキスト |  |  |  |
-| <span id="AllowedValues">許可された値</span>。 | 許容値のリスト |  | ✅ | ClassProperty`に指定できる値のリスト。 Property`に定義されている値を上書きします。 boolean型のプロパティには使用しないでください。 AllowedValue](#AllowedValue)セクションを参照してください。 |
+| <span id="AllowedValues">許可された値</span>。 | 許容値のリスト |  | ✅ | ClassProperty`に指定できる値のリスト。 Property`に定義されている値をオーバーライドします。 boolean型のプロパティには使用しないでください。 AllowedValue](#AllowedValue)セクションを参照してください。 |
 | ~~ExternalPropertyUri~~。 | ~~テキスト |  |  | DEPRECATED - 代わりに `PropertyUri` を使用する。 |
 
 <h3 id="AllowedValue">AllowedValue</h3>
 
-Optional value enumerations that can be listed for `Properties` and `ClassProperties`. For example, a 'Fire Rating' could only have a few allowed values: REI30, REI60, REI90 or REI120.
+オプションの列挙値。`Properties`そして`ClassProperties`例えば、「耐火等級」の許容値は、REI30、REI60、REI90、REI120のいずれかである。
 
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
 |--------------------------|----------|-----------|---------------|-----------------------------------------------------------------------------|
@@ -209,7 +209,7 @@ Note: adding translations of the `AllowedValue` is not supported yet
 
 <h3 id="ClassRelation">ClassRelation</h3>
 
-`Classes` can be linked by relations. There are various types of relations, allowing for the definition of hierarchy, composition, similarity or reference. See section [How to define relations?](#defining-relations)
+`Classes`リレーションには様々な種類があり、階層、合成、類似、参照の定義が可能である。 を参照のこと。[関係をどう定義するか？](#defining-relations)
 
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
 |--------------------------|----------|-----------|---------------|-----------------------------------------------------------------------------|
@@ -221,7 +221,7 @@ Note: adding translations of the `AllowedValue` is not supported yet
 
 <h3 id="PropertyRelation">PropertyRelation</h3>
 
-Analogous to `ClassRelations` but between `Properties`.
+に似ている。`ClassRelations`しかし`Properties`.
 
 | フィールド | データ型 | 必要ですか？ | 翻訳可能か？ | 説明 |
 |--------------------------|----------|-----------|---------------|-----------------------------------------------------------------------------|
@@ -236,115 +236,115 @@ Analogous to `ClassRelations` but between `Properties`.
 
 <h3 id="code-format">Code format</h3>
 
-(from April 2024) All codes support diacritics, whitespace, dots, commas, dashes, round brackets (parentheses) underscores and numbers. Not allowed are special characters: ```"#%/\:`{}[]|;<>?~```. Codes are not case-sensitive, and we recommend using small-caps only. 
+(2024年4月以降) すべてのコードで、発音区別符号、空白、ドット、コンマ、ダッシュ、丸括弧、アンダースコア、数字が使用可能。 特殊文字は使用不可：```"#%/\:`{}[]|;<>?~```コードは大文字と小文字を区別しません。 
 
-Some examples of valid codes are: "bs-agri", "apple", "éÄą _- (Д開発,...żź)".
+有効なコードの例としては、"bs-agri"、"apple"、"éÄą _- (Д開発,...żź) "などがある。
 
-Codes need to be unique within the same data dictionary and are used to generate URIs.
+コードは同じデータ辞書内で一意である必要があり、URIを生成するために使用される。
 
-Some codes might be reserved, for example, the IFC standard reserves the codes starting with a prefix 'Ifc' and 'Pset'. 
+例えば、IFC規格では、接頭辞'Ifc'と'Pset'で始まるコードが予約されている。 
 
 <h3 id="class-types">Class types</h3>
 
-Each class must have a specific type. Below is the explanation of what each type means, according to ISO 12006-3:
-* `Class` - description of a set of objects that share the same characteristics <sup>[ISO12006-3,3.7]</sup>. This is the most common type in bSDD. (Example: wall, space)
-* `GroupOfProperties` - collection enabling the properties to be prearranged or organized <sup>[ISO12006-3,3.14]</sup>. For example, 'environmental properties'. See [assembling properties](#assembling-properties).
-* `Material` - a physical substance that things can be made from (Example: steel, glass)
-* `AlternativeUse` - type to be used if no other type fits the needs.<sup>[ISO12006-3,3.1]</sup>.
-   * Be aware that most software implementations disregard this class type, as it is not straightforward to interpret.
-* **DEPRECATED** ~~ReferenceDocument - a publication that is consulted to find specific information, particularly in a technical or scientific dictionary. <sup>[ISO12006-3,3.18]</sup>. A reference document can be associated with any data present in a data dictionary.~~
-  * In bSDD we have a global list of [reference documents](https://api.bsdd.buildingsmart.org/api/ReferenceDocument/v1), which includes the most common standards that can be used as reference. This is to avoid having duplicate references with different naming. If you don't find the reference you are looking for, and think it should be added to the list - let us know: [CONTACT FORM](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h).
-* **DEPRECATED**  ~~ComposedProperty - (...) corresponding to a feature needing multiple properties to be defined. <sup>[ISO12006-3,3.8]</sup>.~~
-  * ~~Example: To describe the characteristic "concrete facing quality", it is mandatory to describe 3 properties: concrete planarity, concrete hue, and concrete texture.~~
-  * Use `GroupOfProperties` instead.
+以下は、ISO12006-3に従った、各タイプの意味の説明である：
+* `Class` - 同じ特徴を共有するオブジェクトの集合の記述<sup>[ISO12006-3,3.7] 。</sup>bSDDで最も一般的なタイプです。 例：壁、スペース
+* `GroupOfProperties` - コレクションを使用すると、プロパティを事前に配置または整理することができます。<sup>[ISO12006-3,3.14] 。</sup>例えば、「環境特性」。[組み立て特性](#assembling-properties).
+* `Material` - 物を作ることができる物理的な物質（例：鋼鉄、ガラス）
+* `AlternativeUse` - 他の型がニーズに合わない場合に使用される。<sup>[iso12006-3,3.1]。</sup>.
+   * ほとんどのソフトウェア実装では、このクラス型を無視する。
+* **廃止**~~参考文献 - 特定の情報を見つけるために参照される出版物で、特に技術的または科学的な辞書。<sup>[ISO12006-3,3.18] 。</sup>参照文書は、データ辞書に存在するあらゆるデータと関連付けることができる。
+  * bSDDでは、グローバルなリストとして[参考文献](https://api.bsdd.buildingsmart.org/api/ReferenceDocument/v1)もしお探しの規格が見つからず、リストに加えるべきだとお考えでしたら、ぜひお知らせください：[お問い合わせフォーム](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h).
+* **廃止**~~ComposedProperty - (...) 複数のプロパティを定義する必要があるフィーチャーに対応します。<sup>[ISO12006-3,3.8]。</sup>.~~
+  * ~~例："コンクリートの面構え "という特徴を表現するためには、コンクリートの平面性、コンクリートの色相、コンクリートの質感という3つの特性を表現する必要がある。
+  * 用途`GroupOfProperties`その代わりだ。
 
 <h3 id="defining-relations">Defining relations</h3>
 
-`ParentClassCode` - `Class`es within the same dictionary can be organized in a tree-like hierarchy structure. For example: “IfcCurtainWall” is a more
-bSDDの用語では、"IfcWall "は、"IfcWall "の特定のクラスである。**親**「このような特殊化関係を定義するには`ParentClassCode`属性を子オブジェクトに与える。
+`ParentClassCode` - `Class`例えば、"IfcCurtainWall "は、"IfcCurtainWall "よりもさらに階層的な構造である。
+specific class of “IfcWall”. In bSDD terminology, we say that “IfcWall” is a **parent of** “IfcCurtainWall”. To define such specialization relation, use the `ParentClassCode` attribute on the child object.
 
-`ClassRelation` and `PropertyRelation`- use those to link your concepts with each other. Relations allow us to define parent-child links also with other dictionaries. Apart from specialization, you can also define other types of relations, such as decomposition (`HasPart` type, see the list of possible types: [Relation types](#relation-types)).
+`ClassRelation`そして`PropertyRelation`- 関係によって、他の辞書との親子関係も定義できます。 特殊化とは別に、分解 (`HasPart`タイプについては、可能なタイプのリストを参照のこと：[関係タイプ](#relation-types)).
 
-`RelatedIfcEntityNamesList` - IFC is a top-level schema (foundation classes) used for exchanging information between software. Because of that, the bSDD provides a special way to relate your class to IFC. Use `RelatedIfcEntityNamesList` to show which entities from IFC you are referring to or extending. For example, “Signaling LED diode” relates to “IfcLamp” from IFC. `RelatedIfcEntityNamesList` can be used by bSDD-related tools to filter the list of possible classes to a particular IFC category.
+`RelatedIfcEntityNamesList` - IFCは、ソフトウェア間で情報を交換するために使用されるトップレベルのスキーマ（基礎クラス）です。 そのため、bSDDはクラスをIFCに関連付ける特別な方法を提供します。`RelatedIfcEntityNamesList`例えば、"Signaling LED diode "は、IFCの "IfcLamp "に関連しています。`RelatedIfcEntityNamesList`は、bSDD 関連のツールで、可能なクラスのリストを特定の IFC カテゴリにフィルタリングするために使用できます。
 
 <h3 id="relation-types">Relation types</h3>
 
-`Properties` and `Classes` can be related to each other. Each relation must have a specific type to allow software to interpret it. Below is an explanation of what each type means:
-* <span id='IsEqualTo'>`IsEqualTo`</span> - if two concepts are unequivocal and have the same name, code, definition and description. Classes also need to share the same class properties. It is quite rare for concepts to be equal. An example of usage is when a concept doesn't have an official translation, but someone defines a new dictionary with that concept in a new language and wants to say it is exactly the same as the original. (We always recommend proposing translations and improvements to the original data dictionaries instead of building duplicate ones). 
-* <span id='IsSimilarTo'>`IsSimilarTo`</span> - if two concepts are almost equal but differ by name, code, definition, description or set of class properties. This is a very common relationship type. Used, for example, to say that 'IfcWall' is a similar concept to 'Wall System' from CCI. The downside of such a relation is that it doesn't inform on the level of similarity – is it slightly differing by the wording of the definition, or is the difference huge?
-* <span id='HasReference'>`HasReference`</span> - if two concepts relate to each other, but other relation types do not apply. For example, "wall lamp" (or "sconce") is referencing a wall, even though those are different concepts and there is no hierarchy between them.
-* **DEPRECATED** ~~IsSynonymOf - if two concepts are unequivocal but have a different name.~~
+`Properties`そして`Classes`各関係は、ソフトウェアがそれを解釈できるように、特定の型を持たなければならない。 以下に、各型の意味を説明する：
+* <span id='IsEqualTo'>`IsEqualTo`</span> - 2つの概念が明確で、同じ名前、コード、定義、説明を持っている場合。 クラスはまた、同じクラスプロパティを共有する必要があります。 概念が等しいことは非常にまれです。 使用例としては、ある概念が公式な翻訳を持っていないにもかかわらず、誰かが新しい言語でその概念を持つ新しい辞書を定義し、それがオリジナルとまったく同じであると言いたい場合です（私たちは常に、重複する辞書を構築する代わりに、オリジナルのデータ辞書に翻訳や改良を提案することを推奨しています）。 
+* <span id='IsSimilarTo'>`IsSimilarTo`</span> - 2つの概念がほぼ等しいが、名前、コード、定義、説明、またはクラスプロパティのセットによって異なる場合。 これは非常に一般的な関係タイプです。 例えば、「IfcWall」がCCIの「Wall System」と類似した概念であることを言うために使用されます。 このような関係の欠点は、類似性のレベルが通知されないことです - それは定義の文言によってわずかに異なっているか、または大きな違いですか？
+* <span id='HasReference'>`HasReference`</span> - 例えば、"wall lamp"（または "sconce"）は、異なる概念であり、それらの間に階層がないにもかかわらず、壁を参照している。
+* **廃止**~~IsSynonymOf（同義語） - 2つの概念が明白であるが、名前が異なる場合。
 
-Only applicable to classes (not properties):
-* <span id='IsChildOf'>`IsChildOf`</span> - specialisation relation. The equivalent of the "subtype" relationship <sup>[ISO12006-3, F3.1]</sup>. For example: "Electrical motor" and a "Combustion motor" are children (subtypes) of the generic concept "Motor".
-* <span id='IsParentOf'>`IsParentOf`</span> - the opposite relation to `IsChildOf`.
-* <span id='HasPart'>`HasPart`</span> - composition relation. For example, an electric motor can be composed of elements such as stators, rotors, etc. <sup>[ISO12006-3, F3.2]</sup>.
-* <span id='IsPartOf'>`IsPartOf`</span> - reverse of `HasPart`.
-* <span id='HasMaterial'>`HasMaterial`</span> - a class that can be associated with a particular material. For example: "Steel Beam" could be related to the material "Steel".
+クラスにのみ適用される（プロパティには適用されない）：
+* <span id='IsChildOf'>`IsChildOf`</span> - subtype "関係に相当する。<sup>[ISO12006-3, F3.1]。</sup>例えば、「電気モーター」と「燃焼モーター」は、一般概念「モーター」の子（サブタイプ）である。
+* <span id='IsParentOf'>`IsParentOf`</span> - とは逆の関係にある。`IsChildOf`.
+* <span id='HasPart'>`HasPart`</span> - 例えば、電気モーターはステーター、ローターなどの要素で構成される。<sup>[ISO12006-3, F3.2]。</sup>.
+* <span id='IsPartOf'>`IsPartOf`</span> - 逆`HasPart`.
+* <span id='HasMaterial'>`HasMaterial`</span> - 特定の材料に関連付けられるクラス。 例えば、"Steel Beam "は材料 "Steel "に関連付けられる。
 
 <h3 id="datetime-format">DateTime format</h3>
 
-The date-time format according to the ISO 8601 series should be used: `YYYY-MM-DDThh:mm:ssTZD`. Import allows both: `2023-05-10`, `2023-05-10T15:10:12Z` and `2023-05-10T15:10:12+02:00`.
+ISO 8601シリーズに準拠した日付時刻形式を使用すること：`YYYY-MM-DDThh:mm:ssTZD`インポートはその両方を可能にする：`2023-05-10`,`2023-05-10T15:10:12Z`そして`2023-05-10T15:10:12+02:00`.
 
 <h3 id="property-inheritance">Property inheritance</h3>
 
-* Parent `Class` → child `Class`  
-子供`Class`は親からプロパティを継承しない。`Class`子クラスにも親クラスのプロパティを持たせたい場合は、インポートファイルで意図的に指定する必要がある。  
-例えば[IfcWall](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall)の親クラスである。[IfcWall標準ケース](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall標準ケース)その一方で[IfcWall](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall)を持つ。[音響評価](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall/prop/Pset_WallCommon/AcousticRating), the [IfcWallStandardCase](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallStandardCase)それはない。
+* 親`Class`→ 子供`Class`  
+The child `Class` does not inherit properties from the parent `Class`. If authors want child classes to also have properties of parent classes, they should specify them intentionally in import files.  
+For example, the [IfcWall](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall) is a parent class of [IfcWallStandardCase](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallStandardCase). While [IfcWall](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall) has the property [AcousticRating](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall/prop/Pset_WallCommon/AcousticRating), the [IfcWallStandardCase](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallStandardCase) doesn't.
 
-* `Property` → `ClassProperty`  
-`ClassProperty`は一般的な`Property`特定の`Class`プロパティの属性、例えば`AllowedValue`と最小/最大制限は、デフォルトで次のように渡されます。`ClassProperty`の値である。`ClassProperty`原点に影響を与えることなく変更できる`Property`.  
-例えば[高さ](https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/1.0.0/prop/height)アップル "クラスに適用する場合、その上限は100cmとなる。[アップルハイト](https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/1.0.0/class/apple/prop/SizeSet/height)下限は25cm。 
+* `Property`→`ClassProperty`  
+`ClassProperty` is an instantiation of general `Property` for a particular `Class`. The attributes of a property, such as `AllowedValue` and min/max restrictions,  are by default passed to `ClassProperty`. The values of the `ClassProperty` can be modified without influencing the origin `Property`.  
+For example, the [Height](https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/1.0.0/prop/height) has an upper limit of 100 cm. When applied to the "Apple" class, the [Apple-Height](https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/1.0.0/class/apple/prop/SizeSet/height) has a lower limit - 25cm. 
 
 <h3 id="latest-version">Latest version</h3>
 
-In bSDD, all resources get a unique identifier - URI. The URI, among other information, contains codes of the organisation, the dictionary and the version number, for example .../uri/bs-agri/fruitvegs/**1.0.0**/class/fruit
-特定のリソースを参照したいが、バージョンがよくわからない場合や、 常に最新のバージョンを参照したい場合には、"latest" 機能を実装しました。 これにより、バージョン番号の代わりに "latest" を使用することが可能になり、 bSDD は、そのリソースを含む最新のアクティブバージョンまたは プレビューバージョンへのリンクを解決します： 
-.../uri/bs-agri/fruitvegs/**latest**/クラス/フルーツ。 
+bSDDでは、すべてのリソースは一意な識別子であるURIを持つ。 URIは、他の情報の中で、組織のコード、辞書、およびバージョン番号を含み、例えば.../uri/bs-agri/fruitvegs/フルーツヴェッグスのようになる。**1.0.0**/クラス/フルーツ
+If you want to reference specific resources but are not sure of the version or want to always point to the most recent version, we implemented the "latest" feature. Now, it is possible to use "latest" instead of a version number, and bSDD will resolve the link to the latest active or preview version containing that resource: 
+.../uri/bs-agri/fruitvegs/**latest**/class/fruit. 
 
 <img src="https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/latest_example.jpg" alt="bSDD latest" style="width: 750px"/>
 
-Try it out:
+お試しあれ：
 https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/latest/class/fruit
 
-⚠️ The "latest" points to the most recent resource, meaning that it will change once a new version is present. Use with caution as it is not an immutable URI, and the content can change. For contractual agreements, we suggest using specific version numbers.
+⚠️ "latest "は最新のリソースを指し、新しいバージョンが存在すると変更されることを意味する。不変のURIではなく、内容が変更される可能性があるため、注意して使用すること。 契約上の合意については、特定のバージョン番号を使用することを推奨する。
 
 <h3 id="assembling-properties">Assembling properties</h3>
 
-**Groups of Properties** (use `Class`.`ClassType`:`GroupOfProperties`) "collection enabling the properties to be prearranged or organized" <sup>[ISO12006-3,3.14]</sup>. In bSDD, implemented as a Type of Class meant to group multiple Properties.
+**物件グループ**使用`Class`.`ClassType`:`GroupOfProperties`) "プロパティを事前に配置または整理することを可能にするコレクション"<sup>[ISO12006-3,3.14] 。</sup>bSDD では、複数のプロパティをグループ化するための クラスの一種として実装されている。
 
-Use Group of Properties to organize properties in a data dictionary.
+データ辞書内のプロパティを整理するには、プロパティのグループを使用します。
 
-Example: _'[Global Warming Potential](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/class/GlobalWarmingPotential)' class from '[LCA indicators and modules](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0)' groups four properties: '[...total](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_total)', '[...biogenic](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_biogenic)', '[...fossil fuels](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_fossil)' and '[...land use...](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_luluc)'._
+例_'[地球温暖化の可能性](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/class/GlobalWarmingPotential)クラス[LCA指標とモジュール](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0)'は4つのプロパティをグループ化している。[...合計](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_total)', '[...バイオジェニック](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_biogenic)', '[...化石燃料](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_fossil)'と'[...土地利用...](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_luluc)'._
 
-**Sets of properties** (use `ClassProperty`.`PropertySet`) - a concept from the IFC standard for grouping properties. In bSDD represented as a text field defined for Class Property, telling in which set this Class Property should appear when serialised to IFC data. 
-  * A Property Set, as defined in ISO 16739-1, is a group of properties, but a group of properties is not necessarily a Property Set.
-  * A property can be a member of several groups of properties. A class property cannot be a member of several Property Sets.
-  * The prefix 'Pset_' is only reserved for the official IFC.
+**プロパティのセット**使用`ClassProperty`.`PropertySet`bSDD では、クラス・プロパティに定義されたテキスト・フィールドとして表現され、IFC データにシリアル化されたときに、このクラス・プロパティがどのセットで表示されるかを示します。 
+  * ISO 16739-1で定義されるプロパティセットはプロパティのグループであるが、プロパティのグループは必ずしもプロパティセットではない。
+  * プロパティは、複数のプロパティ・グループのメンバになることができます。 クラス・プロパティは、複数のプロパティ・セットのメンバになることはできません。
+  * 接頭辞'Pset_'は公式IFCにのみ予約されている。
 
-Use Property Set to define where to place a property in an IFC dataset.
+プロパティセットを使用して、IFC データセットのどこにプロパティを配置するかを定義します。
 
-Example: _A property 'Concrete Cover' of 'IfcWall' is located in property set: 'Pset_ConcreteElementGeneral'._
+例_IfcWall」のプロパティ「Concrete Cover」は、プロパティセット「Pset_ConcreteElementGeneral」にあります。_
 
-**Connected properties** (use `Property`.`ConnectedPropertyCodes`) "List of properties connected to the current property. The connection can be a specialization or a dependency." <sub>[ISO12006-3, 5.3.29]</sub> 
+**接続物件**使用`Property`.`ConnectedPropertyCodes`) "現在のプロパティに接続されているプロパティのリスト。 接続は、特殊化または依存関係であることができます。"<sub>[ISO12006-3, 5.3.29]。</sub> 
 
-Use Connected Properties if the value of one property depends on the value of another property.
+あるプロパティの値が他のプロパティの値に依存する場合は、Connected Propertiesを使用します。
 
-Example: _The property ['Global Warming Potential - total' (GWP)](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_total) should be defined for each phase of the life cycle of a product. Defining the property separately for each phase (GWP_A1, GWP_A2, ...) is not desired. Instead, it is connected to another property - '[information module (PHASE)](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/information_module)', taking 18 possible values (A1, A2, C3...). To interpret the meaning of GWP value, one should look at pairs of values: {GWP=1.0, PHASE=A1}, {GWP=15.0, PHASE=A3}, etc. _
+例[地球温暖化係数-合計」（GWP）](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_total)各フェーズ（GWP_A1、GWP_A2、...）ごとに個別に定義することは望まれない。 その代わりに、このプロパティは、別のプロパティ（'[情報モジュール（PHASE）](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/information_module)GWP値の意味を解釈するには、{GWP=1.0, PHASE=A1}、{GWP=15.0, PHASE=A3}などの値のペアを見る必要がある。
 
-⚠️ This feature comes from the ISO standard but is rarely supported by software implementation. The IFC also doesn't support multiple properties with the same name under one property set. Consider avoiding Connected Properties to make the data dictionary more accessible.
+⚠️ この機能はISO標準に由来していますが、ソフトウェア実装でサポートされていることはほとんどありません。 また、IFCは1つのプロパティセットで同じ名前の複数のプロパティをサポートしていません。 データ辞書をより利用しやすくするために、接続プロパティを避けることを検討してください。
 
-**Dynamic properties** (use `Property`.`IsDynamic` and .`DynamicParameterPropertyCodes`) "properties which are parameters of the function for a dynamic property" <sub>[ISO23386, 5.3.29]</sub>. In other words, the value of a dynamic property is dependent on the values of properties specified in `DynamicParameterPropertyCodes`. There is no field in bSDD to define the exact equation of the formula in a machine-interpretable form. 
+**ダイナミック・プロパティ**使用`Property`.`IsDynamic`と。`DynamicParameterPropertyCodes`) "動的プロパティの関数のパラメータであるプロパティ"<sub>[iso23386、5.3.29]。</sub>言い換えれば、ダイナミック・プロパティの値は、次のように指定されたプロパティの値に依存する。`DynamicParameterPropertyCodes`bSDDには、公式の正確な方程式を機械的に解釈可能な形で定義するフィールドはない。 
 
-Use Dynamic Properties to tell which other properties influence the value of the particular property.
+ダイナミック・プロパティを使用して、他のどのプロパティが特定のプロパティの値に影響を与えるかを示します。
 
-Example: _The 'Area' of a wall depends on its 'Height' and 'Length', following the formula: A = H * L._
+例_壁の「面積」は、「高さ」と「長さ」によって決まる。_
 
-⚠️ This feature comes from the ISO standard but is rarely supported by software implementation. Consider avoiding Dynamic Properties to make the data dictionary more accessible.
+⚠️ この機能はISO標準に由来するが、ソフトウェア実装でサポートされることはほとんどない。 データ辞書をより利用しやすくするために、ダイナミック・プロパティを避けることを検討すること。
 
 <h3 id="restricting-property-values">Restricting property values</h3>
 
-🚧 TO BE DEVELOPED 🚧
+開発する🚧。
 `AllowedValues`...
 
 `Min/MaxInc/Exclusive`...
@@ -353,16 +353,16 @@ Example: _The 'Area' of a wall depends on its 'Height' and 'Length', following t
 
 <h3 id="identifying-bsdd-resources">Identifying bSDD resources</h3>
 
-🚧 TO BE DEVELOPED 🚧
-`URI`... bSDDまたは外部で生成可能。
+開発する🚧。
+`URI`... Can be generated by bSDD or external.
 
-`Code`...  See section [Code format](#code-format).
+`Code`... セクションを参照[フォーマットコード](#code-format).
 
 `UID`(GUID)...
 
 <h3 id="specifying-units">Specifying units</h3>
 
-🚧 TO BE DEVELOPED 🚧
+開発する🚧🚧。
 `Unit(s)`...
 
 `Dimension`...
@@ -374,10 +374,10 @@ It is possible to reference other resources from the same dictionary using doubl
 
 <h2 id="notifications">Notifications</h2>
 
-**2023-07 - Important notification:**
+**2023-07 - 重要なお知らせ**
 
-> As we're continuously improving bSDD, we've updated all identifiers: the dash between dictionary code and dictionary version has been replaced by a slash, Example:
->  https://identifier.buildingsmart.org/uri/bs-agri/fruitvegs-1.0.0/class/apple は https://identifier.buildingsmart.org/uri/bs-agri/fruitvegs/1.0.0/class/apple となります。
+> 辞書コードと辞書バージョンの間のダッシュは、スラッシュに置き換えられました：
+>  https://identifier.buildingsmart.org/uri/bs-agri/fruitvegs-1.0.0/class/apple will now be https://identifier.buildingsmart.org/uri/bs-agri/fruitvegs/1.0.0/class/apple
 > 
 > 少なくとも4ヶ月間は、辞書コードとバージョンの間にダッシュを使用したデータの供給と検索をサポートします。 しかし、新しい形式の識別子のみがbSDD APIによって返されることに注意してください。
 
