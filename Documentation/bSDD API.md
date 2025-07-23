@@ -35,14 +35,14 @@ The bSDD has a TEST environment for testing new developments of the bSDD. Althou
 
 ## GraphQL
 The data can also be accessed via GraphQL. You can try it out here:
-[GraphiQL TEST playground](https://test.bsdd.buildingsmart.org/graphiql).
+[グラフィクル・テスト・プレイグラウンド](https://test.bsdd.buildingsmart.org/graphiql).
 
 
 The URL to send GraphQL requests to is:
 - official release: https://api.bsdd.buildingsmart.org/graphqls (secured, note the "s" at the end)
 - test version: https://test.bsdd.buildingsmart.org/graphql (not secured)
 - test version: https://test.bsdd.buildingsmart.org/graphqls (secured)
-Note: those URLs are not hyperlinks and do not work in a browser. You need to send a POST request with the query data (the GET request does not work).
+注：これらのURLはハイパーリンクではないので、ブラウザでは機能しません。 クエリーデータを含むPOSTリクエストを送信する必要があります（GETリクエストは機能しません）。
 
 Here you can find an example code for accessing a secured bSDD API: [bSDD GraphQL examples](https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20and%20GraphQL.md). Contact us if you need assistance implementing this.
  
@@ -64,19 +64,19 @@ If you are going to build a client that uses secured APIs, you must request a Cl
 - if it is a website or SPA, specify the return URL (the login page will redirect to this URL after the user has logged in)
 
 If you don't use the secured APIs but want to call the other APIs from your website or SPA, we need your website's URL to allow CORS.
-If you're creating a desktop client that only calls the non-secured APIs, you're ready to go.
+セキュアでないAPIだけを呼び出すデスクトップ・クライアントを作成するのであれば、準備は整っている。
 
 ### Authentication
 For authentication, we use Azure Active Directory B2C.
-At this moment, you need to authenticate only a few methods. This might change.
+現時点では、認証が必要なのはいくつかの方法のみです。 これは変更される可能性があります。
 
 If you’re developing a Javascript, Java, Angular, React, Python, or .NET application, connecting with the buildingSMART Data Dictionary API is easiest if you use the Microsoft Authentication Library (MSAL).
-See [Active directory B2C code samples](https://docs.microsoft.com/en-us/azure/active-directory-b2c/code-samples) for ready-to-use examples on how to use the MSAL. You can find the bSDD API-specific settings in one of the next sections of this document. Make sure you have the settings in an easy-to-update settings file. 
-You can find the code for a small .NET console application that accesses the bSDD API (authenticated) in this repository: [.NET console example](https://github.com/buildingSMART/bSDD/tree/master/Source%20code%20examples/CSharp-Client-Console-Demo).
+参照[アクティブディレクトリB2Cコードサンプル](https://docs.microsoft.com/en-us/azure/active-directory-b2c/code-samples)bSDDのAPI固有の設定は、このドキュメントの次のセクションのいずれかに記載されています。 更新しやすい設定ファイルに設定されていることを確認してください。 
+このリポジトリには、bSDD API (認証済み) にアクセスする小さな .NET コンソールアプリケーションのコードがあります：[.NET コンソールの例](https://github.com/buildingSMART/bSDD/tree/master/Source%20code%20examples/CSharp-Client-Console-Demo).
 
 React:  https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-react
         https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/blob/main/1-Authentication/2-sign-in-b2c/README.md
-Angular: https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-angular-auth-code
+アングラー：https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-angular-auth-code
 Java: https://docs.microsoft.com/en-us/samples/azure-samples/ms-identity-java-webapp/ms-identity-java-webapp/ 
 Python: https://docs.microsoft.com/en-us/python/api/overview/azure/active-directory 
 
@@ -87,36 +87,36 @@ To access a secured API, a user must first register themself. When you’re usin
 <img src="https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/bs-signupsignin.png" alt="bSDD sign up / sign in" style="width: 350px" />
 
 The user will be registered in the buildingSMART Azure B2C Active Directory.
-Currently there’s no further authorization required to be able to use the API.
+現在、APIを使用するために必要な認証はない。
 
-### Settings
-These are the settings you can use for demonstration purposes for a Dekstop client app :
-* Tenant: "buildingsmartservices.onmicrosoft.com"
+### 設定
+これらは、Dekstopクライアントアプリのデモ用に使用できる設定です：
+* テナント： "buildingsmartservices.onmicrosoft.com"
 * AzureAdB2Chostname: "authentication.buildingsmart.org"
 * ClientId: "4aba821f-d4ff-498b-a462-c2837dbbba70"
 * RedirectUri: "com.onmicrosoft.bsddprototypeb2c.democonsoleapp://oauth/redirect"
 * PolicySignUpSignIn: "b2c_1a_signupsignin_c"
 * PolicyEditProfile: "b2c_1a_profileedit_c"
-* PolicyResetPassword: "b2c_1a_passwordreset_c"
+* PolicyResetPassword："b2c_1a_passwordreset_c"
 
 * ApiScope : "https://buildingsmartservices.onmicrosoft.com/api/read"
 * BsddApiUrl: "https://test.bsdd.buildingsmart.org"
 
-The full B2C authority URL is: https://authentication.buildingsmart.org/tfp/buildingsmartservices.onmicrosoft.com/b2c_1a_signupsignin_c (note the "tfp" part!).
+完全なB2CオーソリティのURLは、https://authentication.buildingsmart.org/tfp/buildingsmartservices.onmicrosoft.com/b2c_1a_signupsignin_c（「tfp」の部分に注目！）。
 
-For using the official release, you should use the settings as above except:
-* ClientId: request a Client ID using [CONTACT FORM](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h)
-* RedirectUri: let us know what kind of app you are making and with which technology
+公式リリースを使用する場合は、上記以外の設定を使用する必要があります：
+* ClientId: クライアントIDを要求する。[お問い合わせフォーム](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h)
+* RedirectUri：どのようなアプリを、どのような技術で作っているかを教えてください。
 * ApiScope : "https://buildingsmartservices.onmicrosoft.com/bsddapi/read"
 * BsddApiUrl: "https://api.bsdd.buildingsmart.org"
 
 
-If you are developing a Web App that’s going to use the bSDD API, let us know ([CONTACT FORM](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h)). The RedirectURI needs to be configured in Azure AD.
+bSDD API を使用するウェブアプリケーションを開発している場合は、ぜひお知らせください ([お問い合わせフォーム](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h)RedirectURIはAzure ADで設定する必要がある。
 
-### Additional information
-Language-independent description of the authorization flow: [Authorization code flow](https://docs.microsoft.com/en-us/azure/active-directory-b2c/authorization-code-flow)
+### 追加情報
+認可フローの言語に依存しない記述：[認証コードの流れ](https://docs.microsoft.com/en-us/azure/active-directory-b2c/authorization-code-flow)
 
-High-level descriptions of the various authentication flows: [AD B2C application types](https://docs.microsoft.com/en-us/azure/active-directory-b2c/application-types)
+さまざまな認証フローを高レベルで説明する：[AD B2Cアプリケーションの種類](https://docs.microsoft.com/en-us/azure/active-directory-b2c/application-types)
 
-Oauth2 and OpenId protocol descriptions: [AD B2C protocols overview](https://docs.microsoft.com/en-us/azure/active-directory-b2c/protocols-overview)
+Oauth2 と OpenId プロトコルの説明：[AD B2Cプロトコルの概要](https://docs.microsoft.com/en-us/azure/active-directory-b2c/protocols-overview)
 

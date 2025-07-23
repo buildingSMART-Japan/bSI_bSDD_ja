@@ -10,7 +10,7 @@ We've applied several changes in naming:
 4. "IncludeChilds" --> "IncludeChildren"
 
 To be consistent, names in our GraphQL API have also been changed.
-But we do support the old naming until at least April 2024.
+しかし、少なくとも2024年4月までは旧ネーミングをサポートする。
 
 ## Short intro on GraphQL
 
@@ -27,16 +27,16 @@ For some scenario's using GraphQL can be more efficient, but there are still lot
 The bSDD API also provides a GraphQL endpoint and the test environment also has a playground:
 
 Playground: https://test.bsdd.buildingsmart.org/graphiql/
-Test GraphQL endpoint: https://test.bsdd.buildingsmart.org/graphql/
-Test GraphQL secured endpoint: https://test.bsdd.buildingsmart.org/graphqls/
+テスト用GraphQLエンドポイント：https://test.bsdd.buildingsmart.org/graphql/
+テスト用GraphQLセキュアエンドポイント：https://test.bsdd.buildingsmart.org/graphqls/
 
-Production GraphQL secured endpoint: https://api.bsdd.buildingsmart.org/graphqls/
+本番用GraphQLセキュアエンドポイント：https://api.bsdd.buildingsmart.org/graphqls/
 
-See document https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20API.md for info how to access secured APIs. For accessing the secured GraphQL endpoint it is the same.
+セキュアなAPIにアクセスする方法については、ドキュメントhttps://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20API.md を参照してください。セキュアなGraphQLエンドポイントにアクセスする場合も同じです。
 
-## Example data queries
+## データクエリの例
 
--- get the list of available languages:
+-- 利用可能な言語のリストを取得する：
 ```
 {
   languages {
@@ -46,7 +46,7 @@ See document https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSD
 ```
 ----
 
--- get list of country codes:
+-- 国番号のリストを取得する：
 ```
 {
   countries {
@@ -56,7 +56,7 @@ See document https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSD
 ```
 ----
 
-You can combine those queries into one:
+これらのクエリを1つにまとめることができる：
 ```
 {
   languages {
@@ -70,7 +70,7 @@ You can combine those queries into one:
 ```
 ----
 
--- search for classes within a dictionary:
+-- 辞書内のクラスを検索します：
 ```
 {
   dictionary(uri : "https://identifier.buildingsmart.org/uri/sbe/swedishmaterials/1") {
@@ -93,9 +93,9 @@ You can combine those queries into one:
 ```
 ----
 
--- get all classes with their properties of a dictionary:
+-- 辞書のすべてのクラスとそのプロパティを取得します：
 
-ATTENTION: this query will take a long time to execute for dictionaries with many classes
+注意: このクエリは、多くのクラスを持つ辞書の実行に時間がかかります。
 ```
 {
   dictionary(uri : "https://identifier.buildingsmart.org/uri/bs-agri/fruitvegs/1.0") {
@@ -143,7 +143,7 @@ ATTENTION: this query will take a long time to execute for dictionaries with man
 ```
 ----
 
--- get details for a class, using variables:
+-- 変数を使用して、クラスの詳細を取得する：
 ```
 query ($dictionaryUri: String!, $uri: String!) {
   dictionary(uri: $dictionaryUri) {
@@ -190,16 +190,16 @@ query ($dictionaryUri: String!, $uri: String!) {
   }
 }
 ```
-The query variable section defines the variables:
+クエリ変数セクションでは、変数を定義する：
 ```
 {
   "dictionaryUri": "https://identifier.buildingsmart.org/uri/sbe/swedishmaterials/1",
   "uri": "https://identifier.buildingsmart.org/uri/sbe/swedishmaterials/1/class/ACDE"
 }
 ```
-## Example meta data queries
+## メタデータ・クエリーの例
 
-In GraphQL you can also execute queries on the GraphQL schema (also known as "Introspection"). You can use that to get, for example, the available fields or queries:
+GraphQLでは、GraphQLスキーマに対してクエリーを実行することもできます（「イントロスペクション」とも呼ばれます）。 これを使用して、たとえば利用可能なフィールドやクエリーを取得することができます：
 ```
 {
   __schema {
@@ -232,4 +232,4 @@ query availableQueries {
   }
 }
 ```
-More examples of Introspection can be found at: https://graphql.org/learn/introspection/
+イントロスペクションの他の例は、https://graphql.org/learn/introspection/ で見ることができる。

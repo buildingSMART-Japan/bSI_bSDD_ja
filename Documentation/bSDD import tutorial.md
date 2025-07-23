@@ -1,85 +1,85 @@
-In this tutorial, we explain how to publish and manage bSDD content using [the bSDD Manage portal](https://manage.bsdd.buildingsmart.org/).
+このチュートリアルでは、bSDD コンテンツの公開と管理の方法について説明します。[bSDD 管理ポータル](https://manage.bsdd.buildingsmart.org/).
 
-## Publishing the first dictionary
+## 最初の辞書の出版
 
 <h3 id="register">1. Register your organisation</h3>
 
-Each data dictionary in bSDD is published on behalf of a registered organisation. If this is the first time you are uploading, you need to register your organization in bSDD and connect the e-mail address you used to log in to that organization. To achieve this, please fill out the <a href="https://bsi-technicalservices.atlassian.net/servicedesk/customer/portal/3/group/4/create/25">Organization registration form</a>.
+bSDDの各データディクショナリは、登録された組織に代わって公開されます。 初めてアップロードする場合は、bSDDに組織を登録し、その組織にログインするために使用した電子メールアドレスを接続する必要があります。 そのためには、以下のフォームに記入してください。<a href="https://bsi-technicalservices.atlassian.net/servicedesk/customer/portal/3/group/4/create/25">団体登録フォーム</a>.
 
-As part of bSDD housekeeping, we manually review each request, which can take up to a few days. As soon as you've received a reply, you can proceed to the next step.
+bSDD ハウスキーピングの一環として、各リクエストを手作業でレビューしており、数日かかることがあります。 返信を受け取り次第、次のステップに進むことができます。
 
-> Do you want to only experiment with bSDD without registering your organisation? We can add you to the DEMO organisation. For this and other requests, contact us: [CONTACT FORM](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h).
+> 組織を登録せずに、bSDD の実験だけを行いたいですか？ デモ組織に追加することができます。 この件やその他のご要望については、こちらまでご連絡ください：[お問い合わせフォーム](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h).
 
 <h3 id="prepare">2. Prepare the content</h3>
 
-The primary form of data upload to bSDD is a properly structured JSON file. In [the data model documentation](https://technical.buildingsmart.org/services/bsdd/data-structure/), we specify what such a file should contain and how to structure it.
+bSDD へのデータアップロードの主な形式は、適切に構造化された JSON ファイルです。[データモデル・ドキュメント](https://technical.buildingsmart.org/services/bsdd/data-structure/)そのようなファイルが何を含み、どのように構成されるべきかを指定する。
 
-You can manually create such a file by coping <a href="https://github.com/buildingSMART/bSDD/blob/master/Model/Import%20Model/bsdd-import-model.json">the JSON template</a>, or use <a href="https://github.com/buildingSMART/bSDD/tree/master/Model/Import%20Model/spreadsheet-import">the Excel template instructions</a>. Alternatively, use one of <a href="https://technical.buildingsmart.org/resources/software-implementations/?filter_5=bSDD+submit%2Fmanage&amp;mode=any">the third-party tools to manage and upload data dictionaries in bSDD</a>.
+このようなファイルを手動で作成するには<a href="https://github.com/buildingSMART/bSDD/blob/master/Model/Import%20Model/bsdd-import-model.json">JSONテンプレート</a>または<a href="https://github.com/buildingSMART/bSDD/tree/master/Model/Import%20Model/spreadsheet-import">エクセルテンプレートの説明</a>のいずれかを使用する。<a href="https://technical.buildingsmart.org/resources/software-implementations/?filter_5=bSDD+submit%2Fmanage&amp;mode=any">bSDDのデータ辞書を管理しアップロードするためのサードパーティツール</a>.
 
-#### General guidelines
+#### 一般的なガイドライン
 
-- Fill in all the required attributes.
-- You cannot upload the content in parts. All classes and properties of one dictionary must be in one file.
-- Manage and publish translations in a separate file.
-- Make specific dictionaries; don't try to put too much data into one dictionary.
-- Link new classes to IFC entities for increased usability. This way, the software knows how to represent the class in IFC.
-- Add existing properties to your content instead of replicating them.
-- When assigning property to a class, give it a 'property set' name to know how to structure it in a model (avoid using the 'Pset_' prefix. This is restricted to IFC only)
-- Naming conventions and guidelines - the dictionary name needs to be unique. Avoid the use of a name that is too generic. Avoid names that conflict with other dictionaries. For example, do not create classes with an 'Ifc' prefix. Avoid replicating content from other dictionaries. Some licenses do not allow redistribution or modifications. It's a good practice to reuse content by linking it to your dictionary. For example, you can add properties from other dictionaries to your class. 
-- Dictionary code - the dictionary code needs to be unique in the bSDD; choose one that is recognizable with the dictionary name. The dictionary code is used to generate the URIs of all the resources, so it should be short and preferably without spaces. 
+- 必要な属性をすべて記入してください。
+- コンテンツを分割してアップロードすることはできません。 1つのディクショナリのすべてのクラスとプロパティは、1つのファイルでなければなりません。
+- 翻訳を別のファイルで管理し、公開する。
+- 1つの辞書に多くのデータを入れようとしないでください。
+- 新しいクラスをIFCエンティティにリンクすることで、ユーザビリティが向上します。 これにより、ソフトウェアがIFCでクラスをどのように表現するかを知ることができます。
+- 既存のプロパティを複製するのではなく、コンテンツに追加します。
+- クラスにプロパティを割り当てる場合、モデル内でどのように構造化するかを知るために、そのプロパティに「プロパティセット」名を付けます（「Pset_」という接頭辞の使用は避けてください。 これはIFCのみに限定されます）。
+- 命名規則とガイドライン - 辞書名は一意である必要があります。 一般的すぎる名前の使用は避けてください。 他の辞書と競合する名前は避けてください。 たとえば、接頭辞が 'Ifc' のクラスは作成しないでください。 他の辞書の内容を複製することは避けてください。 ライセンスによっては、再配布や変更を許可していないものもあります。 コンテンツを辞書にリンクして再利用することは、良い習慣です。 たとえば、他の辞書のプロパティをクラスに追加することができます。 
+- 辞書コード - 辞書コードは、bSDD内で一意である必要がある。 辞書名で認識できるものを選ぶ。 辞書コードは、すべてのリソースのURIを生成するために使用されるので、短く、できれば空白を含まないものであるべきである。 
 
-**Read more** about good practices for creating data dictionaries: [https://technical.buildingsmart.org/services/bsdd/guidelines/](https://technical.buildingsmart.org/services/bsdd/guidelines/)
+**もっと読む**データ辞書を作成するためのグッドプラクティスについて：[https://technical.buildingsmart.org/services/bsdd/guidelines/](https://technical.buildingsmart.org/services/bsdd/guidelines/)
 
 <h3 id="upload">3. Upload</h3>
 
-Go to [the bSDD Manage portal](https://manage.bsdd.buildingsmart.org/). If you do not have a bSDD buildingSMART account yet, choose "Sign up now"; otherwise, choose "Sign in".
+こちらへ[bSDD 管理ポータル](https://manage.bsdd.buildingsmart.org/)まだbSDD buildingSMARTアカウントをお持ちでない場合は、"Sign up now "を、そうでない場合は、"Sign in "を選択してください。
 
-> Alternatively, use one of <a href="https://technical.buildingsmart.org/resources/software-implementations/?filter_5=bSDD+submit%2Fmanage&amp;mode=any">the third-party tools to manage and upload data dictionaries in bSDD</a>, which integrates with <a href="https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1">the bSDD API</a>.
+> または<a href="https://technical.buildingsmart.org/resources/software-implementations/?filter_5=bSDD+submit%2Fmanage&amp;mode=any">bSDDのデータ辞書を管理しアップロードするためのサードパーティツール</a>と統合されている。<a href="https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1">bSDD API</a>.
 
-> Note: if the bSDD Manage portal shows an error at startup or you keep seeing the spinner icon, try pressing Ctrl-F5 to refresh the cookies. If that doesn't work, then try an "incognito" or "InPrivate" window of your browser and then navigate to the bSDD Manage portal. If that still doesn't work, then contact us: [CONTACT FORM](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h).
+> 注意: bSDD 管理ポータルが起動時にエラーを表示したり、スピナーアイコンが表示され続ける場合は、Ctrl-F5 を押してクッキーを更新してみてください。 それでもうまくいかない場合は、ブラウザの "シークレット" または "InPrivate" ウィンドウを開き、bSDD 管理ポータルに移動してみてください。 それでもうまくいかない場合は、お問い合わせください：[お問い合わせフォーム](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h).
 
-Go to the Dictionaries tab and select your organisation. If you belong to only one organisation, it will appear immediately on the list.
+辞書タブを開き、所属する組織を選択してください。 所属する組織が1つであれば、すぐにリストに表示されます。
 
-Using the "Select file" button load your dictionary JSON file.
+ファイルを選択」ボタンを使用して、辞書JSONファイルをロードする。
 
 <img src="https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/bSDD%20management%20portal.png" alt="bSDD manage" style="width: 800px" />
 
-You have the option to first validate if the file is free of errors or upload it for testing by selecting option 'Test upload'. The test upload means the content will be automatically deleted from bSDD after 2 months and it will not be possible to set the status to 'Active' to prevent mistakes.
+テストアップロードは、コンテンツが2ヶ月後にbSDDから自動的に削除されることを意味し、間違いを防ぐためにステータスを「アクティブ」に設定することはできません。
 
-> Note: If you only want to experiment with the bSDD, we provide an option for a `TEST` upload. This is a safe option for beginners, as the content uploaded as a `TEST` cannot be activated and will automatically be removed after 2 months.
+> 注：bSDDの実験だけを行いたい場合は、オプションとして`TEST`としてアップロードされるため、初心者には安全なオプションです。`TEST`有効化することはできず、2ヶ月後に自動的に削除されます。
 
-Press "Upload selected file"
+選択したファイルをアップロードする」を押す
 
-Before each import, we recommend first using the option 'Validate only?' This will inform you of any errors or warnings without trying to import the file.
+各インポートの前に、まず「検証のみ行うか」オプションを使用することをお勧めします。これにより、ファイルをインポートしようとせずに、エラーや警告を通知することができます。
 
-**Important** Uploading a new file with the same version number as already existing will replace the content (only if status is `Preview`, as all other content is immutable - [read more below](#the-lifecycle-of-a-dictionary)).
+**重要**既存のファイルと同じバージョン番号の新しいファイルをアップロードすると、コンテンツが置き換わります（ステータスが`Preview`他のすべてのコンテンツが不変であるように[続きを読む](#the-lifecycle-of-a-dictionary)).
 
-Once ready, and if the platform returns no errors, click "Upload selected file."
+準備が整い、プラットフォームがエラーを返さなければ、"選択したファイルをアップロード "をクリックする。
 
-Once the file has been imported, you will receive a more detailed import report by email. It might take up to 15 minutes. If the import routine spots any errors, you will see them listed in the email.
+ファイルのインポートが完了すると、より詳細なインポートレポートがEメールで届きます。 15分ほどかかる場合があります。 インポートルーチンがエラーを発見した場合は、Eメールに記載されます。
 
-**Important** Uploading will make the content publicly available. Do not publish anything that you don't want to share with the general public, or you don't have sufficient permission. 
+**重要**アップロードすることで、コンテンツが一般公開されます。 一般公開したくないものや、十分な許可を得ていないものは公開しないでください。 
 
-> Note: it is possible to restrict the visibility of a dictionary only to certain users. However, this is a paid feature of bSDD. Read more about [Private dictionaries](https://technical.buildingsmart.org/services/bsdd/private-dictionaries/).
+> 注：特定のユーザーだけに辞書の可視性を制限することが可能です。 ただし、これはbSDDの有料機能です。 詳細を読む[プライベート辞書](https://technical.buildingsmart.org/services/bsdd/private-dictionaries/).
 
-> Note: all of the steps explained above can also be automated using <a href="https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1">the bSDD API</a> integration.
+> 注：上記で説明したすべてのステップは、以下を使用して自動化することもできる。<a href="https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1">bSDD API</a>を統合した。
 
 <h2 id="dictionary-lifecycle">The lifecycle of a dictionary</h2>
 
-When you publish a new dictionary version in the bSDD, it always initially has the `Preview` status. At this stage, you can **reupload** the content to modify it, **activate** that version, or permanently **delete** it.
+新しい辞書のバージョンをbSDDで公開する場合、その辞書は常に初期状態で`Preview`この段階では**再アップロード**コンテンツを修正する、**アクティブ化**または永久に**削除**それだ。
 
 <img src="https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/Content_lifecycle_workflow.jpg" alt="Lifecycle workflow" />
 
-**⚠️ Once the content is activated, it will get an immutable URI, meaning the content will stay in bSDD permanently and can't be deleted.** It is still possible to change the status to `Inactive`, indicating it should no longer be used, but the page will still exist and show the content. Consider that before activating the version of a dictionary.
+**⚠️ ひとたびコンテンツが有効化されると、そのコンテンツは不変の URI を取得する。つまり、そのコンテンツは永久に bSDD に留まり、削除されることはない。**に変更することは可能である。`Inactive`辞書のバージョンを有効にする前に、そのことを考慮してください。
 
 <h2 id="dictionary-reupload">Publishing a new dictionary version</h2>
 
-Similarly to publishing for the first time, you can also upload a new dictionary version by loading a properly structured JSON file and clicking Upload.
+初めて公開する場合と同様に、適切に構造化されたJSONファイルをロードし、「アップロード」をクリックすることで、新しい辞書バージョンをアップロードすることもできます。
 
 <h2 id="dictionary-status">Changing the dictionary status</h2>
 
-As soon as you have at least one version of a dictionary uploaded, you will see a row in the table with the name, version number and other properties of each version. By clicking `action`, you can **download** the JSON file to your computer, **change the status** to `Active`, or **delete** the version (both options are only available if the status is `Preview`).
+少なくとも1つのバージョンの辞書がアップロードされるとすぐに、各バージョンの名前、バージョン番号、およびその他のプロパティを含む行がテーブルに表示されます。 をクリックすると、各バージョンのプロパティが表示されます。`action`あなたは、次のことができる。**ダウンロード**JSONファイルをコンピューターに保存します、**ステータス変更**への`Active`あるいは**削除**バージョン（どちらのオプションもステータスが`Preview`).
 
-If this option is enabled, the user can change the dictionary into a private one and specify a list of users with access to such content. Private dictionaries are a paid option. You can read more about it here: [Private dictionaries](https://technical.buildingsmart.org/services/bsdd/private-dictionaries/).
+このオプションを有効にすると、ユーザーは辞書をプライベートなものに変更し、そのようなコンテンツにアクセスできるユーザーのリストを指定することができます。 プライベート辞書は有料オプションです。 詳しくはこちらをご覧ください：[プライベート辞書](https://technical.buildingsmart.org/services/bsdd/private-dictionaries/).
 
-> Note: All of the above can also be done through the API interface, meaning it is possible to achieve the same result with third-party software implementing bSDD API. 
+> つまり、bSDD APIを実装したサードパーティのソフトウェアでも同じ結果を得ることが可能です。 

@@ -23,4 +23,4 @@ Always write a clear log message for your commits. One-line messages are fine fo
     > A paragraph describing what changed and its impact."
 
 Thanks,
-bSI Digital Infrastructure Team and all other people that work hard to bring Open BIM to work
+bSIデジタル・インフラストラクチャー・チームおよびオープンBIMの導入に尽力するその他のすべての人々

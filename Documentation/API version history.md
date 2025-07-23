@@ -1,24 +1,24 @@
-# bSDD API version history
+# bSDD API バージョン履歴
 
-This is the version history of the API at https://api.bsdd.buildingsmart.org.
+これは https://api.bsdd.buildingsmart.org におけるAPIのバージョン履歴である。
 
-New APIs and updates will always first be published to the bSDD test environment: https://test.bsdd.buildingsmart.org
+新しいAPIやアップデートは、常にまずbSDDのテスト環境に公開される: https://test.bsdd.buildingsmart.org
 
-For planned updates and other tech discussions, see [bSDD tech updates forum](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889).
+予定されているアップデートやその他の技術的な議論については、以下を参照のこと。[bSDD技術アップデートフォーラム](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889).
 
 #
-# Versioning strategy
-A new version will only be created if it 'breaks' the current version. For example, adding a new field to the output of an API does NOT (or should not) break your app. Removing an output field on the other hand is a breaking change and will result in a new version of that API.
+# バージョニング戦略
+新しいバージョンは、それが現在のバージョンを「壊す」場合にのみ作成される。 例えば、APIの出力に新しいフィールドを追加しても、アプリは壊れない（あるいは壊すべきではない）。 一方、出力フィールドを削除することは壊す変更であり、そのAPIの新しいバージョンが作成されることになる。
 
-If there is a new version of an API the previous version will be supported for at least 6 months after releasing the new version. 
+APIに新バージョンがある場合、新バージョンのリリース後少なくとも6ヶ月間は旧バージョンをサポートする。 
 
 ## 2025-06-27
 
-Changed API methods:
- * api/Dictionary/v1/Classes:
-    - Option "RelatedIfcEntities" added. You can specify multiple related IFC entities
+APIメソッドを変更しました：
+ * api/Dictionary/v1/Classes：
+    - オプション "RelatedIfcEntities "が追加されました。 関連する複数のIFCエンティティを指定できます。
 
-Removed the following obsolete API methods:
+以下の廃止されたAPIメソッドを削除した：
   * api/Classification/v3
   * api/ClassificationSearchOpen/v1
   * api/Domain/v2
@@ -29,158 +29,158 @@ Removed the following obsolete API methods:
 
 ## 2024-09-23
 
-Changed API methods:
- * api/Dictionary/v1/Classes:
-    - Option "RelatedIfcEntity" added
- * api/TextSearch/v2:
-    - Field "code" added to output of the Dictionaries list
+APIメソッドを変更しました：
+ * api/Dictionary/v1/Classes：
+    - オプション「RelatedIfcEntity」の追加
+ * api/TextSearch/v2：
+    - 辞書リストの出力に "code "フィールドを追加
 
 
 ## 2024-08-16
 
-New API methods:
- * api/Class/Relations/v1:  Get class relations or reverse relations (paginated)
- * api/Class/Properties/v1:  Get class properties (paginated)
- * api/UploadImportFile/v2:  Supports upload of large files. Validation will be done asynchronously and results will be sent by email
- * api/Dictionary/Popular/v1:  Get short list of most popular dictionaries
- * api/Property/Relations/v1:  Get property relations or reverse relations (paginated)
- * api/Property/Classes/v1:  Get list of classes that uses the property (paginated)
- * api/TextSearch/v2:  new filter options and some changes in output
+新しいAPIメソッド：
+ * api/Class/Relations/v1: クラス関係または逆関係の取得 (ページ分割)
+ * api/Class/Properties/v1: クラスのプロパティを取得 (ページ分割)
+ * api/UploadImportFile/v2: 大容量ファイルのアップロードに対応。 検証は非同期で行われ、結果はメールで送信される。
+ * api/Dictionary/Popular/v1: 最も人気のある辞書の短いリストを取得する
+ * api/Property/Relations/v1: プロパティ関係または逆関係を取得 (ページ分割)
+ * api/Property/Classes/v1: プロパティを使用するクラスのリストを取得 (ページ分割)
+ * api/TextSearch/v2: 新しいフィルターオプションと出力の一部変更
 
-Changed API methods:
- * api/Dictionary/v1/Classes:
-    - Option "SearchText" added
- * api/Dictionary/v1/Properties:
-    - Option "SearchText" added
- * api/DictionaryDownload/sketchup/v1:
-    - now downloads ".skc" file instead of ".xsd"
+APIメソッドを変更しました：
+ * api/Dictionary/v1/Classes：
+    - オプション「SearchText」追加
+ * api/Dictionary/v1/Properties：
+    - オプション「SearchText」追加
+ * api/DictionaryDownload/sketchup/v1：
+    - .xsd "の代わりに".skc "ファイルをダウンロードするようになりました。
 
 
 ## 2024-03-01
 
-- On uploading a dictionary user can now indicate that it is for testing purposes.
+- 辞書のアップロード時に、テスト目的であることを示すことができるようになった。
 
-Changend APIs:
- * api/Class/v1: 
-    - Option IncludeReverseRelations added
- * api/Dictionary/v1: 
-    - Option IncludeTestDictionaries added
- * api/UploadImportFile/v1:
-    - Option IsTest added
- * api/TextSearch/v1:
-    - Text search with multiple word(parts) now also finds results if first word partly ('startswith') matches. Previously it would find only exact matches on first word(s)
+チャンジェンドAPI：
+ * api/Class/v1： 
+    - オプション IncludeReverseRelations の追加
+ * api/Dictionary/v1： 
+    - オプション IncludeTestDictionaries の追加
+ * api/UploadImportFile/v1：
+    - IsTestオプション追加
+ * api/TextSearch/v1：
+    - 複数の単語(パーツ)を含むテキスト検索で、最初の単語の一部('startswith')が一致した場合にも検索結果が表示されるようになりました。 以前は最初の単語の完全一致のみが検索されていました。
 
 
 ## 2023-11-08
 
-Name changes:
- * Classification ==> Class
- * Domain ==> Dictionary
+名前が変わる：
+ * 分類 ==> クラス
+ * ドメイン ==> 辞書
  * NamespaceUri ==> Uri
  * IncludeChilds ==> IncludeChildren
 
-This involves all APIs either with one of these names in the API name itself, in the input contract or in the output contract. For all these APIs new versions, some with new names, have been created. Existing APIs will remain for at least 6 months after go live but we advise you to use the new APIs.
+これは、API名自体、入力コントラクト、出力コントラクトのいずれかにこれらの名前のいずれかを持つすべてのAPIに関係します。 これらのすべてのAPIについて、新しいバージョン（一部は新しい名前）が作成されました。 既存のAPIは、本番稼動後少なくとも6ヶ月間は残りますが、新しいAPIを使用することをお勧めします。
 
-Other changes:
- * "Materials" are not treated separately anymore, they are just Classes with type being Material.
- * Import field ClassificationProperty.ExternalPropertyUri has been removed completely. The field PropertyNamespaceUri (which is now called PropertyUri) already replaced it.
- * Search APIs now support pagination
+その他の変更点
+ * 「マテリアル」はもう別個に扱われることはなく、マテリアルを型とするクラスとして扱われる。
+ * インポート・フィールドClassificationProperty.ExternalPropertyUriは完全に削除されました。 既にPropertyNamespaceUriフィールド（現在はPropertyUriと呼ばれています）がそれに取って代わりました。
+ * 検索APIがページネーションをサポート
 
-Changed APIs:
- * api/Class/v1: new, replaces api/Classification/v4
-    - Option includeClassProperties added. If true, classProperties will be fetched. Default is false.
-    - Option includeClassRelations added. If true, classRelations will be fetched. Default is false.
-    - New output field: Class.Description
- * api/Class/Search/v1: new, replaces api/ClassificationSearchOpen/v1.
-    - Return contract now contains just one dictionary instead of a list of dictionaries which always contains one item.
-    - Supports pagination
- * api/Dictionary/v1: new, replaces api/Domain/v3
-    - Supports pagination
- * api/Dictionary/v1/Classes: new, replaces api/Domain/v3/Classifications.
-    - Materials are not separately listed anymore
-    - Supports pagination
-    - Optional filter on ClassType
+APIの変更：
+ * api/Class/v1: api/Classification/v4を置き換える新しいもの。
+    - includeClassPropertiesオプションが追加されました。 trueの場合、classPropertiesがフェッチされます。 デフォルトはfalseです。
+    - オプション includeClassRelations が追加されました。 true の場合、classRelations が取得されます。 デフォルトは false です。
+    - 新しい出力フィールド：Class.Description
+ * api/Class/Search/v1: api/ClassificationSearchOpen/v1を置き換える新しいもの。
+    - リターン契約は、常に1つの項目を含む辞書のリストの代わりに、1つの辞書だけを含むようになりました。
+    - ページネーションに対応
+ * api/Dictionary/v1: 新しい。api/Domain/v3 を置き換える。
+    - ページネーションに対応
+ * api/Dictionary/v1/Classes: 新しい、api/Domain/v3/Classifications を置き換える。
+    - 材料はもう個別にリストアップされていない
+    - ページネーションに対応
+    - ClassTypeのオプションフィルター
  * api/Dictionary/v1/Properties: new
-    - Supports pagination
- * api/Dictionary/v1 PUT, DELETE: new, replaces api/Domain/v1
- * api/DictionaryDownload/sketchup/v1: new, replaces api/RequestExportFile/preview
- * api/Material has been replaced by api/Class
- * api/Property/v4: new, replaces api/Property/v3
- * api/SearchInDictionary/v1: new, replaces api/SearchList(Open)/v2
-    - Supports pagination
- * api/TextSearch/v1: new, replaces api/TextSearchListOpen/v6
-    - Supports pagination
-  * api/UploadImportFile/v1: updated, it accepts both old and new import json. Support for old import json will become deprecated.
+    - ページネーションに対応
+ * api/Dictionary/v1 PUT, DELETE: new, replace api/Domain/v1
+ * api/DictionaryDownload/sketchup/v1: api/RequestExportFile/preview を置き換える新しいもの。
+ * api/Materialはapi/Classに置き換えられました。
+ * api/Property/v4: api/Property/v3を置き換える新しいもの。
+ * api/SearchInDictionary/v1: api/SearchList(Open)/v2を置き換える新しいもの。
+    - ページネーションに対応
+ * api/TextSearch/v1: api/TextSearchListOpen/v6 を置き換える新しいもの。
+    - ページネーションに対応
+  * api/UploadImportFile/v1：更新され、新旧両方のインポートjsonを受け付けるようになりました。 古いインポートjsonのサポートは非推奨となります。
 
-All replaced APIs still work for now but are marked as obsolete, as can be seen on the swagger page https://test.bsdd.buildingsmart.org/swagger.
+置き換えられたすべてのAPIは、今のところまだ機能するが、swaggerのページhttps://test.bsdd.buildingsmart.org/swagger。
 
 ## 2023-08-10
 
- * Added: api/Domain/v3/{organizationCode}/{code}/{version} - put: to update the status of a domain version
- * Added: api/Domain/v3/{organizationCode}/{code}/{version} - delete: to delete a domain version
- * Added: api/Domain/v3/{organizationCode}/{code} - delete: to delete a domain
- * Change: api/Classification/v4: now includes "namespaceUri" in result contracts of the classification property and classification relation
- * Change: api/Property/v3: now includes "namespaceUri" in result contract of the property relation
+ * 追加：api/Domain/v3/{organizationCode}/{code}/{version} - put: ドメインバージョンのステータスを更新する。
+ * 追加: api/Domain/v3/{organizationCode}/{code}/{version} - delete: ドメインバージョンの削除
+ * 追加: api/Domain/v3/{organizationCode}/{code} - delete: ドメインを削除する。
+ * 変更：api/Classification/v4：分類プロパティと分類リレーションの結果コントラクトに "namespaceUri "が含まれるようになった。
+ * 変更: api/Property/v3: プロパティ関係の結果コントラクトに "namespaceUri "が含まれるようになった。
 
 ## 2023-05-10
 
- * Change: api/Domain/v3: now includes "OrganizationCodeOwner" in result contract
- * Fix: the swagger documentation for api/Classification/v4 has been corrected
+ * 変更: api/Domain/v3: 結果契約に「OrganizationCodeOwner」が含まれるようになった。
+ * 修正: api/Classification/v4のswaggerドキュメントが修正されました。
 
 ## 2022-12-29
 
- * New version: api/Domain/v3: is same as v2
- * New version: api/Domain/v3/Classifications: output contract has changed - materials are now returned in a separate list
- * New version: api/TestSearchListOpen/v6: output contract has changed - materials are now returned in a separate list; input contract now also accepts "Materials" in TypeFilter; TypeFilter values are now case insensitive
- * Change: api/TestSearchListOpen/v5: TypeFilter values are now case insensitive
+ * 新バージョン：api/Domain/v3：v2と同じ。
+ * 新バージョン：api/Domain/v3/Classifications：出力契約が変更されました - 素材は別のリストで返されるようになりました。
+ * 新しいバージョン: api/TestSearchListOpen/v6: 出力の契約が変更された - 材料は別のリストで返されるようになった。
+ * 変更: api/TestSearchListOpen/v5: TypeFilter の値が大文字と小文字を区別しないようになった。
 
- Previous versions of new APIs will remain available until at least September 2023.
+ 新しいAPIの旧バージョンは、少なくとも2023年9月まで利用可能である。
 
 ## 2022-10-23
 
- * New version: api/Classification/v4: attribute PossibleValues has been renamed into AllowedValues (is now consistent with import attribute name)
- * New version: api/Material/v2: attribute PossibleValues has been renamed into AllowedValues (is now consistent with import attribute name)
- * New version: api/Property/v3: attribute PossibleValues has been renamed into AllowedValues (is now consistent with import attribute name); supports returning RDF format
+ * 新しいバージョン: api/Classification/v4: 属性PossibleValuesの名前がAllowedValuesに変更されました。
+ * 新しいバージョン: api/Material/v2: 属性PossibleValuesの名前がAllowedValuesに変更されました。
+ * 新しいバージョン: api/Property/v3: 属性 PossibleValues の名前が AllowedValues に変更された (インポート属性名と一致するようになった)。
  
- Previous versions of new APIs will remain available until at least July 2023.
+ 新しいAPIの旧バージョンは、少なくとも2023年7月までは利用可能である。
 
 ## 2022-09-08
 
-ATTENTION: for accessing secured API's you must use **https://authentication.buildingsmart.org** instead of https://buildingsmartservices.b2clogin.com !
+注意：セキュリティで保護されたAPIにアクセスするには**https://authentication.buildingsmart.org**の代わりに https://buildingsmartservices.b2clogin.com ！
 
 ## 2022-09-05
 
- * New: api/ClassificationSearchOpen/v1, optimized API for searching for classifications
- * Update: api/Domain/v2 and api/Domain/v2/Classifications returns LastUpdatedUtc with date and time the data in bSDD was last updated
- * Update: "http://idenfitier..." has been replaced by "https://identifier...". Searching for "http://identifier..." is for the time being auto-matched with "https://idenfitier..."
+ * 新規: api/ClassificationSearchOpen/v1、分類検索のための最適化されたAPI
+ * 更新：api/Domain/v2およびapi/Domain/v2/Classificationsは、bSDDのデータが最後に更新された日時をLastUpdatedUtcとして返す。
+ * 更新："http://idenfitier... "は "https://identifier... "に置き換えられました。"http://identifier... "を検索すると、当分の間、"https://idenfitier... "とオートマッチします。
 
 ## 2022-08-23
 
- * Update: api/Domain/v2/Classifications now supports Accept-Language header
- * Update: api/Domain/v2 and api/Domain/v2/Classifications output fields ReleaseDate, MoreInfoUrl and Status added
- * Update: api/Classification/v3 output field Fraction added (in type ClassificationRelation)
+ * 更新: api/Domain/v2/ClassificationsがAccept-Languageヘッダーに対応しました。
+ * 更新: api/Domain/v2およびapi/Domain/v2/Classificationsの出力フィールドにReleaseDate、MoreInfoUrl、Statusが追加されました。
+ * 更新：api/Classification/v3の出力フィールドFractionが追加されました（ClassificationRelation型内）。
 
 ## 2022-07-01 
- * Update: api/Classification/v3 now supports the Accept-Language header to request data in a different language
- * Update: api/Property/v2 now supports the Accept-Language header to request data in a different language
- * Update: api/Property/v2 and api/Classification/v3 now also returns the QUDT code(s) for units, if available
- * Update: api/RequestExportfile/preview, SketchUp output files are now cached
+ * 更新：api/Classification/v3は、異なる言語のデータを要求するためのAccept-Languageヘッダーに対応しました。
+ * 更新: api/Property/v2が、異なる言語のデータを要求するためのAccept-Languageヘッダーに対応しました。
+ * 更新：api/Property/v2およびapi/Classification/v3は、ユニットのQUDTコードも返すようになりました。
+ * 更新: api/RequestExportfile/preview, SketchUpの出力ファイルがキャッシュされるようになりました。
 
 ## 2022-04-30
-* New: api/Material/v1 for getting Material details
-* New: api/Material/SearchOpen/preview for searching Materials
-* Update: api/Classification/v3 can now return data in RDF-XML, Turtle or Html format:
+* 新規: マテリアルの詳細を取得するためのapi/Material/v1
+* 新規: マテリアルを検索するための api/Material/SearchOpen/preview
+* 更新： api/Classification/v3はRDF-XML、Turtle、Html形式のデータを返すことができるようになりました：
 
-| Accept header | Output format |
+| アクセプト・ヘッダ | 出力フォーマット |
 |--|--|
-| [default] | json |
+| [デフォルト］ | json |
 | application/rdf+xml | RDF XML |
-| application/x-turtle | turtle |
-| text/html | html |
-| text/turtle | turtle |
+| アプリケーション/エックスタートル | 亀 |
+| テキスト/html | html |
+| テキスト/タートル | 亀 |
 
 ## 2021-11-01
-* New: api/Domain/v2/Classifications for getting the list of classifications for a domain
+* 新規: api/Domain/v2/Classificationsでドメインの分類リストを取得
 
 ## 2021-09-01
-* Official first release
+* オフィシャル・ファースト・リリース

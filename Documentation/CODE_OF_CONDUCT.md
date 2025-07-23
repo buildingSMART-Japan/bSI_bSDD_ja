@@ -1,48 +1,48 @@
-# Contributor Covenant Code of Conduct
+# コントリビューター規約行動規範
 
-## Our Pledge
+## 私たちの誓い
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+オープンで歓迎される環境を育成するために、私たち貢献者と管理者は、年齢、体格、障害、民族性、性自認と表現、経験のレベル、国籍、個人的な外見、人種、宗教、性的自認と指向にかかわらず、私たちのプロジェクトとコミュニティに参加することが、誰にとってもハラスメントのない経験になるようにすることを誓います。
 
-## Our Standards
+## 私たちの基準
 
-Examples of behavior that contributes to creating a positive environment include:
+ポジティブな環境づくりに貢献する行動の例には、以下のようなものがある：
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+* 歓迎と包括的な言葉を使う
+* 異なる視点や経験を尊重すること
+* 建設的な批判を潔く受け入れる
+* 地域社会にとって何が最善かを考える
+* 他のコミュニティ・メンバーに共感を示す
 
-Examples of unacceptable behavior by participants include:
+参加者による容認できない行為の例としては、以下が挙げられる：
 
-* The use of sexualized language or imagery and unwelcome sexual attention or advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a professional setting
+* 性的な言葉やイメージの使用、歓迎されない性的な注目や誘いかけ
+* 荒らし行為、侮辱的・中傷的なコメント、個人的・政治的な攻撃
+* 公的または私的な嫌がらせ
+* 明示的な許可なく、他人の個人情報（物理的または電子的な住所など）を公開すること。
+* その他、職務上不適切とみなされる行為
 
-## Our Responsibilities
+## 私たちの責任
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+プロジェクトのメンテナーは、許容される行動の基準を明確にする責任があり、許容されない行動の事例に対して適切かつ公正な是正措置をとることが期待されています。
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+プロジェクトメンテナには、この行動規範に沿わないコメント、コミット、コード、ウィキ編集、課題、その他の貢献を削除、編集、拒否する権利と責任があります。また、不適切、脅迫的、攻撃的、有害とみなされるその他の行為について、貢献者を一時的または恒久的に追放する権利と責任があります。
 
-Project maintainers act according to the processes of buildingSMART International and the Room in which this project is maintained and owned.
+プロジェクトメンテナーは、buildingSMARTインターナショナルのプロセスおよびこのプロジェクトが維持・所有される部屋に従って行動する。
 
-## Scope
+## スコープ
 
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+この行動規範は、個人がプロジェクトまたはそのコミュニティを代表する場合、プロジェクトスペース内および公共のスペースの両方に適用されます。 プロジェクトまたはコミュニティを代表する例としては、プロジェクトの公式メールアドレスを使用すること、ソーシャルメディアの公式アカウントで投稿すること、オンラインまたはオフラインのイベントで任命された代表として行動することが挙げられます。 プロジェクトの代表は、プロジェクトメンテナによってさらに定義され、明確にされる場合があります。
 
-## Enforcement
+## 施行
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at websupport@buildingsmart.org. The project team will review and investigate all complaints, and will respond in a way that it deems appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+虐待、ハラスメント、その他容認できない行為があった場合は、プロジェクトチーム（websupport@buildingsmart.org）までご連絡ください。プロジェクトチームはすべての苦情を検討、調査し、状況に応じて適切と思われる方法で対応します。プロジェクトチームは、事件の報告者に関して守秘義務を負います。 具体的な実施方針の詳細については、別途掲載する場合があります。
 
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+行動規範を誠実に守らない、あるいは実施しないプロジェクトメンテナは、プロジェクトのリーダーシップの他のメンバーによって決定される一時的または恒久的な影響に直面する可能性があります。
 
-## Attribution
+## 帰属
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at [http://contributor-covenant.org/version/1/4][version]
+本行動規範は、以下から抜粋したものである。[コントリビューター規約][homepage]バージョン1.4[http://contributor-covenant.org/version/1/4][version]
 
 [homepage]: http://contributor-covenant.org
 [version]: http://contributor-covenant.org/version/1/4/

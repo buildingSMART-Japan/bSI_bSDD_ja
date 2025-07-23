@@ -39,13 +39,13 @@ Mapping rules are defined for the following concepts:
 
 **In IFC**, dictionary information are captured using [_IfcClassification_](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcClassification.htm). Below are the mapping rules for different IFC versions.
 
-|                    | bSDD                      | IFC4x3_ADD2                      | IFC4                      | IFC2x3                    | IDS1.0   |
+|  | bSDD | IFC4x3_ADD2 | IFC4 | IFC2x3 | IDS1.0 |
 |--------------------|------------------------------|---------------------------------|-------------------------------|-------------------------------|---------|
-| **Dictionary name**    | DictionaryName                   | IfcClassification.Name          | IfcClassification.Name        | IfcClassification.Name        |ids:classification.system / (uri)*    |
-| **Dictionary source**  | *uri of the dictionary* | IfcClassification.Specification | IfcClassification.Location    | ❌ (IfcClassification.Source can be used as a workaround)   |uri      |
-| **Dictionary version** | DictionaryVersion                | IfcClassification.Edition       | IfcClassification.Edition     | IfcClassification.Edition     |(uri)*      |
-| **Dictionary owner**   | OrganizationCode             | IfcClassification.Source        | IfcClassification.Source      | IfcClassification.Source      |(uri)*      |
-| **Dictionary date**    | ReleaseDate                  | IfcClassification.EditionDate   | IfcClassification.EditionDate | IfcClassification.EditionDate |(uri)*      |
+| **辞書名** | 辞書名 | IfcClassification.名前 | IfcClassification.名前 | IfcClassification.名前 | ids:classification.system / (uri) |
+| **辞書ソース** | *辞書のウリ* | IfcClassification.仕様 | IfcClassification.ロケーション | ❌ (IfcClassification.Sourceは回避策として使用可能) | ウリ |
+| **辞書バージョン** | 辞書バージョン | IfcClassification.エディション | IfcClassification.エディション | IfcClassification.エディション | (ウリ) |
+| **辞書の所有者** | 組織コード | IfcClassification.ソース | IfcClassification.ソース | IfcClassification.ソース | (ウリ) |
+| **辞書日付** | リリース日 | IfcClassification.EditionDate。 | IfcClassification.EditionDate。 | IfcClassification.EditionDate。 | (ウリ) |
 
 _\* IDS references bSDD using URI, instead of copying its content. Thanks to that, the information is still accessible by following the URI link. Note that the URI include many of those information: uri="```http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/...```."_
 
@@ -102,11 +102,11 @@ _\* IDS references bSDD using URI, instead of copying its content. Thanks to tha
 
 **In IFC**, class information is captured using [_IfcClassificationReference_](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcClassificationReference.htm). Below are the mapping rules, for different IFC versions.
 
-|                    | bSDD                      | IFC4x3_ADD2 & IFC4                      | IFC2x3                    | IDS1.0   |
+|  | bSDD | IFC4x3_ADD2 & IFC4 | IFC2x3 | IDS1.0 |
 |---------------------------|--------------------------------------|-------------------------------------------|------------------------------------------|-------|
-| **Class name**   | name *of the class*           | IfcClassificationReference.Name           | IfcClassificationReference.Name          |(uri)*      |
-| **Class code**   | code *of the class*           | IfcClassificationReference.Identification | IfcClassificationReference.ItemReference |(uri)*      |
-| **Class identifier** | uri *of the class* | IfcClassificationReference.Location      | IfcClassificationReference.Location      |uri      |
+| **クラス名** | クラス名 | IfcClassificationReference.名前 | IfcClassificationReference.名前 | (ウリ) |
+| **クラスコード** | クラスのコード | IfcClassificationReference.Identification。 | IfcClassificationReference.ItemReference。 | (ウリ) |
+| **クラス識別子** | クラスの | IfcClassificationReference.Location。 | IfcClassificationReference.Location。 | ウリ |
 
 _\* IDS references bSDD using URI, instead of copying its content. Thanks to that, the information is still accessible by following the URI link. Note that the URI include many of those information: uri="```http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/class/<ClassCode>```."_
 
@@ -238,11 +238,11 @@ _\* IDS references bSDD using URI, instead of copying its content. Thanks to tha
 
 Below are the mapping rules for different IFC versions.
 
-|                                                   | bSDD                                                               | IFC4x3_ADD2 & IFC4         | IFC2x3    |IDS1.0   |
+|  | bSDD | IFC4x3_ADD2 & IFC4 | IFC2x3 | IDS1.0 |
 |---------------------------------------------------|--------------------------------------------------------------------|-------------------------|-----------|-----|
-| **Material name**  | Class(Material).**Name**       | IfcMaterial.**Name** & IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**Name**        | IfcMaterial.**Name**        | (uri)*      |
-| **Material code**  | Class(Material).**Code**        | IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**Identification**        | IfcMaterialClassificationRelationship.IfcClassificationReference.**ItemReference**       | (uri)*      |
-| **Material identifier**  | Class(Material).**Uri**  | IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**Location** | IfcMaterialClassificationRelationship.IfcClassificationReference.**Location**  |uri      |
+| **材料名** | クラス(素材).**名前 | IfcMaterial.**Name** & IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**Name | IfcMaterial.**Name | (ウリ) |
+| **材料コード** | クラス（素材）.**コード | IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**Identification。 | IfcMaterialClassificationRelationship.IfcClassificationReference.**ItemReference。 | (ウリ) |
+| **材料識別子** | クラス(素材).**Uri | IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**ロケーション | IfcMaterialClassificationRelationship.IfcClassificationReference.**ロケーション | ウリ |
 
 _\* IDS references bSDD using URI, instead of copying its content. Thanks to that, the information is still accessible by following the URI link. Note that the URI include many of those information: uri="```http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/class/<MaterialCode>```."_
 
@@ -305,28 +305,28 @@ _For the bSDD snippet, look at the [bSDD classes (objects)](#2.-bSDD-classes-(ob
 
 Below are the mapping rules for different IFC versions.
 
-|                                                | bSDD                                      | IFC4x3_ADD2                                      | IFC4 & IFC2x3                                      |IDS1.0                                     |
+|  | bSDD | IFC4x3_ADD2 | IFC4 & IFC2x3 | IDS1.0 |
 |------------------------------------------------|-------------------------------------------|----------------------------------------------|----------------------------------------------|-----------------------|
-| **Property name**                              | PropertyCode *(of ClassProperty)*                      | IfcPropertySingleValue.Name                             | IfcPropertySingleValue.Name                             |(uri)*      |
-| **Property identifier**                            | uri *(of ClassProperty)*          | IfcPropertySingleValue.Specification                    | IfcPropertySingleValue.Description                      |uri      |
-| **Property predefined value** (single value)              | PredefinedValue *(of ClassProperty)*   | IfcPropertySingleValue.NominalValue          | IfcPropertySingleValue.NominalValue          |(uri)*      |
-| **Property unit** (single value or from enumeration)              | PredefinedValue *(of Property or ClassProperty)*   | IfcPropertySingleValue.Unit          | IfcPropertySingleValue.Unit          |(uri)*      |
-| **Property allowed values** (from enumeration) | AllowedValues *(of Property or ClassProperty)*    | IfcPropertyEnumeratedValue .EnumerationValues | IfcPropertyEnumeratedValue .EnumerationValues |(uri)*      |
-| **PropertySet name**                           | PropertySet *(of ClassProperty)* | IfcPropertySet.Name                          | IfcPropertySet.Name                          |(uri)*      |
+| **物件名** | プロパティコード *(クラスプロパティの) | IfcPropertySingleValue.Name | IfcPropertySingleValue.Name | (ウリ) |
+| **プロパティの識別子** | uri *(クラスプロパティの) | IfcPropertySingleValue.仕様 | IfcPropertySingleValue.Description。 | ウリ |
+| プロパティ事前定義値**（単一値） | 定義済み値 *(of ClassProperty) | IfcPropertySingleValue.NominalValue。 | IfcPropertySingleValue.NominalValue。 | (ウリ) |
+| プロパティ単位**（単一値または列挙から） | PredefinedValue *（Property または ClassProperty の）定義済み値。 | IfcPropertySingleValue.Unit。 | IfcPropertySingleValue.Unit。 | (ウリ) |
+| プロパティの許容値**（列挙より） | AllowedValues *（Property または ClassProperty の）値。 | IfcPropertyEnumeratedValue .EnumerationValues | IfcPropertyEnumeratedValue .EnumerationValues | (ウリ) |
+| **プロパティセット名** | プロパティセット *(of ClassProperty) | IfcPropertySet.Name | IfcPropertySet.Name | (ウリ) |
 
 _\* IDS references bSDD using URI, instead of copying its content. Thanks to that, the information is still accessible by following the URI link. Note that the URI include many of those information: uri="```http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/prop/<PropertyCode>```."_
 
 ⚠️ **IMPORTANT**
-In bSDD, properties exist independently of the class (object) they might be assigned to. Therefore: 
+bSDDでは、プロパティはクラス（オブジェクト）とは無関係に存在する： 
 
-- The `AllowedValues` of a `Property` are defined at the level of each property.
-- The `PredefinedValues` of a `Property` is defined at the level of each class (object).
-- The relationship between a property and its property set is defined at the level of each class (object).
-- `AllowedValue`s can be defined also at the level of each class (object). When this happens, the `AllowedValue` defined at the level of the `Property` is overwritten. 
+- について`AllowedValues`の`Property`は各プロパティのレベルで定義される。
+- について`PredefinedValues`の`Property`は各クラス（オブジェクト）のレベルで定義される。
+- プロパティとそのプロパティ・セットの関係は、各クラス（オブジェクト）のレベルで定義される。
+- `AllowedValue`を各クラス（オブジェクト）のレベルでも定義することができます。 この場合`AllowedValue`のレベルで定義されている。`Property`が上書きされる。 
 
-The human-readable and translatable _Name_ that exists in bSDD has no reflection in IFC. That is why it is important to remember that the _Code_ will be used in IFC datasets, and _Name_ will only be displayed by software capable of reading the names from bSDD. The reason for this is that we need the datasets to follow consistent terms, regardless of the language displayed to the user. 
+人間が読め、翻訳可能な_名称_bSDDに存在するものは、IFCには反映されないのである。_コード_はIFCデータセットで使用される。_名称_この理由は、ユーザーに表示される言語に関係なく、データセットが一貫した用語に従う必要があるからである。 
  
-**Snippets**
+**スニペット**
 <details><summary>✂️ bSDD property</summary>
     
 ```
