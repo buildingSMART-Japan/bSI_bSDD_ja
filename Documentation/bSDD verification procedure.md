@@ -1,345 +1,346 @@
-# bSDDの検証手順
+# The bSDD Verification Procedures
 
-bSDD サービスは、buildingSMART International によって管理されているが、bSDD のコンテンツは、データディクショナリ所有者である独立した組織によって管理されている。 品質を保証するために、bSDD のコンテンツは、以下の検証手順を経ている： 
+While the bSDD service is governed by buildingSMART International, the content of the bSDD is governed by independent organisations -- data dictionary owners. To ensure quality, the bSDD content undergoes the following verification procedures: 
 
-| **タイプ** | **いつ** | **誰が** | **コスト** | **何** |
+| **Type**                  | **When**         | **Who**               | **Cost** | **What**                                                                                                                                                                                                  |
 |---------------------------|------------------|-----------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **組織の見直し** | 登録時 | bSIチーム | 無料 | それぞれの新しい組織は、その目的がbSDDの使命に合っているかどうかを確認するために審査される。 |
-| **インポート検証** | アップロード | 自動化 | 無料 | bSDDアップロード毎に自動ステップを起動し、bSDDデータ構造への準拠を検証。 |
-| **ユーザー／反響レビュー** | ユーザーからのリクエスト | コミュニティ＆bSIチーム | 無料 | bSDD のユーザは、コンテンツ所有者と bSDD チームに問題を報告したり、改善を提案したりするために、「変更要求」を提出することができる（ISO 12006-3:2022 に準拠）。 bSDD チームは、ライセンス違反に関する報告を調査する。 |
-| **詳細な検証** | オーナーの要望による | bSIチームまたは代表者 | 有料 | コンテンツの品質を保証するためのオンデマンド有料サービス。 bSDDプラットフォーム内のデータの信頼性を高めるように設計されている。 手順は[チェックリスト](#detailed-verification-checklist)に記述されている。 |
+| **Organisation review**   | On registration  | bSI team              | Free     | Each new organisation is reviewed to make sure its objectives fit the bSDD's mission.                                                                                                                   |
+| **Import validation**     | On upload        | automated             | Free     | Automatic step triggered on every bSDD upload, verifying compliance with the bSDD data structure.                                                                                                         |
+| **User/reactive review**  | On user request  | Community & bSI team  | Free     | bSDD users can file 'change requests' to report problems or propose improvements to the content owner and bSDD team (acc. ISO 12006-3:2022). The bSDD team investigates reports on license violations.  |
+| **Detailed verification** | On owner request | bSI team or delegates | Paid*     | On-demand paid service to ensure the quality of the content, marked by a verified badge in bSDD. Designed to increase the trustworthiness of data within the bSDD platform. The procedure is described in [the checklist](#detailed-verification-checklist).                                  |
 
 \* The cost of the verification procedure depends on the amount of content, number of iterations, and complexity of the data dictionary. The service price is determined individually - please get in touch with the bSDD Team for a quote: [CONTACT FORM](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h?__hstc=265579920.1c41677ee7e38ddbd3a5a993f3a67a91.1729689591361.1738077297342.1738084047841.83&__hssc=265579920.2.1738084047841&__hsfp=2763741192).
 
-> 免責事項：検証チェックリストは網羅的なものではなく、追加的な側面が検証される可能性がある。 また、チェックリストは、品質を高めるために、時間の経過とともに変更される可能性がある。 検証済みバッジ」を取得するためには、データ辞書はチェックリストの最新版に準拠しなければならない。
+> Disclaimer: the verification checklist is not exhaustive — additional aspects may be verified. The checklist might also change over time to enhance quality. To obtain a 'verified badge', a data dictionary must comply with the latest version of the checklist.
 
 
-## 詳細検証チェックリスト
+## Detailed verification checklist
 
-| コード | 項目 | コード | 項目 |
+| Code              | Item                                        | Code              | Item                                             |
 |-------------------|---------------------------------------------|-------------------|--------------------------------------------------|
-| [GEN-01](#gen-01) | 必須項目 | [CLS-03](#cls-03) | クラスの階層 |
-| [GEN-02](#gen-02) | 英語版があること | [CLS-04](#cls-04) | シンクレティックなクラスは避ける |
-| [GEN-03](#gen-03) | 翻訳は正確でなければならない | [CLS-05](#cls-05) | 禁止接頭辞 'Ifc' |
-| [GEN-04](#gen-04) | 名称は明確で解釈しやすいものでなければならない | [PRP-01](#prp-01) | 数値プロパティのメタデータ |
-| [GEN-05](#gen-05) | 一貫した命名規則に従う | [PRP-02](#prp-02) | IFCプロパティの重複を避ける |
-| [GEN-06](#gen-06) | 正しいタイプの使用 | [PRP-03](#prp-03) | 禁止接頭辞 'PSET_' |
-| [GEN-07](#gen-07) | データ辞書のガバナンス | [PRP-04](#prp-04) | プロパティの適切なデータ型 |
-| [GEN-08](#gen-08) | 所有権の確認 | [PRP-05](#prp-05) | シングル・アスペクト物件 |
-| [GEN-09](#gen-09) | 循環的な定義を避ける | [PRP-06](#prp-06) | 不必要な許容値を避ける |
-| [GEN-10](#gen-10) | 不正確な定義を避ける | [PRP-07](#prp-07) | 許容される値は意味のあるものでなければならない |
-| [GEN-11](#gen-11) | 否定的な定義は避ける | [CPR-01](#cpr-01) | ClassPropertyでは、アクティブなbSDDプロパティのみを使用する。 |
-| [GEN-12](#gen-12) | 独自のURIは情報を提供しなければならない | [CPR-02](#cpr-02) | ClassPropertyはPropertySet名を持つべきである。 |
-| [DCT-01](#dct-01) | 辞書は'Active'でなければならない | [REL-01](#rel-01) | RelationTypeの循環関係を避ける |
-| [DCT-02](#dct-02) | 辞書名は誤解を招くものであってはならない | [REL-02](#rel-02) | RelationTypeの不正なクラス型を避ける |
-| [CLS-01](#cls-01) | クラスはIFCに正しくマッピングされるべきである。 | [REL-03](#rel-03) | 関係は有意義でなければならない |
-| [CLS-02](#cls-02) | 循環的な依存関係を避ける |  |  |
+| [GEN-01](#gen-01) | Required fields                             | [CLS-03](#cls-03) | Hierarchy of classes                             |
+| [GEN-02](#gen-02) | Must have English version                   | [CLS-04](#cls-04) | Avoid syncretic classes                          |
+| [GEN-03](#gen-03) | Translations should be accurate             | [CLS-05](#cls-05) | Forbidden prefix 'Ifc'                           |
+| [GEN-04](#gen-04) | Names should be clear and easy to interpret | [PRP-01](#prp-01) | Numeric property metadata                        |
+| [GEN-05](#gen-05) | Follow a consistent naming convention       | [PRP-02](#prp-02) | Avoid duplicating IFC properties                 |
+| [GEN-06](#gen-06) | Use of correct types                        | [PRP-03](#prp-03) | Forbidden prefix 'PSET_'                         |
+| [GEN-07](#gen-07) | Governance of the data dictionary           | [PRP-04](#prp-04) | Property adequate data type                      |
+| [GEN-08](#gen-08) | Ownership verification                      | [PRP-05](#prp-05) | Single aspect properties                         |
+| [GEN-09](#gen-09) | Avoid circular definitions                  | [PRP-06](#prp-06) | Avoid unnecessary allowed values                 |
+| [GEN-10](#gen-10) | Avoid inaccurate definitions                | [PRP-07](#prp-07) | Allowed values must be meaningful                |
+| [GEN-11](#gen-11) | Avoid negative definitions                  | [CPR-01](#cpr-01) | Only use active bSDD Properties in ClassProperty |
+| [GEN-12](#gen-12) | Own URIs must provide information           | [CPR-02](#cpr-02) | ClassProperty should have a PropertySet name     |
+| [DCT-01](#dct-01) | Dictionary should be 'Active'               | [REL-01](#rel-01) | Avoid circular relationships in RelationType     |
+| [DCT-02](#dct-02) | Dictionary name should not be misleading    | [REL-02](#rel-02) | Avoid incorrect class types in RelationType      |
+| [CLS-01](#cls-01) | Classes should be mapped to IFC correctly   | [REL-03](#rel-03) | Relations must be meaningful                     |
+| [CLS-02](#cls-02) | Avoid circular dependencies                 |                   |                                                  |
 
 **GEN (General), DCT (Dictionary), CLS (Class), PRP (Property), ALV (AllowedValue), CPR (ClassProperty), REL (Relations)*
 
-## 一般
+## General
 
 ### GEN-01 
-**必須項目**
+**Required fields**
 
-bSDDでは、いくつかのフィールドを埋めずに公開することは可能であるが、検証のための要件はより高く設定されている。 辞書、クラス、プロパティは、少なくとも対応する以下の両方の行のフィールドを提供しなければならない： 
+While it is possible to publish in bSDD without some fields filled, the requirements for verification are set higher. The dictionary, classes and properties must at least provide the fields from both rows below correspondingly: 
 
-|  | 辞書 | クラス | プロパティ |
+|      |  Dictionary  |  Class  | Property | 
 | ----- | ----- | ----- | ----- | 
-| bSDDによって要求される | `OrganizationCode`、`DictionaryCode`、`DictionaryName`、`DictionaryVersion`、`LanguageIsoCode` | `Code`, `Name`, `ClassType` | `Code`, `Name`, `DataType` |
-| 検証のための追加要件 | `QualityAssuranceProcedure`, `ChangeRequestEmailAddress`, `License`, `LicenseUrl` | `定義`, `RelatedIfcEntityNamesList` | `Definition`、`Example`、`Dimension`（数値の場合）、`PropertyValueKind` |
+| Required by bSDD | `OrganizationCode`, `DictionaryCode`, `DictionaryName`, `DictionaryVersion`, `LanguageIsoCode`  | `Code`, `Name`, `ClassType`  | `Code`, `Name`, `DataType` | 
+| Additional requirements for the verification | `QualityAssuranceProcedure`, `ChangeRequestEmailAddress`, `License`, `LicenseUrl` | `Definition`, `RelatedIfcEntityNamesList`  | `Definition`, `Example`, `Dimension` (if numeric), `PropertyValueKind`  | 
 
 Additionally, `ClassProperty` should have a value of its `PropertySet`.
 
 ### GEN-02
-**英語版があること**
+**Must have English version**
 
-ISO 12006-3:2022に従い、辞書には、すべての翻訳可能なフィールドの関連する内容の英語版を含めるべきである。 翻訳可能なフィールドの一覧については、bSDDの文書を参照のこと。 他の言語の翻訳の存在は任意である。
+As per ISO 12006-3:2022, the dictionary should include an English version of all the relevant content for all translatable fields. See bSDD documentation for a list of translatable fields. The existence of other language translations is optional.
 
 ### GEN-03
-**翻訳は正確でなければならない**
+**Translations should be accurate**
 
-翻訳は任意であるが、翻訳が存在する場合、すべての翻訳は正確で原文の内容に忠実でなければならない。 翻訳は説明を拡張したり、原文の一部を削除したりすることはできない。 
+The translations are optional, but when they exist, all the translations should be precise and faithful to the original content. Translations can not extend the explanations or remove any part of the original sentences. 
 
-例
+Example:
 
-| ENG（オリジナル） | ドイツ語（翻訳） |  |
+|  ENG (original) | German (translation) |   |
 | ---- | ----- | ----- |
-| _壁とは、空間を区切ったり、分断したりする垂直の建造物を意味する。_ | _部屋を分離または分割するための垂直構造... 注：ISO 6707-1によると、垂直構造は、通常、石積みまたはコンクリートで作られています。_ | ❌ FAIL: ドイツ語訳にはISOに言及する文が追加されている。 |
+| _The wall represents a vertical construction that may bound or subdivide spaces..._ | _Vertikale Konstruktion zur Abgrenzung oder Unterteilung von Räumen... Anmerkung: Nach ISO 6707-1 ist eine vertikale Konstruktion in der Regel aus Mauerwerk oder Beton, ..._ | ❌ FAIL: The German translation has additional sentence referring ISO - the two are therefore not consistent. |
+
 
 ### GEN-04
-**名称は明確で解釈しやすいものでなければならない**
+**Names should be clear and easy to interpret**
 
-コードとは異なり、各項目の名称は、ユーザビリティを高めるために、明確でユーザがコンセプトを理解しやすいものでなければならない。
+Unlike codes, the name of each item must be clear and help users understand the concept to enhance usability.
 
-注釈
+Notes:
 
-- 辞書の各項目に接頭辞を追加することは、検索とフィルタリングを複雑にする可能性があるため、避ける。
-- 頭字語は言語によって異なり、文脈によって意味が異なることがあるため、なるべく避けること。
-- Class1、Class2などのような抽象的あるいは汎用的なプレースホルダーは、意味のある情報を提供しないので使わないようにしましょう。
+- Avoid adding prefixes to each item in the dictionary, as this can complicate search and filtering.
+- Try to avoid acronyms, as they may vary between languages and can have different meanings in different contexts.
+- Avoid using abstract or generic placeholders like Class1, Class2, etc., which do not provide meaningful information.
 
-例を挙げよう：
+Examples:
 
-- 名前：'クラス20-18.7' - クラスの実際の意味を伝えていない。
-- 名前：'FR-MR'（FR-MR）-いろいろなことの頭文字をとったもの。
-- 名前：'ABC_Wall' - 不要な接頭辞。
+- ❌ Name: 'Class 20-18.7' - doesn't convey the actual meaning of the class.
+- ❌ Name: 'FR-MR' - an acronym that could stand for many things.
+- ❌ Name: 'ABC_Wall' - unnecessary prefix.
 
 ### GEN-05
-**一貫した命名規則に従う**
+**Follow a consistent naming convention**
 
-名前とコードは、一貫した命名規則に従うべきである。 特定の命名規則は必要ないが、名前とコードに一貫したスタイルを使用することで、検索性と可読性が向上する。
+Names and codes should follow consistent naming conventions. While no specific naming convention is required, using a consistent style for names and codes improves searchability and readability.
 
-注釈
+Notes:
 
-- 一般的な命名規則には次のものがあります。_カスタムクラス_)、文例(_カスタムクラス_)、タイトルケース(_カスタムクラス_)、スネーク・ケース(_カスタムクラス_)、ケバブ・ケース(_カスタムクラス_).
-- 空白、ドット、ダッシュ、アンダースコアは、名前とコードの両方で使用できます。
-- コードは、データに保存され、bSDDと統合されていないほとんどのソフトウェアで表示される情報の一部であるため、コードも簡単に認識できるようにすることをお勧めします。 両方を持つ理由は、名前が翻訳される可能性があり、コードに似ていないこと、および一部のソフトウェアは、コード内の特殊文字や空白を許可していないことです（例えば'Łączna Wysokość'）。
+- Common naming conventions include: Pascal case (_CustomClass_), sentence case (_Custom class_), title case (_Custom Class_), snake case (_custom_class_), and kebab case (_custom-class_).
+- Whitespace, dots, dashes, and underscores are acceptable for use in both names and codes.
+- It is recommended that the codes are also easily recognizable, as they are the pieces of information that get stored in the data and are displayed by most of the software without integration with the bSDD. The reason for having both is that names can be translated, unliked the codes, and some software doesn't allow special characters or whitespaces in the codes (e.g. 'Łączna Wysokość').
 
-例を挙げよう：
+Examples:
 
-- コード：'CLS03'、'CLS04'、'CLPRP-01' - 最後のコードは、他のコードと異なり、ダッシュで区切られている。
-- 名前：'Load Capacity'（タイトルケース）、'Power Zone'（センテンスケース）、'ZoneCategories'（パスカルケース） - 命名規則が統一されていない。
-- コード：'74ts8bifnc74e7toe8n' - IFC データでは解釈や識別が難しい。
-- ✔️ コード1：'IsExternal'、名前1：'is external'、コード2：'AirTerminal'、名前2：'air terminal' - コードも名前も一貫した命名スキーマに従っており、コードも解釈可能である。
+- ❌ Codes: 'CLS03', 'CLS04', 'CLPRP-01' - last code with a dash separator, unlike the others
+- ❌ Names: 'Load Capacity' (title case), 'Power zone' (sentence case), 'ZoneCategories' (pascal case) - not consistent naming convention.
+- ❌ Code: '74ts8bifnc74e7toe8n' - hard to interpret or identify in IFC data
+- ✔️ Code 1: 'IsExternal', Name 1: 'is external', Code 2: 'AirTerminal', Name 2: 'air terminal' - both codes and names follow consistent naming schemas, and the codes are also interpretable.
 
 ### GEN-06
-**正しいタイプの使用**
+**Use of correct types**
 
-各項目に適切なタイプが割り当てられていることを確認する。
+Ensure that each item is assigned the appropriate type.
 
-例を挙げよう：
+Examples:
 
-- ✔️ 「セメント」は`Class`をClassTypeで指定します：`Material`.
-- ✔️ 「ボリューム」は`Property`(Dimension: 3 0 0 0 0 0、DataType: Real）。 
+- ✔️ 'Cement' is a `Class` with ClassType: `Material`.
+- ✔️ 'Volume' is a `Property` (it should also have adequate Dimension: 3 0 0 0 0 0 0, and DataType: Real) 
 
 ### GEN-07
-**データ辞書のガバナンス**
+**Governance of the data dictionary**
 🚧 TBC...
 
 ### GEN-08
-**所有権の確認**
+**Ownership verification**
 For new organization registration: 
 
-- 組織は合法的で、活発なウェブサイトを持っていなければならない。
-- 連絡先Eメールは、プロフェッショナルなドメイン固有のアドレス（例えば、`name@organization.com`).
-- 登録時にディクショナリの目的を明確に記載すること。 その目的は、bSDDの許容される使用方法と一致していなければならない（たとえば、製品カタログ、プロジェクトデータ、または関係のないコンテンツではない）。
-- 電子メール認証は、著者がその電子メールアドレスにアクセスできることを確認するために行われます。 応答を確実にするために、認証は定期的に繰り返すことができます。 
-- 組織は、所有権に関するあらゆる変更（例えば、ウェブサイトURLの変更、連絡先Eメールの更新、所有権の移転、辞書の目的の変更）を報告すべきである。
+- The organization must be legitimate and have an active website.
+- The contact email should be a professional, domain-specific address (for example, `name@organization.com`).
+- Clearly state the purpose of the dictionary during registration. The purpose must align with bSDD's acceptable use (for example, not a product catalogue, project data, or unrelated content).
+- Email verification will be conducted to make sure the author has access to such email address. The verification can be repeated periodically to ensure responsiveness. 
+- Organizations should report any changes around ownership (for example, website URL change, contact email update, ownership transfer, change of dictionary purpose)
 
 ### GEN-09
-**循環的な定義を避ける**
+**Avoid circular definitions**
 In line with ISO 704:2022 6.5.2, a definition should not repeat the term it is defining (inner circle) or use another term for the explanation if it repeats the term being defined (outer circle).
 
-例を挙げよう：
-- ❌ 壁の厚さ - 壁の面間で測定される壁の厚さ。
-- ✔️ 壁の厚さ - 壁の面間の距離。
+Examples:
+- ❌ Wall Thickness - Thickness of a wall measured between the wall faces.
+- ✔️ Wall Thickness - Distance between faces of a wall.
 
 ### GEN-10
-**不正確な定義を避ける**
+**Avoid inaccurate definitions**
 In line with ISO 704:2022 6.5.3, a definition should be accurate.
 
-例を挙げよう：
-- ❌ 柱 - 通常は垂直な構造部材（広すぎるため、壁という意味もある）
-- ❌ 柱 - 屋根を支える垂直構造部材。
-- ✔️ 柱 - 通常、細長い形状の垂直構造部材。
+Examples:
+- ❌ Column - usually vertical structural member. (too broad, could also mean wall)
+- ❌ Column - vertical structural member supporting a roof. (too narrow, could also support floor slabs or else)
+- ✔️ Column - usually vertical structural member of slender form.
 
 ### GEN-11
-**否定的な定義は避ける**
+**Avoid negative definitions**
 In line with ISO 704:2022 6.5.4, a definition should describe what a concept is, not what it is not.
 
-例を挙げよう：
-- 斜めの柱 - 垂直でない柱。
-- ✔️ 斜めの柱 - 斜めの柱。
+Examples:
+- ❌ Slanted column - A column that is not vertical.
+- ✔️ Slanted column - A column at an angle.
 
 ### GEN-12
-**独自のURIは情報を提供しなければならない**
+**Own URIs must provide information**
 By default, bSDD generates URI identifiers following the syntax: `https://identifier.buildingsmart.org/uri/<organisation>/<dictionary>/<version>/...`. Publishers have the option to provide their own custom URIs instead, provided that those exist. This is verified by checking if the URI leads to an existing page and if that page contains basic information such as name and definition.
 
-## 辞書
+## Dictionary
 
 ### DCT-01 
-**辞書は「Active」でなければならない**
+**Dictionary should be 'Active'**
 
-辞書のステータスが「アクティブ」であることを確認する。これにより、内容が変更されないことが保証される。 
+Ensure that the dictionary is in the status 'Active'. This guarantees that the content will not change. 
 
-プレビュー」ステータスのまま検証を申請することは可能ですが、検証後の改善を除き、検証申請後の変更は認められません。検証済みバッジは、肯定的なレビューが行われ、ステータスが'Active'に変更された後にのみ付与されます。
+It is possible to apply for verification while in 'Preview' status, provided that no changes are allowed once verification is requested except for post-verification improvements. A verified badge is only to be granted after a positive review and a change of status to 'Active'.
 
 ### DCT-02 
-**辞書名は誤解を招くものであってはならない**
+**Dictionary name should not be misleading**
 
-辞書の名称は独創的でなければならず、その内容と目的を明確かつ正確に記述しなければならない。誤解を招いたり、他の辞書や団体との関連を示唆するものであってはならない。他の辞書や団体の名称は含めないでください。
+The dictionary's name should be original and must clearly and accurately describe its content and purpose. It should not be misleading or suggest any association with other dictionaries or organizations. Please do not include names of other dictionaries or organizations.
 
-例を挙げよう： 
+Examples: 
 
-- ❌ "Uniclass4Infra" - 辞書がNBSによって発行された公式ユニクラスの一部であるかのようにユーザーを誤解させる可能性がある。
-- IFCの用語は、buildingSMARTによるIFC規格の公式出版物のために予約されているため。
-- ⚠️ "Revit Classification" - まず権利者（この場合はオートデスク社）の許可を得ることをお勧めします。
+- ❌ "Uniclass4Infra" - may mislead users into thinking the dictionary is part of the official Uniclass published by NBS.
+- ❌ "IFC Something" - not allowed, as the IFC term is reserved for the official publications of the IFC standard by buildingSMART.
+- ⚠️ "Revit Classification" - it is recommended first obtain permission from the rightful owner (in this case, the Autodesk company).
 
-## クラス
+## Class
 
 ### CLS-01
-**クラスはIFCに正しくマッピングされるべきである。**
+**Classes should be mapped to IFC correctly**
 
-各クラスは、「RelatedIfcEntities」（インポートファイルの「RelatedIfcEntityNamesList」）を使用して、IFCに適切にマッピングする必要があります。
+Each class must be mapped to IFC appropriately using 'RelatedIfcEntities' ('RelatedIfcEntityNamesList' in the import file).
 
-注釈
+Notes:
 
-- クラスを抽象クラス、型、関係、メジャーにマッピングしないでください。
-- USERDEFINED」と「NOTDEFINED」型の使用は避ける。
-- クラスを「プロキシ」にマッピングする前に、利用可能なオプションを徹底的に検索して、既存の適切なIFCエンティティがないことを確認してください。
+- Do not map a class to an abstract class, type, relation, or measure.
+- Avoid using 'USERDEFINED' and 'NOTDEFINED' types.
+- Before mapping a class to a 'Proxy', ensure there are no existing appropriate IFC entities by thoroughly searching available options.
 
 ### CLS-02
-**循環的な依存関係を避ける**
+**Avoid circular dependencies**
 
-ParentClassCode'で定義された親子クラス関係は、循環依存関係のないツリー構造を形成しなければならない。
+Parent-child class relationships, defined with 'ParentClassCode', must form a tree structure without circular dependencies.
 
-例を挙げよう：
-- AクラスはBの親、BはCの親、CはAの親。
+Examples:
+- ❌ Class A is the parent of B, B is the parent of C, and C is the parent of A - circular chain.
 
 ### CLS-03
-**クラスの階層**
+**Hierarchy of classes**
 
-複数の階層レベルを区別できる場合、それらはフラットなリストとしてモデル化されるべきではなく、明確で論理的な階層構造で構成されるべきである。
+When multiple hierarchical levels can be distinguished, they shouldn't be modelled as a flat list but be structured in a clear and logical hierarchy.
 
-例を挙げよう： 
+Examples: 
 
-- 角柱'、'丸柱'、'角柱'は平らなリスト。
-- ✔️ 'Column'は'Round Column'と'Rectangular Column'の親である。
+- ❌ 'Column', 'Round Column', 'Rectangular Column' being a flat list.
+- ✔️ 'Column' is a parent of 'Round Column' and 'Rectangular Column'.
 
 ### CLS-04
-**シンクレティックなクラスは避ける**
+**Avoid syncretic classes**
 
-マテリアル、クラス、プロパティなど、複数のアスペクトを1つのクラスにまとめたクラスは作成しないでください。
+Do not create classes that combine multiple aspects, such as material, class, and property, into a single class.
 
-例を挙げよう： 
+Examples: 
 
-- 外部スチールドア」-クラス、材質、特性に関する情報を1つの定義にまとめているため、正しくない。
-- ✔️ Class：Door'、Material: 'Steel'、IsExternal：'True'。
+- ❌ 'External Steel Door' - incorrect because it combines information about the class, material, and property into one definition
+- ✔️ Class: 'Door', Material: 'Steel', IsExternal: 'True'.
 
 ### CLS-05
-**禁止接頭辞 'Ifc'**
+**Forbidden prefix 'Ifc'**
 
-接頭辞'Ifc'はIFC標準のために予約されている。また、'1fc'や'_Ifc'のような接頭辞の類似形にもすべて適用されます。それ以外の形はすべて許容されます (例: 'AbcWall')。
+The prefix 'Ifc' is reserved for the IFC standard. It also applies to all resembling forms of the prefix like '1fc' or '_Ifc'. All other forms are acceptable (for example: 'AbcWall').
 
-## プロパティ
+## Property
 
 ### PRP-01
-**数値プロパティのメタデータ**
+**Numeric property metadata**
 
-プロパティが数値の場合`DataType`は`Integer`または`Real`を指定しなければならない。`Dimension`.その`Unit`はオプションで、常にSI単位とみなされるが、存在する場合はDimensionと一致しなければならない。 
+When a property is numeric (its `DataType` is `Integer` or `Real`), it should specify a `Dimension`. The `Unit` is optional, always assumed to be an SI unit, but it must match the Dimension when present. 
 
-例を挙げよう：
-- ✔️ Dimension: '1 0 -1 0 0 0 0', Unit: 'm/s' - 速度プロパティの正しい指定。
-- ✔️ Dimension: '0 0 0 0 0 0 0 0' - 無次元プロパティ (それでも Dimension は指定される)。
-- ❌ 寸法: '1 0 0 0 0 0'、'単位: 'h' - 寸法(長さ)と単位(時間)の不一致。
-- ❌ 単位：'W' - 寸法なし。
+Examples:
+- ✔️ Dimension: '1 0 -1 0 0 0 0', Unit: 'm/s' - correct specification of a speed property.
+- ✔️ Dimension: '0 0 0 0 0 0 0' - dimensionless property (still, the Dimension is specified).
+- ❌ Dimension: '1 0 0 0 0 0 0', 'Unit: 'h' - mismatch between dimension (length) and unit (time).
+- ❌ Unit: 'W' - no dimension.
 
-割り当てられた単位が寸法に正しく対応していることを確認してください。ディメンジョンと単位の不一致は、混乱やエラーの原因になります。
+Ensure that the assigned unit corresponds correctly with the dimension. A mismatch between the dimension and unit can lead to confusion and errors.
 
-注釈
+Notes:
 
-- Propertyの単位は、すべて同じDimensionに一致する必要があります。ClassProperty 内の単位は、Property の Dimension と一致する必要があります。
-- 物理量の場合、以下のように寸法を指定する。[国際数量システム](https://en.wikipedia.org/wiki/International_System_of_Quantities)ISO 80000-1で定義されている。順番は`length`,`mass`,`time`,`electric current`,`thermodynamic temperature`,`amount of substance`そして`luminous intensity`. 
+- Units in Property should all match to the same Dimension. Unit in ClassProperty should match Property's Dimension.
+- In the case of a physical quantity, specify dimension according to [International_System_of_Quantities](https://en.wikipedia.org/wiki/International_System_of_Quantities), as defined in ISO 80000-1. The order is: `length`, `mass`, `time`, `electric current`, `thermodynamic temperature`, `amount of substance`, and `luminous intensity`. 
 
-例を挙げよう： 
+Examples: 
 
-- プロパティに「1 1 -2 0 0 0 0」というディメンション値がある。`Units`キロニュートン」や「ニュートン」はリストにあってもよいが、「ミリメートル」はあってはならない。
-- 寸法値「1 0 0 0 0 0」は、単位「キログラム」に割り当ててはならない。(正しい寸法は「0 1 0 0 0 0 0」、長さ＝0、質量＝1、時間＝0、電流＝0、熱力学的温度＝0、物質量＝0、光度＝0）。
-- 速度（m/s）は「1 0 -1 0 0 0 0」と表記される。
+- A dimension value of '1 1 -2 0 0 0 0' in property `Units` could have 'kilonewton', 'newton' in the list, but should not have 'millimetre'.
+- A dimension value of '1 0 0 0 0 0 0' should not be assigned to unit 'kilogram'. (correct dimension is '0 1 0 0 0 0 0', length = 0, mass = 1, time = 0, electric current = 0, thermodynamic temperature = 0, amount of substance = 0, luminous intensity = 0)
+- Speed (m/s) would be denoted as '1 0 -1 0 0 0 0'.
 
 
 ### PRP-02
-**IFCプロパティの重複を避ける**
+**Avoid duplicating IFC properties**
 
-IFC 辞書内に既に近接一致プロパティが存在する場合、そのプロパティは再作成するのではなく、 辞書内で参照されるべきである。こうすることで、一貫性のある用語の使用が増え、モデルのバリエーションが制限される。プロパティは独立したオブジェクトであるため、プロパティセットの命名に落胆しないでください。 
+When a close match property already exists in the IFC dictionary, it should be referenced in a dictionary rather than recreated. This way, we increase the usage of consistent terms, limiting model variations. Do not be discouraged by the naming of the property set, as properties are independent objects. 
 
-IFCに近いものが存在しない場合のみ、新しいプロパティを考案すること。他の有効な辞書や検証済みの辞書のプロパティを再利用することも推奨されます。既存のプロパティの特殊化である新しいプロパティを追加する場合（例えば、'Net Weight Dry'は'Net Weight'の特殊化である可能性がある）、IFCの既存のプロパティとの関係を提供する。使用方法`IsSimilarTo`リレーションシップのタイプ。
+Only invent new properties if no close match exists in IFC. Reusing properties from other active and verified dictionaries is also recommended. When adding a new property that is a specialisation of an existing one (for example, 'Net Weight Dry' could be a specialisation of 'Net Weight'), provide a relation to the existing property in IFC. Use `IsSimilarTo` relation type.
 
 ### PRP-03
-**禁止接頭辞 'PSET_'**
+**Forbidden prefix 'PSET_'**
 
-接頭辞「PSET_」はIFC標準のために予約されている。P5ET_」や「.PSET_」のような類似の形式にも適用される。PSETの後に他の文字が続いてもよい（例えば'ePSET_')。 
+The prefix 'PSET_' is reserved for the IFC standard. It also applies to resembling forms like 'P5ET_' or '.PSET_'. PSET proceeded by other letter is allowed, for example, 'ePSET_'). 
 
-新しいセットの命名には、接頭辞として「cPSET_」（「c」はcustom/created）を使用するのが一般的です。既存のIFCセットを拡張する新しいプロパティを提案する場合は、「ePSET_」（'e'はextend）を使用します。 
+A common practice for naming new sets is to use the 'cPSET_' prefix ('c' for custom/created). To propose new properties to extend existing IFC sets, one could use 'ePSET_' ('e' for extend). 
 
 ### PRP-04
-**プロパティの適切なデータ型**
+**Property adequate data type**
 
-プロパティのデータ型はその定義に従わなければならず、明確性を確保し、値を適切な型に制限する。プロパティのデータ型は以下のいずれかでなければならない：`Boolean`,`Character`,`Integer`,`Real`,`String`,`Time`.
+The data type of a property must follow its definition, ensuring clarity and restricting the value to the appropriate type. The data type of a property must be one of the following: `Boolean`, `Character`, `Integer`, `Real`, `String`, `Time`.
 
-例を挙げよう： 
+Examples: 
 
-- プロパティが'True'か'False'しかとれない場合、データ型は次のようになります。`Boolean`ではない。`String`.
+- If a property can only be 'True' or 'False', the data type should be `Boolean`, not `String`.
 
 ### PRP-05
-**シングル・アスペクト物件**
+**Single aspect properties**
 
-複数のアスペクトを1つのプロパティにまとめないでください。各プロパティは、明確で適切な分類を行うために、1つのアスペクトのみを明確に表す必要があります。
+Do not combine multiple aspects within a single property. Each property must clearly represent only one aspect to ensure clarity and proper classification.
 
-例を挙げよう： 
+Examples: 
 
-- 鉄骨シングル」、「木枠シングル」、「鉄骨ダブル」、「木枠ダブル」のような許容値リストを持つプロパティ「窓のタイプ」は、2つのプロパティに分割されるべきである。
+- A property 'Type of Window' with an allowed value list like 'Steel frame single', 'Wood frame single', 'Steel frame double', and 'Wood frame double' should be split into two properties: one for the frame material and one for the type (single or double).
 
 ### PRP-06
-**不必要な許容値を避ける**
+**Avoid unnecessary allowed values**
 
-許容値は、プロパティが定義され、数えられる数のオプションを持つ場合にのみ使用されるべきです。許容値は`Boolean`または可能なすべての`Integers`を特定の範囲内で使う（代わりにmin/max inc/exclusiveを使う）。
+Allowed values should only be used when a property has a defined and countable number of options. Do not use allowed values for `Boolean` or list all possible `Integers` within a specific range (use min/max inc/exclusive instead).
 
-例を挙げよう： 
+Examples: 
 
-- ❌ 許容値：'Oui'、'Non'(フランス語ではYes/No) - 代わりに`Boolean`データ型を直接使用する。
-- ❌ 許容値：'1'、'2'、'3' - 代わりに以下を使う`Integer`MinInclusive=1、MaxInclusive=3のデータ型。
+- ❌ Allowed values: 'Oui', 'Non'(Yes/No in French) - instead use the `Boolean` data type directly.
+- ❌ Allowed values: '1', '2', '3' - instead use `Integer` data type with MinInclusive=1 and MaxInclusive=3
 
 ### PRP-07
-**許容される値は意味のあるものでなければならない**
+**Allowed values must be meaningful**
 
-について`AllowedValues`不動産の価値は、明確で明確なものでなければならない。代替案の組み合わせや混合を表す値を含めることは避ける。
+The `AllowedValues` of a property should provide a clear and distinct value. Avoid including values that represent a combination or mix of alternatives.
 
-例を挙げよう： 
+Examples: 
 
-- プロパティ「Color」の許容値：✔️ 'red', ✔️ 'green', ❌ 'gradient' (色の組み合わせを表すので不適切)。
+- Allowed values of a property 'Color': ✔️ 'red', ✔️ 'green', ❌ 'gradient' (inappropriate because it represents a combination of colours).
 
-## クラスプロパティ
+## ClassProperty
 
 ### CPR-01
-**ClassPropertyでは、アクティブなbSDDプロパティのみを使用する。**
+**Only use active bSDD Properties in ClassProperty**
 
-に関連するプロパティ`ClassProperty`は、同じ辞書またはbSDDで見つかった別の辞書で定義されなければならない。`Active`.そうでなければ、不変性と検索性を確保するのは難しい。
+Properties associated with a `ClassProperty` should be defined within the same dictionary or another dictionary found in bSDD with a status `Active`. Otherwise, it is hard to ensure immutability and findability.
 
 ### CPR-02
-**ClassPropertyはPropertySet名を持つべきである。**
+**ClassProperty should have a PropertySet name**
 
-プロパティ・セットには、適切かつ一貫した名前を付けるべきである。
+Property sets should be named appropriately and consistently.
 
-## 関係
+## Relations
 
 ### REL-01 
-**RelationTypeの循環関係を避ける**
+**Avoid circular relationships in RelationType**
 
-クラスとプロパティの関係は、循環的な依存関係を避け、階層構造の明瞭性を確保しなければならない。
+Class and Property relations must avoid circular dependencies, ensuring clarity in hierarchical structures.
 
-例を挙げよう：
+Examples:
 
-- A 'IsParentOf' B, B 'IsParentOf' C, C 'IsParentOf' A.
-- A 'IsPartOf' B、B 'IsPartOf' A。
-- A 'IsPartOf' B、A 'HasPart' C、C 'IsEqualTo' A。
+- ❌ A 'IsParentOf' B, B 'IsParentOf' C, C 'IsParentOf' A.
+- ❌ A 'IsPartOf' B, and B 'IsPartOf' A.
+- ❌ A 'IsPartOf' B, A 'HasPart' C, and C 'IsEqualTo' A.
 
 ### REL-02 
-**RelationTypeの不正なクラス型を避ける**
+**Avoid incorrect class types in RelationType**
 
-クラス間の関係が論理的に一貫しており、適切なクラス・タイプに正しく割り当てられていることを確認する。
+Ensure that relations between classes are logically consistent and correctly assigned to the appropriate class types.
 
-例を挙げよう：
+Examples:
 
-- クラス 'A' 'HasMaterial' GroupOfProperties 'B'.(マテリアルではない)
-- ❌ 材料 'A' 'IsParentOf' クラス 'B'。(マテリアルは他のマテリアルの親にしかなれません)
+- ❌ Class 'A' 'HasMaterial' GroupOfProperties 'B'. (not a Material)
+- ❌ Material 'A' 'IsParentOf' Class 'B'. (Material can only by a parent of other Material)
 
 ### REL-03
-**関係は有意義でなければならない**
+**Relations must be meaningful**
 
-クラスやプロパティ間の関係は、論理的で目的にかなったものでなければならない。
+Relationships between classes or properties should be logical and purposeful.
 
-例を挙げよう： 
+Examples: 
 
-- ❌`IsChildOf`Column'クラスと'Concrete'クラスの関係 - 非論理的。
-- ✔️`IsChildOf`ラウンドカラム'と'カラム'クラスの関係。
+- ❌ `IsChildOf` relation between a 'Column' and 'Concrete' class - illogical.
+- ✔️ `IsChildOf` relation between a 'Round Column' and 'Column' class.

@@ -1,15 +1,15 @@
 # RDF
 
-リソース記述フレームワーク（RDF）は、ウェブ上でのデータ交換のための標準モデルである。 続きを読む: https://www.w3.org/RDF/
+Resource Description Framework (RDF) is a standard model for data interchange on the Web. Read more: https://www.w3.org/RDF/
 
-bSDDにはRDF形式でデータを返す機能があるが、現在はPREVIEWの状態だ。
+The bSDD has a feature that returns data in RDF format, but it's currently in PREVIEW status.
 
-以下のAPIはRDFでデータを返すことをサポートしています：
+The following API's support returning data in RDF:
 
-- /api/分類/v3
+- /api/Classification/v3
 
-キー "Accept"、値 "application/rdf+xml "のHTTPヘッダーを追加することで、RDF-xml形式の出力を要求できる。
+You can request output in RDF-xml format by adding an HTTP header with key "Accept" and value "application/rdf+xml".
 
-application/x-turtle "のキー "Accept "と値 "text/turtle "を持つHTTPヘッダーを追加することで、タートル形式の出力を要求できる。
+You can request output in turtle format by adding an HTTP header with key "Accept" and value "text/turtle" of "application/x-turtle".
 
 <img src="https://github.com/buildingSMART/bSDD/blob/documentation/Documentation/graphics/HowToGetOutputInTurtleFormat.PNG" alt="How to get output in turtle format"/>
