@@ -20,12 +20,12 @@ API契約に関する情報は以下から入手できます。[bSDD API契約�
 
 次のclient_idを入力してください： b222e220-1f71-4962-9184-05e0481a390d
 
-"read "スコープのチェックをお忘れなく！
+リード」スコープのチェックをお忘れなく！
 
 ## https://identifier.buildingsmart.org
 のデータにアクセスできる。`Class`または`Property`のURIを直接経由することもできる。`Class`または`Property`例えば、ブラウザでhttps://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall、そのクラスのデータが視覚的に表示されます。JSON形式で出力したい場合は、"application/JSON "を指定して "Accept "ヘッダを送信すると、JSON形式の結果が得られます。 このJSON形式の結果は、HTML形式の結果とは内容が異なります！
 
-重要: これらの識別子 URI をシステム間の通信に使用しないでください! まず第一に、これはサーバからサーバへの余分な「ホップ」をもたらします。 第二に、あなたはそれが使用している API のバージョンを制御することができません。 bSDD の新しいリリースが公開された後の結果は、リリース前の結果と異なるかもしれません。
+重要: これらの識別子 URI をシステム間の通信に使用しないでください! まず第一に、これはサーバからサーバへの余分な「ホップ」をもたらします。 第二に、あなたはそれが使用している API のバージョンを制御することができません。 bSDD の新しいリリースが公開された後と、公開される前とでは、結果が異なるかもしれません。
 
 > 注： https://identifier.buildingsmart.org URLを直接呼び出してJSON形式のデータを取得することは、現在廃止されています。 代わりにapi/Class/vXまたはapi/Property/vXを使用してください。
 
@@ -39,7 +39,7 @@ bSDDには、bSDDの新しい開発をテストするためのTEST環境があ�
 
 
 GraphQLリクエストを送信するURLは以下の通り：
-- 公式リリース：https://api.bsdd.buildingsmart.org/graphqls（セキュリティで保護されており、末尾の "s "に注意）
+- 公式リリース：https://api.bsdd.buildingsmart.org/graphqls（セキュリティで保護されている、最後の "s "に注意）
 - テスト版：https://test.bsdd.buildingsmart.org/graphql（セキュアではない）
 - テスト版：https://test.bsdd.buildingsmart.org/graphqls (保護された)
 Note: those URLs are not hyperlinks and do not work in a browser. You need to send a POST request with the query data (the GET request does not work).
@@ -57,13 +57,13 @@ Note: those URLs are not hyperlinks and do not work in a browser. You need to se
 - アプリケーションのタイプ：
   - ウェブアプリケーション
   - シングル・ページ・アプリケーション
-  - iOS / macOS、Objective-C、Swift、Xamarin
+  - iOS/macOS、Objective-C、Swift、Xamarin
   - アンドロイド - Java、Kotlin、Xamarin
   - モバイル/デスクトップ
 - どの言語を使用していますか？ (使用するライブラリによって、設定するredirectUriが異なる場合があります)
 - ウェブサイトまたはSPAの場合、リターンURLを指定します（ログインページは、ユーザーがログインした後、このURLにリダイレクトされます）。
 
-セキュアAPIを使用せず、ウェブサイトやSPAから他のAPIを呼び出したい場合は、CORSを許可するウェブサイトのURLが必要です。
+セキュリティで保護されたAPIを使用せず、ウェブサイトやSPAから他のAPIを呼び出したい場合は、CORSを許可するウェブサイトのURLが必要です。
 If you're creating a desktop client that only calls the non-secured APIs, you're ready to go.
 
 ### 認証
@@ -91,7 +91,7 @@ Currently there’s no further authorization required to be able to use the API.
 
 ### 設定
 これらは、Dekstopクライアントアプリのデモ用に使用できる設定です：
-* テナント："buillsmartservices.onmicrosoft.com"
+* テナント： "buildingsmartservices.onmicrosoft.com"
 * AzureAdB2Chostname: "authentication.buildingsmart.org"
 * ClientId: "4aba821f-d4ff-498b-a462-c2837dbbba70"
 * RedirectUri: "com.onmicrosoft.bsddprototypeb2c.democonsoleapp://oauth/redirect"
@@ -102,7 +102,7 @@ Currently there’s no further authorization required to be able to use the API.
 * ApiScope : "https://buildingsmartservices.onmicrosoft.com/api/read"
 * BsddApiUrl: "https://test.bsdd.buildingsmart.org"
 
-完全なB2CオーソリティのURLはhttps://authentication.buildingsmart.org/tfp/buildingsmartservices.onmicrosoft.com/b2c_1a_signupsignin_c（"tfp "の部分に注目！）。
+完全なB2CオーソリティのURLは、https://authentication.buildingsmart.org/tfp/buildingsmartservices.onmicrosoft.com/b2c_1a_signupsignin_c（「tfp」の部分に注目！）。
 
 公式リリースを使用する場合は、上記以外の設定を使用する必要があります：
 * ClientId: クライアントIDを要求する。[お問い合わせフォーム](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h)

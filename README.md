@@ -1,9 +1,10 @@
 > ## ⚠️ 注意
 >
 > - buildingSMART が公開している **bSDD リポジトリ** の直下にある **`README.md`** と  
->   **`Documentation/` フォルダ以下の `.md` ファイル** を対象に、差分を自動検知して  
->   **DeepL API** で機械翻訳した内容を掲載しています。  
-> - **現在は試験運用中** につき、翻訳フローやドキュメント内容が今後変更される可能性があります。  
+>   **`Documentation/` フォルダ以下の `.md` ファイル** を対象に、 **DeepL API** で機械翻訳した内容を掲載しています。  
+> - **現在は試験運用中** につき、翻訳フローやドキュメント内容が今後変更される可能性があります。
+> - 翻訳後の日本語リポジトリは、リポジトリ名の先頭に **`bSI_`**、末尾に **`_ja`** を付けて公開しています（例: `bSI_bSDD_ja`）。  
+>   ※ 先頭に **`bSI_`** が付いており、末尾に **`_ja`** が付いていないリポジトリは、**翻訳せずコピーのみ** を反映したリポジトリです。  
 > - 用語の整合性チェックやレビューは未実施のため、**誤訳や不自然な表現** が含まれる場合があります。  
 >   正確な情報が必要な際は、必ず原文もご確認ください。
 
@@ -32,7 +33,7 @@ bSDDの中心は、すべての辞書を相互に関連付けることができ�
 * [bSDD検索ページ]()
 * [bSDD 管理ポータル]()
 * [bSDD API Swagger ページ]()
-* [bSDD更新フォーラム]()
+* [bSDDアップデートフォーラム]()
 * [bSDDデータ構造](/Documentation/bSDD%20JSON%20import%20model.md)
 * [bSDD JSON テンプレート](/Model/Import%20Model/bsdd-import-model.json)/[bSDDエクセルテンプレート](/Model/Import%20Model/spreadsheet-import)
 * [bSDDを統合するツール](https://technical.buildingsmart.org/resources/software-implementations/?filter_5%5B%5D=bSDD%20read%20API&filter_5%5B%5D=bSDD%20submit%2Fmanage&filter_5%5B%5D=bSDD%20IFC%20export%20(including%20URIs)&filter_1=&gv_search=&mode=any)これは自主管理リストなので、足りないものは自由に追加してください。

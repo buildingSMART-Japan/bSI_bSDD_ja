@@ -232,4 +232,4 @@ query availableQueries {
   }
 }
 ```
-イントロスペクションの他の例は、https://graphql.org/learn/introspection/ で見ることができる。
+その他のイントロスペクションの例はhttps://graphql.org/learn/introspection/。

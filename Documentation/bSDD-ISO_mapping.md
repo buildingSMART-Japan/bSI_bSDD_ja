@@ -6,7 +6,7 @@ bSDDは、データ辞書を定義するISO12006-3規格とISO23386規格に基�
 
 bSDDでは、契約上の合意をサポートするために、各変更は完全な辞書の新しいバージョンになります。 辞書がアクティブ化されていない場合は、この限りではありません。 詳細を読む[bSDDにおけるコンテンツライフサイクル](https://github.com/buildingSMART/bSDD/blob/doc_update/Documentation/bSDD%20import%20tutorial.md).
 
-以下は、bSDD と ISO 規格の属性をマッピングした表である。[bSDDデータモデル](https://github.com/buildingSMART/bSDD/blob/doc_update/Documentation/bSDD%20JSON%20import%20model.md). 
+以下は、bSDD の属性と ISO 規格の属性の対応表である。[bSDDデータモデル](https://github.com/buildingSMART/bSDD/blob/doc_update/Documentation/bSDD%20JSON%20import%20model.md). 
 
 | **bSDD** | **ISO23386:2020** | **ISO12006-3:2022** | **どのように** |
 |---|---|---|---|
@@ -22,12 +22,12 @@ bSDDでは、契約上の合意をサポートするために、各変更は完�
 | プロパティ/クラス: RevisionNumber | Property/GroupOfProperties: リビジョン番号 | xtdObject: マイナーバージョン | _リビジョン番号は bSDD では冗長だが、あるフィールドのリビジョンが何回行われたかを示すのに使われる。_ |
 | プロパティ/クラス: ReplacedObjectCodes | Property/GroupOfProperties: 置換されたプロパティのリスト | xtdObject: 置換オブジェクト |  |
 | プロパティ/クラス: ReplacingObjectCodes | Property/GroupOfProperties: 置換プロパティのリスト | ✖️ |  |
-| プロパティ/クラス: DeprecationExplanation | Property/GroupOfProperties: 非推奨の説明 | xtdObject: 非推奨の説明 |  |
+| プロパティ/クラス: DeprecationExplanation | Property/GroupOfProperties：非推奨の説明 | xtdObject: 非推奨の説明 |  |
 | プロパティ/クラス: CreatorLanguageIsoCode | Property/GroupOfProperties：クリエイターの言語 | xtdConcept: 作成者の言語 | _ISO では、xtdLanguage オブジェクトで、EnglishName （ISO 639 シリーズ準拠）、NativeName、Comments、Code を持つ。 bSDD では、bSI 管理リストで、IsoCode、Name （https://api.bsdd.buildingsmart.org/api/Language/v1 ）を持つ。_ |
 | プロパティ/クラス: 名前 | Property/GroupOfProperties: N言語の名前 | xtdObject: 名前 |  |
 | プロパティ/クラス: 定義 | Property/GroupOfProperties：言語Nでの定義 | xtdConcept: 定義 |  |
 | 物件: 説明 | プロパティ：言語Nでの説明 | xtdConcept: 記述 |  |
-| プロパティ: 例 | 特性：言語Nでの例 | xtdConcept: 例 |  |
+| プロパティ: 例 | プロパティ：言語Nでの例 | xtdConcept: 例 |  |
 | プロパティ: ConnectedPropertyCodes | プロパティ： 接続プロパティ | ✖️ |  |
 | (スキーマ/API) | 物件：物件グループ | ✖️ | _bSDD では、クラスプロパティはプロパティグループ（クラス型）の中にあることができます。_ |
 | プロパティ/クラス: VisualRepresentationUri | Property/GroupOfProperties：ビジュアル表現 | xtdConcept: ビジュアル表現 | _ISOではMediaオブジェクトだが、bSDDでは外部視覚表現へのリンクのみが許される。_ |

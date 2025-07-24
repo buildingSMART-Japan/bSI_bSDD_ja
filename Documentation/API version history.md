@@ -45,7 +45,7 @@ APIメソッドを変更しました：
  * api/Dictionary/Popular/v1: 最も人気のある辞書の短いリストを取得する
  * api/Property/Relations/v1: プロパティ関係または逆関係を取得 (ページ分割)
  * api/Property/Classes/v1: プロパティを使用するクラスのリストを取得 (ページ分割)
- * api/TextSearch/v2: 新しいフィルターオプションと出力の変更
+ * api/TextSearch/v2: 新しいフィルターオプションと出力の一部変更
 
 APIメソッドを変更しました：
  * api/Dictionary/v1/Classes：
@@ -140,7 +140,7 @@ APIの変更：
 
  * 新しいバージョン: api/Classification/v4: 属性PossibleValuesの名前がAllowedValuesに変更されました。
  * 新しいバージョン: api/Material/v2: 属性PossibleValuesの名前がAllowedValuesに変更されました。
- * 新しいバージョン: api/Property/v3: 属性 PossibleValues の名前が AllowedValues に変更された (インポート属性名と一致するようになった)。
+ * 新しいバージョン: api/Property/v3: 属性 PossibleValues は AllowedValues に改名された (インポート属性名と一致するようになった)。
  
  新しいAPIの旧バージョンは、少なくとも2023年7月までは利用可能である。
 
@@ -167,11 +167,11 @@ APIの変更：
  * 更新: api/RequestExportfile/preview, SketchUpの出力ファイルがキャッシュされるようになりました。
 
 ## 2022-04-30
-* 新機能：マテリアルの詳細を取得するためのapi/Material/v1
+* 新規: マテリアルの詳細を取得するためのapi/Material/v1
 * 新規: マテリアルを検索するための api/Material/SearchOpen/preview
-* 更新： api/Classification/v3は、RDF-XML、Turtle、Html形式のデータを返すことができるようになりました：
+* 更新: api/Classification/v3はRDF-XML、Turtle、Html形式のデータを返せるようになりました：
 
-| Accept ヘッダー | 出力フォーマット |
+| アクセプト・ヘッダ | 出力フォーマット |
 |--|--|
 | [デフォルト］ | json |
 | application/rdf+xml | RDF XML |

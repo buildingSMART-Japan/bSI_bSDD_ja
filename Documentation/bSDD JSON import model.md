@@ -25,7 +25,7 @@ bSDDは、独立した組織によって発行されたデータ辞書（デー�
 
 デモンストレーション用の辞書もあります：[「果物と野菜](https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/1.1).
 
-📢 最新の技術アップデートについては、専用フォーラムトピックでお読みください：[https://forums.buildingsmart.org/t/bsdd-tech-updates/4889](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889)
+📢 最新の技術的なアップデートについては、専用のフォーラムトピックでお読みください：[https://forums.buildingsmart.org/t/bsdd-tech-updates/4889](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889)
 
 <h2 id="json-format">JSON format</h2>
 
@@ -47,7 +47,7 @@ NBデフォルト値は、フィールドが指定されていない場合にの
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
 |------------------|------------------|-----------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <span id="OrganizationCode">組織コード</span>。 | テキスト | ✅ |  | bSDD に登録したときに受け取った組織のコード。 あなたの組織がまだコードを持っていない場合は、[bSDD User Helpdesk](https://bsi-technicalservices.atlassian.net/servicedesk/customer/portal/3/group/4/create/25) でリクエストしてください。 すべての URI リンクに表示されるため、コードはなるべく短い方がよいでしょう。 許容される文字については、[コードフォーマット](#code-format) のセクションを参照してください。 このコードは数字で始まることはできません。 コード例: "ifc". |
-| <span id="DictionaryCode">辞書コード</span>。 | テキスト | ✅ |  | 辞書のコード、できれば短いもの。 例："ifc"。 コードフォーマット](#code-format)の項を参照のこと。 |
+| <span id="DictionaryCode">辞書コード</span>。 | テキスト | ✅ |  | 辞書のコード、できれば短く。 例："ifc"。 コードフォーマット](#code-format)の項を参照のこと。 |
 | <span id="DictionaryName">辞書名</span>。 | テキスト | ✅\ |  | 辞書が存在する場合、この名前を指定する必要はない。 |
 | <span id="DictionaryVersion">辞書バージョン</span>。 | テキスト | ✅ |  | 許容される形式：最大3つのドット区切りの数字、例：1.0.1。 許容される形式："12"、"10.1"、"1.2.3"。 許容されない形式："1.2.3.4"、"ベータ"、"2x3"。 [Semantic Versioning](https://semver.org/)のアプローチに従うことを推奨する。 |
 | <span id="LanguageIsoCode">言語アイソコード</span>。 | テキスト | ✅ |  | ISO言語コード：データの言語を表します。 複数の言語でデータを配信したい場合は、言語ごとにJSONファイルを使用してください。 参考リスト[languages](https://api.bsdd.buildingsmart.org/api/Language/v1)を参照してください。 ◆例："de-DE" |
@@ -125,7 +125,7 @@ Note: Since the release of November 2023, Materials are not treated separately a
 | <span id="ConnectedPropertyCodes">接続プロパティコード</span>。 | テキスト一覧 |  |  | 他の辞書のプロパティである場合は、コードの代わりに完全なURIを指定することもできます。 アセンブルプロパティ](#assembling-properties)を参照してください。 |
 | <span id="CountriesOfUse">使用国</span>。 | テキスト一覧 |  |  | この`プロパティ`が使用されている国のISOコードのリスト。 参照リスト[countries](https://api.bsdd.buildingsmart.org/api/Country/v1)を参照してください。 |
 | <span id="CountryOfOrigin">原産国</span>。 | テキスト |  |  | この`プロパティ`の原産国のISO国コード。参照リスト[countries](https://api.bsdd.buildingsmart.org//api/Country/v1)を参照。 |
-| <span id="CreatorLanguageIsoCode">CreatorLanguageIsoCode</span> です。 | テキスト |  |  | 制作者の言語ISOコード。 参考リスト参照（JSON）[languages](https://api.bsdd.buildingsmart.org/api/Language/v1) |
+| <span id="CreatorLanguageIsoCode">クリエイター言語アイソコード</span>。 | テキスト |  |  | 作成者の言語ISOコード。 参照リスト（JSON）[languages](https://api.bsdd.buildingsmart.org/api/Language/v1)を参照。 |
 | <span id="DeActivationDateUtc">DeActivationDateUtc</span>。 | 日時 |  |  | 日付時刻フォーマット](#datetime-format)を参照。 |
 | <span id="DeprecationExplanation">DeprecationExplanation</span>。 | テキスト |  | ✅ |  |
 | <span id="Dimension">ディメンション</span>。 | テキスト |  |  | 物理量の場合、ISO 80000-1 で定義されている [International_System_of_Quantities](https://en.wikipedia.org/wiki/International_System_of_Quantities) に従って次元を指定する。長さ`、質量`、時間`、電流`、熱力学的温度`、物質量`、光度`の順で指定する。 例えば、速度(m/s)は "1 0 -1 0 0 0 0" と表記する。その他の例は [IDS documentation](https://github.com/buildingSMART/IDS/blob/ver/1.0.x/Documentation/UserManual/units.md) を参照。 |
@@ -148,8 +148,8 @@ Note: Since the release of November 2023, Materials are not treated separately a
 | <span id="パターン">パターン</span>。 | テキスト |  |  | 許容値を制限するための[XMLスキーマ正規表現](https://www.regular-expressions.info/xml.html) |
 | <span id="PhysicalQuantity">物理量</span>。 | テキスト |  | ✅ | プロパティの物理量の名前、例："なし "または "質量" |
 | <span id="PropertyValueKind">プロパティ・バリュー・カインド</span>。 | テキスト |  |  | Single` (1つの値。これがデフォルト), `Range` (2つの値), `List` (複数の値), `Complex` (シングル/レンジ/リストのどちらでもない。例えば、IfcActorのようなオブジェクトや、連結されたプロパティの集合体 - [プロパティのアセンブル](#assembling-properties)を参照), `ComplexList` (複合値のリスト). |
-| <span id="ReplacedObjectCodes">置換オブジェクトコード</span>。 | テキスト一覧 |  |  | この `Property` が置き換えるプロパティコードのリスト。 |
-| <span id="ReplacingObjectCodes">ReplacingObjectCodes</span>。 | テキスト一覧 |  |  | この `Property` が置き換わるプロパティコードのリスト |
+| <span id="ReplacedObjectCodes">ReplacedObjectCodes</span>。 | テキスト一覧 |  |  | この `Property` が置き換えるプロパティコードのリスト。 |
+| <span id="ReplacingObjectCodes">ReplacingObjectCodes</span>。 | テキスト一覧 |  |  | この `Property` は次のように置き換えられる。 |
 | <span id="RevisionDateUtc">リビジョンデートUtc</span>。 | 日時 |  |  | 日付時刻フォーマット](#datetime-format)を参照。 |
 | <span id="RevisionNumber">リビジョン番号</span>。 | 整数 |  |  |  |
 | <span id="Status">ステータス</span>。 | テキスト |  |  | プロパティの状態：`Active`（デフォルト）または `Inactive |
@@ -164,9 +164,9 @@ Note: Since the release of November 2023, Materials are not treated separately a
 
 <h3 id="ClassProperty">ClassProperty</h3>
 
-を割り当てる中間オブジェクト。`Property`への`Class`それぞれ`Class`は複数のプロパティを持つことができます。`Property`多くの`Classes`しかし、1つだけ`ClassProperty`は常に`Class`そして`Property`. 
+を割り当てる中間オブジェクト。`Property`への`Class`それぞれ`Class`は複数のプロパティを持つことができ`Property`多くの`Classes`しかし、1つだけ`ClassProperty`は常に`Class`そして`Property`. 
 
-を通して`ClassProperty`を定義することによって、さらに「Property」を指定することができます。`Class`例えば、一般的な「温度」は摂氏または華氏で表すことができ、マイナス値でもプラス値でも構わないが、室内空間に適用する場合、摂氏5～40度の範囲に制限されることがある。   
+を通して`ClassProperty`を定義することによって、さらに「Property」を指定することができます。`Class`例えば、一般的な「温度」は摂氏または華氏で表すことができ、負の値でも正の値でも構わないが、室内空間に適用する場合、摂氏5～40度の範囲に制限されることがある。   
 
 
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
@@ -180,7 +180,7 @@ Note: Since the release of November 2023, Materials are not treated separately a
 | <span id="PredefinedValue">定義済み値</span>。 | テキスト |  |  | 例："IfcWall" クラスのプロパティ "IsLoadBearing" の値は "true" になります。 |
 | <span id="IsRequired">必須</span>です。 | ブーリアン |  |  | これが `Class` の必須 `Property` であるかどうかを示す。 |
 | <span id="IsWritable">書き込み可能</span>。 | ブーリアン |  |  | クラス `` の `プロパティ`` の値を変更できるかどうかを示す。 |
-| <span id="MaxExclusive">マックスエクスクルーシブ</span>。 | リアル |  |  | 最大許容値(排他的) `Property`に定義された値を上書きする。 'inclusive'と'exclusive'の両方を記入してはならない。 |
+| <span id="MaxExclusive">マックスエクスクルーシブ</span>。 | リアル |  |  | 最大許容値(排他的) `Property`に定義された値を上書きする。 inclusive'と'exclusive'の両方の値を記入してはならない。 |
 | <span id="MaxInclusive">マックス・インクルーシブ</span>。 | リアル |  |  | Property`に定義された値よりも優先される。 inclusive'値と'exclusive'値の両方を埋めないでください。 |
 | <span id="MinExclusive">MinExclusive</span>。 | リアル |  |  | Property`に定義された値をオーバーライドする。 inclusive'値と'exclusive'値の両方を埋めないでください。 |
 | <span id="MinInclusive">ミニインクルーシブ</span>。 | リアル |  |  | Property`に定義された値をオーバーライドする。 inclusive'値と'exclusive'値の両方を記入してはならない。 |
@@ -189,7 +189,7 @@ Note: Since the release of November 2023, Materials are not treated separately a
 | <span id="PropertyType">プロパティタイプ</span>。 | テキスト |  |  | クラス `` の `プロパティ`` の種類: `プロパティ`` (デフォルト) または `依存関係`` (デフォルト) |
 | <span id="SortNumber">ソートナンバー</span>。 | 整数 |  |  | この `プロパティ` の `クラス` 内のソート番号。 |
 | <span id="Symbol">シンボル</span>。 | テキスト |  |  |  |
-| <span id="AllowedValues">許可された値</span>。 | 許容値のリスト |  | ✅ | ClassProperty`に指定できる値のリスト。 Property`に定義されている値をオーバーライドします。 boolean型のプロパティには使用しないでください。 AllowedValue](#AllowedValue)セクションを参照してください。 |
+| <span id="AllowedValues">許可された値</span>。 | 許容値のリスト |  | ✅ | ClassProperty`に指定できる値のリスト。 Property`に定義されている値を上書きします。 boolean型のプロパティには使用しないでください。 AllowedValue](#AllowedValue)セクションを参照してください。 |
 | ~~ExternalPropertyUri~~。 | ~~テキスト |  |  | DEPRECATED - 代わりに `PropertyUri` を使用する。 |
 
 <h3 id="AllowedValue">AllowedValue</h3>
@@ -199,7 +199,7 @@ Note: Since the release of November 2023, Materials are not treated separately a
 | フィールド | データ型 | 必要か？ | トランス・ラタブル？ | 説明 |
 |--------------------------|----------|-----------|---------------|-----------------------------------------------------------------------------|
 | <span id="Code">コード</span | テキスト | ✅ |  | Codeは値の一意な識別情報です（最大20文字）。 これは必須で、ほとんどの場合は値と同じです。 値やその説明の翻訳を可能にするために必要です。 Codeのバリデーションが適用されますので、[Code format](#code-format)を参照してください。 |
-| <span id="Value">値</span>。 | テキスト | ✅ | ✅ | プロパティが持ち得る値の1つ。例：プロパティが "Color "のような場合、"Green" |
+| <span id="Value">バリュー</span>。 | テキスト | ✅ | ✅ | プロパティが持ち得る値の1つ。例：プロパティが "Color "のような場合、"Green" |
 | <span id="Description">説明</span>。 | テキスト |  | ✅ | 値の説明 |
 | <span id="Uri">ユリ</span>。 | テキスト |  |  | OwnedUriと重複するため、新モデルバージョンでは非推奨。 |
 | <span id="SortNumber">ソートナンバー</span>。 | 整数 |  |  | その値が属する `Property` の値のリストにおけるソート番号。 |
@@ -236,17 +236,17 @@ Note: adding translations of the `AllowedValue` is not supported yet
 
 <h3 id="code-format">Code format</h3>
 
-(2024年4月以降) すべてのコードで、発音区別符号、空白、ドット、コンマ、ダッシュ、丸括弧、アンダースコア、数字が使用可能。 特殊文字は使用不可：```"#%/\:`{}[]|;<>?~```コードは大文字と小文字を区別しません。 
+(2024年4月以降) すべてのコードで、発音区別符号、空白、ドット、コンマ、ダッシュ、丸括弧、アンダースコア、数字をサポートしています。 特殊文字は使用できません：```"#%/\:`{}[]|;<>?~```コードは大文字と小文字を区別しません。 
 
 有効なコードの例としては、"bs-agri"、"apple"、"éÄą _- (Д開発,...żź) "などがある。
 
 コードは同じデータ辞書内で一意である必要があり、URIを生成するために使用される。
 
-例えば、IFC規格では、接頭辞'Ifc'と'Pset'で始まるコードが予約されている。 
+例えば、IFC規格では、接頭辞'Ifc'と'Pset'で始まるコードを予約している。 
 
 <h3 id="class-types">Class types</h3>
 
-以下は、ISO12006-3に従った、各タイプの意味の説明である：
+以下は、ISO 12006-3に従った、各タイプの意味の説明である：
 * `Class` - 同じ特徴を共有するオブジェクトの集合の記述<sup>[ISO12006-3,3.7] 。</sup>bSDDで最も一般的なタイプです。 例：壁、スペース
 * `GroupOfProperties` - コレクションを使用すると、プロパティを事前に配置または整理することができます。<sup>[ISO12006-3,3.14] 。</sup>例えば、「環境特性」。[組み立て特性](#assembling-properties).
 * `Material` - 物を作ることができる物理的な物質（例：鋼鉄、ガラス）
@@ -362,7 +362,7 @@ https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/latest/class/fruit
 
 <h3 id="specifying-units">Specifying units</h3>
 
-開発する🚧🚧。
+開発する🚧。
 `Unit(s)`...
 
 `Dimension`...
