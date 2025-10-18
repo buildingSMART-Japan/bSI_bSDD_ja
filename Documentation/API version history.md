@@ -23,7 +23,7 @@ APIに新バージョンがある場合、新バージョンのリリース後�
 ## 2025-06-27
 APIメソッドを変更しました：
  * api/Dictionary/v1/Classes：
-    - オプション「RelatedIfcEntities」が追加されました。関連するIFCエンティティを複数指定できる
+    - オプション"RelatedIfcEntities"が追加されました。関連するIFCエンティティを複数指定できます。
 
 以下の廃止されたAPIメソッドを削除した：
   * api/Classification/v3
@@ -37,16 +37,16 @@ APIメソッドを変更しました：
 ## 2024-09-23
 APIメソッドを変更しました：
  * api/Dictionary/v1/Classes：
-    - オプション「RelatedIfcEntity」の追加
+    - オプション"RelatedIfcEntity"が追加された。
  * api/TextSearch/v2：
-    - 辞書リストの出力に "code "フィールドを追加
+    - 辞書リストの出力に"code"フィールドが追加された。
 
 
 ## 2024-08-16
 新しいAPIメソッド：
  * api/Class/Relations/v1: クラス関係または逆関係の取得 (ページ分割)
  * api/Class/Properties/v1: クラスのプロパティを取得 (ページ分割)
- * api/UploadImportFile/v2：  大きなファイルのアップロードに対応。検証は非同期で行われ、結果はメールで送信される。
+ * api/UploadImportFile/v2：大きなファイルのアップロードに対応。検証は非同期で行われ、結果はメールで送信される。
  * api/Dictionary/Popular/v1: 最も人気のある辞書の短いリストを取得する
  * api/Property/Relations/v1: プロパティ関係または逆関係を取得 (ページ分割)
  * api/Property/Classes/v1: プロパティを使用するクラスのリストを取得 (ページ分割)
@@ -54,11 +54,11 @@ APIメソッドを変更しました：
 
 APIメソッドを変更しました：
  * api/Dictionary/v1/Classes：
-    - オプション「SearchText」追加
+    - オプション"検索テキスト"が追加された。
  * api/Dictionary/v1/Properties：
-    - オプション「SearchText」追加
+    - オプション"検索テキスト"が追加された。
  * api/DictionaryDownload/sketchup/v1：
-    - .xsd "の代わりに".skc "ファイルをダウンロードするようになりました。
+    - ".xsdファイルの代わりに".skcファイルをダウンロードするようになった。
 
 
 ## 2024-03-01
@@ -85,7 +85,7 @@ APIメソッドを変更しました：
 これは、API名自体、入力契約、出力契約のいずれかにこれらの名前のいずれかを持つすべてのAPIを含む。これらすべてのAPIについて、新しいバージョン、新しい名前のAPIが作成されました。既存のAPIは本番稼動後も少なくとも6ヶ月間は存続しますが、新しいAPIを使用することをお勧めします。
 
 その他の変更点
- * 「マテリアル」はもう別個に扱われることはなく、マテリアルを型とするクラスとして扱われる。
+ * "マテリアルはもう別個に扱われることはなく、マテリアルを型とするクラスとして扱われる。
  * インポート・フィールド ClassificationProperty.ExternalPropertyUri は完全に削除されました。PropertyNamespaceUri（現在はPropertyUriと呼ばれています）フィールドが既にそれに取って代わりました。
  * 検索APIがページネーションをサポート
 
@@ -121,17 +121,17 @@ APIを変更した：
  * 追加: api/Domain/v3/{organizationCode}/{code}/{version} - put: ドメインバージョンのステータスを更新する
  * 追加: api/Domain/v3/{organizationCode}/{code}/{version} - delete: ドメインのバージョンを削除する
  * 追加: api/Domain/v3/{organizationCode}/{code} - delete: ドメインを削除する。
- * 変更：api/Classification/v4：分類プロパティと分類リレーションの結果コントラクトに "namespaceUri "が含まれるようになった。
- * 変更: api/Property/v3:プロパティ関係の結果コントラクトに "namespaceUri "が含まれるようになった。
+ * 変更: api/Classification/v4: 分類プロパティと分類リレーションの結果コントラクトに"namespaceUri"が含まれるようになった。
+ * 変更: api/Property/v3: プロパティ関係の結果契約に"namespaceUri"が含まれるようになった。
 
 ## 2023-05-10
- * 変更: api/Domain/v3: 結果契約に「OrganizationCodeOwner」が含まれるようになった。
+ * 変更: api/Domain/v3: 結果契約に"OrganizationCodeOwner"が含まれるようになった。
  * 修正: api/Classification/v4のswaggerドキュメントが修正されました。
 
 ## 2022-12-29
  * 新バージョン：api/Domain/v3：v2と同じ。
  * 新バージョン：api/Domain/v3/Classifications：出力契約が変更されました - 素材は別のリストで返されるようになりました。
- * 新しいバージョン: api/TestSearchListOpen/v6: 出力の契約が変更された - 材料は別のリストで返されるようになった。
+ * 新しいバージョン: api/TestSearchListOpen/v6: 出力の契約が変更された - 素材は別のリストで返されるようになった; 入力の契約はTypeFilterで"Materials"も受け付けるようになった; TypeFilterの値は大文字と小文字を区別しないようになった
  * 変更: api/TestSearchListOpen/v5: TypeFilter の値が大文字と小文字を区別しないようになった。
 
 新しいAPIの旧バージョンは、少なくとも2023年9月まで利用可能である。
@@ -144,12 +144,12 @@ APIを変更した：
 新しいAPIの旧バージョンは、少なくとも2023年7月までは利用可能である。
 
 ## 2022-09-08
-注意：セキュリティで保護されたAPIにアクセスするには、*"URL1*"の*代わりに*"URL0*"*を使用する必要があります！
+注意：セキュリティで保護されたAPIにアクセスするには、"URL1"の代わりに"URL0"を使用する必要があります！
 
 ## 2022-09-05
  * 新規: api/ClassificationSearchOpen/v1、分類検索のための最適化されたAPI
  * 更新：api/Domain/v2およびapi/Domain/v2/Classificationsは、bSDDのデータが最後に更新された日時をLastUpdatedUtcとして返す。
- * 更新: ""URL0*"は""URL1*""*に置き換えられました*。""URL2*""*の検索は*当面""URL3*""*に自動マッチングされます。*
+ * 更新しました：DQ0は"へ、"は"へ自動マッチングされます。
 
 ## 2022-08-23
  * 更新: api/Domain/v2/ClassificationsがAccept-Languageヘッダーに対応しました。
@@ -165,15 +165,15 @@ APIを変更した：
 ## 2022-04-30
 * 新規: マテリアルの詳細を取得するためのapi/Material/v1
 * 新規: マテリアルを検索するための api/Material/SearchOpen/preview
-* 更新： api/Classification/v3は、RDF-XML、Turtle、Html形式のデータを返すことができるようになりました：
+* 更新: api/Classification/v3はRDF-XML、Turtle、Html形式のデータを返せるようになりました：
 
-| アクセプト・ヘッダ | 出力フォーマット |
+| <nobr>Accept</nobr> ヘッダー | <nobr>出力フォーマット</nobr> |
 |--|--|
 | [デフォルト］ | json |
 | application/rdf+xml | RDF XML |
-| アプリケーション/エックスタートル | 亀 |
+| アプリケーション/エックスタートル | turtle |
 | テキスト/html | html |
-| テキスト/タートル | 亀 |
+| テキスト/タートル | turtle |
 
 ## 2021-11-01
 * 新規: api/Domain/v2/Classificationsでドメインの分類リストを取得
