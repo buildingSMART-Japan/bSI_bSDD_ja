@@ -1,36 +1,36 @@
 ## bSDD API
-bSDD API は、IFC や ETIM のような多くの辞書（規格）の`Class` と`Property` 情報を取得するメソッドを提供します。フロー例は以下の通りです：
+bSDD APIは、IFC やETIMのような多くの辞書（規格）の`Class` 、`Property` の情報を取得するメソッドを提供しています。フロー例は以下の通り：
 * ユーザがクラスとそのプロパティを検索する画面を開く
-* 画面を開いた後、アプリはAPIの "Dictionary "メソッドを呼び出し、利用可能な辞書のリストを取得する。このリストをユーザーに提示して選択させることができる。
+* 画面を開いた後、アプリはAPIの Dictionary メソッドを呼び出し、利用可能な辞書のリストを取得する。このリストをユーザーに提示して選択させることができる。
 * ユーザーは辞書を選択し、必要なクラスを検索するためにテキストを入力します。
-* ユーザーがSearchを押すと、アプリがbSDD APIにリクエストを送る（"SearchList "メソッド）
+* ユーザーがSearchを押すと、アプリはbSDD APIにリクエストを送信する（SearchList メソッド）。
 * 結果はクラスのリストです。
 * ユーザーは必要なものを選ぶことができる
-* アプリは、bSDD APIにクラスの詳細とプロパティのリクエストを送信します（"Class "メソッド）。
+* アプリは、bSDD APIにクラスの詳細とプロパティのリクエストを送信します（Class メソッド）。
 * APIはクラスの詳細とプロパティを返し、アプリはそれをユーザーに表示します。
 
 典型的なユースケースをSketchUpで実演しています。SketchUpの使用例とbSDDプラグインのビデオはhttps://vimeo.com/446417661/ff8b6605d3。
 
-**bSDD API は定期的に更新される。**APIに破壊的な変更があった場合、私たちは新しいバージョンを作成し、変更が発生してから6ヶ月間は両方のバージョンをサポートします。既存のAPIへの追加は、通常、破壊的な変更を意味せず、同じバージョンに導入することができる。
+**bSDD API は定期的に更新される**。APIに破壊的な変更があった場合、私たちは新しいバージョンを作成し、変更が発生してから6ヶ月間は両方のバージョンをサポートします。既存のAPIへの追加は、通常、破壊的な変更を意味せず、同じバージョンに導入することができる。
 
 ## API契約とAPIのテスト
 API契約情報は、[bSDD API contract, official releaseで](https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1)入手できます。この情報はログインすることなく入手できます。APIメソッドをテストすることもできます。セキュリティで保護されたメソッドにはロックがかかっています。セキュリティで保護されたメソッドにアクセスするには、UIからAuthorizeボタンでログインする必要があります：
 
 <img src="https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/graphics/swagger-authorize2.png" alt="Swagger authorization" style="width: 550px" />
 
-次のclient_idを入力してください： b222e220-1f71-4962-9184-05e0481a390d
+client_id次の項目を入力してください: b222e220-1f71-4962-9184-05e0481a390d
 
-"read "スコープのチェックをお忘れなく！
+read スコープのチェックをお忘れなく！
 
 ## https://identifier.buildingsmart.org
-`Class` や`Property` のデータには、`Class` や`Property` の URI から直接アクセスすることもできます。例えば、ブラウザで https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall に移動すると、そのクラスのデータが視覚的に表示されます。JSON形式の出力が必要な場合、"application/JSON "の "Accept "ヘッダを送信すると、JSON形式の結果が得られます。このJSON結果の内容は、HTML結果とは異なります！
+`Class` または`Property` の Uri を使用して、`Class` または`Property` のデータに直接アクセスすることもできます。例えば、ブラウザで https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall に移動すると、そのクラスのデータが視覚的に表示されます。JSON形式の出力が必要な場合、"application/JSONで" Accept"ヘッダを送信すると、JSON形式の結果が得られます。このJSON結果の内容は、HTML結果とは異なります！
 
-重要：これらの識別子URIをシステム間通信に使用しないでください！まず第一に、サーバーからサーバーへ余計な「ホップ」が発生します。第二に、使用している API のバージョンを制御することができません。bSDD の新しいリリースが発行された後の結果は、リリース前の結果と異なるかもしれません。
+重要：これらの識別子Uriをシステム間通信に使用しないでください！まず第一に、サーバーからサーバーへ余計な'ホップ'が発生します。次に、使用している API のバージョンを制御することができません。bSDD の新しいリリースが発行された後の結果は、リリース前の結果と異なるかもしれません。
 
-&gt; 注: https://identifier.buildingsmart.org URLを直接呼び出してJSON形式のデータを取得することは、現在廃止されています。代わりにapi/Class/vXまたはapi/Property/vXを使用してください。
+> 注: https://identifier.buildingsmart.org URLを直接呼び出してJSON形式のデータを取得することは、現在廃止されています。代わりにapi/Class/vXまたはapi/Property/vXを使用してください。
 
 ## bSDDテスト環境
-bSDD には、bSDD の新しい開発をテストするための TEST 環境があります。内部使用のためのものですが、bSDD の API を使いたい開発者は、開発目的で TEST 環境を使うことを歓迎します。私たちはこの環境のSLAを持っていませんし、その内容をユーザに見せることも推奨していません。もしあなたがディクショナリ所有者で、データのチェックやアップロードプロセスのテストをしたい場合は、公式のbSDDをご利用ください。
+bSDD には、bSDD の新しい開発をテストするための TEST 環境があります。内部使用のためのものですが、bSDD の API を使用したい開発者は、開発目的で TEST 環境を使用することを歓迎します。私たちはこの環境のSLAを持っていませんし、その内容をユーザに見せることも推奨していません。もしあなたがディクショナリ所有者で、データのチェックやアップロードプロセスのテストをしたい場合は、公式のbSDDをご利用ください。
 
 ## GraphQL
 データはGraphQLでもアクセスできる。こちらで試すことができる：  
@@ -38,16 +38,16 @@ bSDD には、bSDD の新しい開発をテストするための TEST 環境が�
 
 
 GraphQLリクエストを送信するURLは以下の通り：
-- 公式リリース：https://api.bsdd.buildingsmart.org/graphqls（セキュリティで保護されているため、末尾の "s "に注意）
+- 公式リリース：https://api.bsdd.buildingsmart.org/graphqls（確保済み、末尾の"sに"注意）
 - テスト版：https://test.bsdd.buildingsmart.org/graphql（セキュアではない）
-- テスト版：https://test.bsdd.buildingsmart.org/graphqls (保護された)
-Note: those URLs are not hyperlinks and do not work in a browser. You need to send a POST request with the query data (the GET request does not work).
+- テスト版：https://test.bsdd.buildingsmart.org/graphqls (保護された)  
+注：これらのURLはハイパーリンクではないので、ブラウザでは機能しません。クエリーデータとともにPOSTリクエストを送信する必要があります（GETリクエストは機能しません）。
 
 ここには、セキュアな bSDD API にアクセスするためのサンプルコードがあります:[bSDD GraphQL examples](https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20and%20GraphQL.md).これを実装する際にサポートが必要な場合は、お問い合わせください。
  
 ## クライアント開発者向け
-### Httpヘッダー "(X-)User-Agent"
-各 HTTP 呼び出しの HTTP ヘッダ "User-Agent" (または "X-User-Agent") に、アプリケーションの名前とバージョンを含めてください。これにより、bSDD の使用状況をよりよく追跡することができ、 bSDD API を使用しているあなたのアプリケーションに関する統計情報を提供することができます。望ましい形式は "application/version" で、たとえば "Autodesk.Revit/2024" などです。
+### Httpヘッダ"(X-)User-Agent"
+各 HTTP 呼び出しの HTTP ヘッダ"User-Agent"(または"X-User-Agent") に、アプリケーションの名前とバージョンを含めてください。これにより、bSDD の使用状況をよりよく追跡し、bSDD API を使用しているアプリケーションに関する統計情報を提供することができます。望ましい形式は"application/version で、"たとえば"Autodesk.Revit/2024..". などです。
 
 ### 安全なAPI
 セキュリティで保護されたAPIを使用するクライアントを構築する場合は、クライアントIDを要求する必要があります。そのためには、私たちに電子メールを送信してください：
@@ -55,7 +55,7 @@ Note: those URLs are not hyperlinks and do not work in a browser. You need to se
 - アプリケーションのタイプ：
   - ウェブアプリケーション
   - シングル・ページ・アプリケーション
-  - iOS/macOS、Objective-C、Swift、Xamarin
+  - iOS / macOS、Objective-C、Swift、Xamarin
   - アンドロイド - Java、Kotlin、Xamarin
   - モバイル/デスクトップ
 - どの言語を使用していますか？(使用するライブラリによって設定すべきredirectUriが異なる場合があります)
@@ -89,18 +89,18 @@ Python: https://docs.microsoft.com/en-us/python/api/overview/azure/active-direct
 
 ### 設定
 これらは、Dekstopクライアントアプリのデモ用に使用できる設定です：
-* テナント： "buildingsmartservices.onmicrosoft.com"
-* AzureAdB2Chostname: "authentication.buildingsmart.org"
-* ClientId: "4aba821f-d4ff-498b-a462-c2837dbbba70"
-* RedirectUri: "com.onmicrosoft.bsddprototypeb2c.democonsoleapp://oauth/redirect"
-* PolicySignUpSignIn："*b2c1asignupsignin_c*"
-* PolicyEditProfile："*b2c1aprofileedit_c*"
-* PolicyResetPassword: "*b2c1apasswordreset_c*"
+* テナント:"buildingsmartservices.onmicrosoft.com"
+* AzureAdB2Cホスト名:"authentication.buildingsmart.org"
+* ClientId："4aba821f-d4ff-498b-a462-c2837dbbba70"
+* RedirectUri:"com.onmicrosoft.bsddprototypeb2c.democonsoleapp://oauth/redirect"
+* PolicySignUpSignIn： "b2c_1a_signupsignin_c"
+* PolicyEditProfile： "b2c_1a_profileedit_c"
+* PolicyResetPassword： "b2c_1a_passwordreset_c"
 
 * ApiScope : "https://buildingsmartservices.onmicrosoft.com/api/read"
 * BsddApiUrl："https://test.bsdd.buildingsmart.org"
 
-完全なB2CオーソリティのURLは、https://authentication.buildingsmart.org/tfp/buildingsmartservices.onmicrosoft.com/b2c_1a_signupsignin_c（「tfp」の部分に注目！）。
+完全なB2CオーソリティのURLは、https://authentication.buildingsmart.org/tfp/buildingsmartservices.onmicrosoft.com/b2c_1a_signupsignin_c （一部の"tfpに"注意！）。
 
 公式リリースを使用する場合は、上記以外の設定を使用する必要があります：
 * ClientId:[CONTACT FORMを](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h)使用してクライアントIDをリクエストします。

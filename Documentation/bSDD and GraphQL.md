@@ -1,20 +1,20 @@
 # bSDDとGraphQL
-
 ## お知らせ
-
 ネーミングもいくつか変更した：
 
-1. "ドメイン" --> "辞書"
-2. "分類" --> "クラス"
-3. "NamespaceUri"-->"Uri"
-4. "IncludeChilds" --> "IncludeChildren"
+1. "ドメイン"--&gt;"辞書"
 
-一貫性を持たせるため、GraphQL APIの名前も変更された。
-But we do support the old naming until at least April 2024.
+1. "分類"→"クラス"
+
+1. "NamespaceUri"--&gt;"Uri"
+
+1. "IncludeChilds"--&gt;"IncludeChildren"
+
+一貫性を持たせるため、GraphQL APIの名前も変更された。  
+しかし、少なくとも2024年4月までは旧ネーミングをサポートする。
 
 ## GraphQL入門
-
-通常の」APIは非常に静的である。 リクエストを行うと、あらかじめ定義されたデータセットが返される。 さらに情報が必要な場合は、おそらく別のAPIコールを行う必要がある。 そして、必要なデータをすべて取得するまで、さらに別のコールを行う必要があるかもしれない。 GraphQLはこの問題を克服するために設計されている。必要なデータを指定できるクエリー言語である。
+通常の'APIは非常に静的である。リクエストを行うと、定義済みのデータセットが返ってくる。さらに情報が必要な場合は、おそらく別のAPIコールをする必要がある。そして、必要なデータがすべて得られるまで、また別の呼び出しが必要になるかもしれない。GraphQLはこの問題を克服するために設計された。必要なデータを指定できるクエリー言語である。
 
 GraphQLの詳細については、例えば以下を参照のこと：
 - https://dev.to/davinc/graphql-for-beginners-3f1a
@@ -23,19 +23,17 @@ GraphQLの詳細については、例えば以下を参照のこと：
 シナリオによってはGraphQLを使用する方が効率的な場合もあるが、通常のAPIが最も効率的なソリューションであるシナリオもまだたくさんある。
 
 ## bSDD GraphQLエンドポイント
-
 bSDD APIはGraphQLエンドポイントも提供しており、テスト環境にはプレイグラウンドもある：
 
-遊び場：https://test.bsdd.buildingsmart.org/graphiql/
-Test GraphQL endpoint: https://test.bsdd.buildingsmart.org/graphql/
-Test GraphQL secured endpoint: https://test.bsdd.buildingsmart.org/graphqls/
+遊び場：https://test.bsdd.buildingsmart.org/graphiql/  
+テスト用GraphQLエンドポイント：https://test.bsdd.buildingsmart.org/graphql/  
+テスト用GraphQLセキュアエンドポイント：https://test.bsdd.buildingsmart.org/graphqls/
 
 本番用GraphQLセキュアエンドポイント：https://api.bsdd.buildingsmart.org/graphqls/
 
-セキュリティで保護されたAPIにアクセスする方法については、ドキュメントhttps://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20API.md を参照してください。セキュリティで保護されたGraphQLエンドポイントにアクセスする場合も同じです。
+セキュアなAPIへのアクセス方法については、ドキュメントhttps://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20API.md。セキュアなGraphQLエンドポイントへのアクセスも同じです。
 
 ## データクエリの例
-
 -- 利用可能な言語のリストを取得する：
 ```
 {
@@ -198,8 +196,7 @@ query ($dictionaryUri: String!, $uri: String!) {
 }
 ```
 ## メタデータ・クエリーの例
-
-GraphQLでは、GraphQLスキーマに対してクエリーを実行することもできます（「イントロスペクション」とも呼ばれます）。 これを使用して、たとえば利用可能なフィールドやクエリーを取得することができます：
+GraphQLでは、GraphQLスキーマに対してクエリーを実行することもできます（Introspectionとしても"知られています）。それを使って、たとえば利用可能なフィールドやクエリを取得することができます：
 ```
 {
   __schema {
@@ -232,4 +229,4 @@ query availableQueries {
   }
 }
 ```
-その他のイントロスペクションの例はhttps://graphql.org/learn/introspection/。
+イントロスペクションの他の例は、https://graphql.org/learn/introspection/ で見ることができる。
