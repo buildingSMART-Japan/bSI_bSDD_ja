@@ -35,7 +35,7 @@
 行動規範を誠実に守らない、あるいは実施しないプロジェクトメンテナは、プロジェクトのリーダーシップの他のメンバーによって決定される一時的または恒久的な影響に直面する可能性があります。
 
 ## 帰属
-この行動規範は、[http://contributor-covenant.org/version/1/4][バージョン]で入手可能な[貢献者規約][ホームページ]、バージョン1.4から適応されたものである。
+この行動規範は、[http://contributor-covenant.org/version/1/4][version]で入手可能な[コントリビューター規約][homepage]バージョン1.4から抜粋したものです。
 
 [homepage]: http://contributor-covenant.org
 [version]: http://contributor-covenant.org/version/1/4/
