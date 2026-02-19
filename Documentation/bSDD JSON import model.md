@@ -31,8 +31,8 @@ bSDDは、独立した組織によって発行されたデータ辞書（デー�
 
 buildingSMARTデータディクショナリのデータは、このドキュメントで説明する標準に従って、JSONファイルで納品することができます。JSONとExcelのテンプレートは、[/Model/Import Modelにも](https://github.com/buildingSMART/bSDD/tree/master/Model/Import%20Model)あります。
 
-リンクをクリックすると、[国](https://api.bsdd.buildingsmart.org/api/Country/v1)、[言語](https://api.bsdd.buildingsmart.org/api/Language/v1)、[単位](https://api.bsdd.buildingsmart.org/api/Unit/v1)、[参考文書](https://api.bsdd.buildingsmart.org/api/ReferenceDocument/v1)、[ifc](https://api.bsdd.buildingsmart.org/api/Dictionary/v2/Classes?uri=https%3A%2F%2Fidentifier.buildingsmart.org%2Furi%2Fbuildingsmart%2Fifc%2F4.3)クラスに使用できるコードの一覧が表示されます。  
-参照ドキュメントが不足していると思われる場合は、[issueを投稿して](https://github.com/buildingSMART/bSDD/issues)お知らせください。JSONのすべての値は、数値のExampleおよびAllowedValueフィールドを含め、二重引用符で囲まれた文字列でなければなりません。
+リンクをクリックすると、[国](https://api.bsdd.buildingsmart.org/api/Country/v1)、[言語](https://api.bsdd.buildingsmart.org/api/Language/v1)、[単位](https://api.bsdd.buildingsmart.org/api/Unit/v1)、[参照文書](https://api.bsdd.buildingsmart.org/api/ReferenceDocument/v1)、[ifc](https://api.bsdd.buildingsmart.org/api/Dictionary/v2/Classes?uri=https%3A%2F%2Fidentifier.buildingsmart.org%2Furi%2Fbuildingsmart%2Fifc%2F4.3)クラスに使用できるコードの一覧が表示されます。  
+参照ドキュメントが不足していると思われる場合は、[issueを投稿して](https://github.com/buildingSMART/bSDD/issues)お知らせください。JSON内の値は、数値の例およびAllowedValueフィールドを含め、すべて二重引用符で囲まれた文字列でなければなりません。
 
 JSONに馴染みのない方は、[JSON入門を](https://javaee.github.io/tutorial/jsonp001.html)お読みになることをお勧めします。JSONは、コンピュータ・システムがデータを交換するためのフォーマットであることに注意してください。辞書データがコンピュータ・システムにある場合、システムにJSONを作成させるのが最善です。
 
@@ -46,8 +46,8 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 
 | フィールド | データ型 | 必要ですか？ | 翻訳可能？ | 説明 |
 |------------------|------------------|-----------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span id="OrganizationCode">組織コード</span> | テキスト | ✅ |  | bSDD への登録時に受け取った組織のコード。あなたの組織がまだコードを持っていない場合は、[bSDD ユーザヘルプデスクに](https://bsi-technicalservices.atlassian.net/servicedesk/customer/portal/3/group/4/create/25)リクエストしてください。コードは、すべての URI リンクに表示されるため、できれば短いものにしてください。許可される文字については、[コード形式の](#code-format)項を参照のこと。このコードは数字で始めることはできない。コード例:"ifc". |
-| <span id="DictionaryCode">辞書コード</span> | テキスト | ✅ |  | 辞書のコード、できれば短い。[コード形式](#code-format)参照。 |
+| <span id="OrganizationCode">組織コード</span> | テキスト | ✅ |  | bSDD への登録時に受け取った組織のコード。あなたの組織がまだコードを持っていない場合は、[bSDD ユーザヘルプデスクで](https://bsi-technicalservices.atlassian.net/servicedesk/customer/portal/3/group/4/create/25)リクエストしてください。コードは、すべての URI リンクに表示されるため、できれば短いものにしてください。許可される文字については、[コード形式の](#code-format)項を参照のこと。このコードは数字で始まることはできない。コード例"ifc. |
+| <span id="DictionaryCode">辞書コード</span> | テキスト | ✅ |  | 辞書のコード："ifc".[コード形式](#code-format)参照。 |
 | <span id="DictionaryName">辞書名</span> | テキスト | ✅\* |  | 辞書の名前。\*辞書が存在する場合、この名前を指定する必要はない。 |
 | <span id="DictionaryVersion">辞書バージョン</span> | テキスト | ✅ |  | 辞書データのバージョン。例：1.0.1。許容値："12" ", 10.1" ", 1.2.3".不可： 1."2.3.4"、"Beta"、"2x3"。私たちは、[セマンティック・バージョニング・アプローチに](https://semver.org/)従うことを推奨します。 |
 | <span id="LanguageIsoCode">言語IsoCode</span> | テキスト | ✅ |  | ISO言語コード：データの言語を示す。複数の言語でデータを配信したい場合は、言語ごとにJSONファイルを使用してください。[言語](https://api.bsdd.buildingsmart.org/api/Language/v1)一覧参照。\* 例："de-DE" |
@@ -62,7 +62,7 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 | <span id="QualityAssuranceProcedure">品質保証手順</span> | テキスト |  |  | 辞書に使用される品質保証手順の名称または簡単な説明："ETIM international"、"AFNOR NF XP P07-150 (PPBIM)"、"bSI プロセス"、"UN GHS 2015"、"UN CPC 1.1"、"非公開"、"不明"。 |
 | <span id="QualityAssuranceProcedureUrl">品質保証手続きURL</span> | テキスト |  |  | 品質保証手順に関する詳細情報を掲載したウェブページへの URL："https://www.buildingsmart.org/about/bsi-process" |
 | <span id="ReleaseDate">リリース日</span> | 日時 |  |  | バージョンのリリース日。「[Date Time format](#datetime-format)」を参照。 |
-| <span id="Status">ステータス</span> | テキスト |  |  | 可能なバージョンステータス：`Preview`、`Active` `Inactive` 。新しいバージョンをアップロードするときは、常に`Preview` である必要があります。その後、[API](https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1)または[管理ポータルを介して](https://manage.bsdd.buildingsmart.org/)コンテンツをアクティブ化または非アクティブ化することができます。続きを読む:[bSDDコンテンツのライフサイクル](https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/bSDD%20import%20tutorial.md#the-lifecycle-of-the-bsdd-dictionary-version) |
+| <span id="Status">ステータス</span> | テキスト |  |  | 可能なバージョンステータス：`Preview`、`Active` `Inactive` 。新しいバージョンをアップロードするときは、常に`Preview` である必要があります。その後、[API](https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1)または[管理ポータルを介して](https://manage.bsdd.buildingsmart.org/)コンテンツをアクティブ化または非アクティブ化できます。続きを読む:[bSDDコンテンツのライフサイクル](https://raw.githubusercontent.com/buildingSMART/bSDD/master/Documentation/bSDD%20import%20tutorial.md#the-lifecycle-of-the-bsdd-dictionary-version) |
 | <span id="Classes">クラス</span> | クラス一覧 | ✅ |  | `Class` 型のオブジェクトのリスト。[クラス](#class) |
 | <span id="Properties">プロパティ</span> | 物件リスト | ✅ |  | `Property` 型のオブジェクトのリスト。[プロパティ](#property) |
 
@@ -76,13 +76,13 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 
 | フィールド | データ型 | 必要ですか？ | 翻訳可能？ | 説明 |
 |---------------------------|--------------------------------|-------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
-| <span id="Code">コード</span> | テキスト | ✅ |  | 辞書内のクラスの一意の識別。これは、IFCモデルで識別子として使用される情報です。例："abc-00123-01"または"SpecialWall"。コード・バリデーションが適用されます：[コード・フォーマット](#code-format)を参照。接頭辞"Ifc"は、IFC標準のために予約されています。 |
-| <span id="Name">名称</span> | テキスト | ✅ | ✅ | `Class,` ："カーテンウォール" |
+| <span id="Code">コード</span> | テキスト | ✅ |  | 辞書内のクラスの一意な識別。これは、IFCモデルで識別子として使用される情報です。例："abc-00123-01"または"SpecialWall"。コード・バリデーションが適用されます：[コード形式を](#code-format)参照してください。接頭辞"Ifc"は、IFC標準のために予約されています。 |
+| <span id="Name">名称</span> | テキスト | ✅ | ✅ | `Class,` 例"IfcCurtainWall |
 | <span id="ClassType">クラスタイプ</span> | テキスト | ✅* |  | 次のいずれかでなければならない：`Class`、`Material`、`GroupOfProperties`、`AlternativeUse`.[クラス・タイプの](#class-types)詳細はこちら。指定しない場合、デフォルトで`Class` タイプが使用されます。`ReferenceDocument` 、`ComposedProperty` 、`Dictionary` のタイプは非推奨となり、アップロード時に使用することはできませんが、移行期間中はAPI結果に表示されることがあります。 |
 | <span id="Definition">定義</span> | テキスト |  | ✅ | `Class` の定義。意味的な意味を説明する。ISO に従った必須フィールド。[二重角括弧リンクを](#double-square-bracket-links)サポート。 |
 | <span id="Description">説明</span> | テキスト |  | ✅ | 補足説明のための追加フィールド。*定義(Definition)*が規格に由来し、さらに説明が必要な場合にのみ使用してください。 |
-| <span id="ParentClassCode">親クラスコード</span> | テキスト |  |  | 親への参照`Class` 。このフィールドのIDは、配信されたデータに存在しなければならない。例："ifc-00123-00".[リレーションシップを定義するには？](#defining-relations) |
-| <span id="RelatedIfcEntityNamesList">関連Ifcエンティティ名リスト</span> | テキスト一覧 |  |  | この`Class` の表現として使用するIFCクラスのコード。例えば[IfcWall]。bSDD API[ifcclasss を](https://api.bsdd.buildingsmart.org/api/Dictionary/v3/Classes?uri=https%3A%2F%2Fidentifier.buildingsmart.org%2Furi%2Fbuildingsmart%2Fifc%2F4.3%2F)参照。[関係を定義するには？](#defining-relations) |
+| <span id="ParentClassCode">親クラスコード</span> | テキスト |  |  | 親への参照`Class` 。このフィールドのIDは、配信されたデータに存在しなければならない（MUST）。例"ifc-00123-00.[リレーションシップを定義するには？](#defining-relations) |
+| <span id="RelatedIfcEntityNamesList">関連Ifcエンティティ名リスト</span> | テキスト一覧 |  |  | この`Class` の表現として使用するIFCクラスのコード。例えば['IfcWall'].bSDD API[ifcクラスを](https://api.bsdd.buildingsmart.org/api/Dictionary/v3/Classes?uri=https%3A%2F%2Fidentifier.buildingsmart.org%2Furi%2Fbuildingsmart%2Fifc%2F4.3%2F)参照してください。[リレーションシップを定義するには？](#defining-relations) |
 | <span id="Synonyms">同義語</span> | テキスト一覧 |  | ✅ | 検索しやすいように、このクラスの代替名称のリスト。 |
 | <span id="ActivationDateUtc">アクティベーション日付</span> | 日時 |  |  | [日付時刻のフォーマットを](#datetime-format)参照。 |
 | <span id="ReferenceCode">参照コード</span> | テキスト |  |  | 参照コードは、辞書固有の用法を持つことができる。NULLの場合、`Code` の値がフィールドを埋めるために使用される。`ReferenceCode` を空にするには、空の文字列 を使用する。 |
@@ -115,7 +115,7 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 
 | フィールド | データ型 | 必要ですか？ | 翻訳可能？ | 説明 |
 |-------------------------------|--------------|-----------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span id="Code">コード</span> | テキスト | ✅ |  | 辞書内のプロパティの一意な識別。これは、IFCモデルで識別子として使用される情報である。例："abc-00123-01"または"ExternalArea"。コード・バリデーションが適用されます：[コード・フォーマット](#code-format)を参照。 |
+| <span id="Code">コード</span> | テキスト | ✅ |  | 辞書内のプロパティの一意な識別。これは、IFCモデルで識別子として使用される情報です。例："abc-00123-01"または"ExternalArea"。コード・バリデーションが適用されます：[コード・](#code-format)フォーマットを参照してください。 |
 | <span id="Name">名称</span> | テキスト | ✅ | ✅ | 物件名例"外部エリア |
 | <span id="Definition">定義</span> | テキスト |  | ✅ | `Property` の定義。意味的な意味を説明する。ISO に従った必須フィールド。[二重角括弧リンクを](#double-square-bracket-links)サポート。 |
 | <span id="Description">説明</span> | テキスト |  | ✅ | 補足説明のための追加フィールド。*定義(Definition)*が規格に由来し、さらに説明が必要な場合にのみ使用してください。 |
@@ -124,7 +124,7 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 | <span id="Example">例</span> | テキスト |  | ✅ | `Property`の例示値 |
 | <span id="ActivationDateUtc">アクティベーション日付</span> | 日時 |  |  | [日付時刻のフォーマットを](#datetime-format)参照。 |
 | <span id="ConnectedPropertyCodes">接続プロパティコード</span> | テキスト一覧 |  |  | 1つ以上の接続プロパティのコードのリスト。別の辞書のプロパティである場合は、コードの代わりに完全なURIを指定することもできる。[アセンブルプロパティを](#assembling-properties)参照。 |
-| <span id="CountriesOfUse">使用国</span> | テキスト一覧 |  |  | この`Property` が使用されている国 ISO コードのリスト。参照リスト[国を](https://api.bsdd.buildingsmart.org/api/Country/v1)参照してください。 |
+| <span id="CountriesOfUse">使用国</span> | テキスト一覧 |  |  | この`Property` が使用されている国のISOコードのリスト。参照リスト[国を](https://api.bsdd.buildingsmart.org/api/Country/v1)参照してください。 |
 | <span id="CountryOfOrigin">原産国</span> | テキスト |  |  | この`Property` の原産国の ISO 国コード。参照リストの[国を](https://api.bsdd.buildingsmart.org//api/Country/v1)参照してください。 |
 | <span id="CreatorLanguageIsoCode">CreatorLanguageIsoCode</span> | テキスト |  |  | 作成者の言語ISOコード。参照リスト(JSON[)言語](https://api.bsdd.buildingsmart.org/api/Language/v1) |
 | <span id="DeActivationDateUtc">解除日Utc</span> | 日時 |  |  | [日付時刻のフォーマットを](#datetime-format)参照。 |
@@ -148,7 +148,7 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 | <span id="OwnedUri">所有Uri</span> | テキスト |  |  | ディクショナリレベルで`UseOwnUri = true` を指定した場合には、 Property をグローバルに一意に識別する Uri を与える必要があります。 |
 | <span id="Pattern">パターン</span> | テキスト |  |  | 許容値を制限するための[XMLスキーマ正規表現](https://www.regular-expressions.info/xml.html) |
 | <span id="PhysicalQuantity">物理量</span> | テキスト |  | ✅ | 特性の物理量の名称、例："質量" "なし"または"質量" |
-| <span id="PropertyValueKind">プロパティ値</span> | テキスト |  |  | `Single` (1つの値。これがデフォルト),`Range` (2つの値),`List` (複数の値),`Complex` (単一/範囲/リストのどちらでもない。例えば、IfcActorのようなオブジェクトや、接続されたプロパティの集合体 -[プロパティの集合体を](#assembling-properties)参照),`ComplexList` (複合値のリスト) のいずれかでなければならない。 |
+| <span id="PropertyValueKind">プロパティ値</span> | テキスト |  |  | `Single` （1つの値。これがデフォルト）、`Range` （2つの値）、`List` （複数の値）、`Complex` （単一/範囲/リストのいずれでもない。例えば、IfcActorのようなオブジェクトや、接続されたプロパティの集合体 -[プロパティの組み立てを](#assembling-properties)参照）、`ComplexList` （複合値のリスト）のいずれかでなければなりません。 |
 | <span id="ReplacedObjectCodes">置換オブジェクトコード</span> | テキスト一覧 |  |  | この`Property` が置き換えるプロパティコードのリスト |
 | <span id="ReplacingObjectCodes">オブジェクトコードの置き換え</span> | テキスト一覧 |  |  | このプロパティコードのリスト`Property` は次のように置き換えられる。 |
 | <span id="RevisionDateUtc">リビジョン日付</span> | 日時 |  |  | [日付時刻のフォーマットを](#datetime-format)参照。 |
@@ -177,13 +177,13 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 | <span id="PropertyCode">プロパティコード</span> | テキスト | ✅\* |  | 同じ`Dictionary` 内にある場合は`Property` への参照。\* PropertyCodeが使用されている場合は、PropertyUriを記入しないでください。 |
 | <span id="PropertyUri">PropertyUri</span> | テキスト | ✅\* |  | `Property` が別の`Dictionary` にある場合の参照、例[：https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/prop/ClearWidth](https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3/prop/ClearWidth) \* どちらか一方のみが必要であり、PropertyUri が使用中の場合は PropertyCode を記入しない。 |
 | <span id="Description">説明</span> | テキスト |  | ✅ | クラス固有のプロパティの説明を指定することができます。省略された場合、該当するプロパティの'一般的な'説明が表示されます。 |
-| <span id="PropertySet">プロパティセット</span> | テキスト |  |  | プロパティがIFCデータに配置されるべきセットの名前。接頭辞 'Pset_' は公式IFC 用に予約されています。コードバリデーションが適用されます：[コードフォーマット](#code-format)。続きを読む:[プロパティを組み立てる](#assembling-properties)。 |
+| <span id="PropertySet">プロパティセット</span> | テキスト |  |  | IFCデータで、プロパティを配置するセットの名前。接頭辞 'Pset_' は、公式のIFC のために予約されています。コード・バリデーションが適用されます：[コードフォーマット](#code-format)。続きを読む:[プロパティを組み立てる](#assembling-properties)。 |
 | <span id="Unit">単位</span> | テキスト |  |  | ユニットのコード。Property 'Units'(リスト)とは異なり、この属性は単一の値を取る。[ユニットの](https://api.bsdd.buildingsmart.org/api/Unit/v1)参考リスト[（JSON）](https://api.bsdd.buildingsmart.org/api/Unit/v1)または[ユニットのCSVテーブルの](../DataFiles/units.csv)形式を参照してください。私たちは[QUDT](http://www.qudt.org/)ユニットの多くをサポートしていますが、もしユニットが見つからない場合は、[ユニットリクエストをissueとして投稿して](https://github.com/buildingSMART/bSDD/issues)ください。 |
-| <span id="PredefinedValue">定義済み値</span> | テキスト |  |  | この`Property` の事前定義値。例："IfcWall"クラスでは、"IsLoadBearing"プロパティの値は"true"になります。 |
+| <span id="PredefinedValue">定義済み値</span> | テキスト |  |  | この`Property` の事前定義値。例:"IfcWall"クラスの場合、"IsLoadBearing"プロパティの値は"true"になります。 |
 | <span id="IsRequired">必須</span> | ブーリアン |  |  | これが`Class`の必須`Property`であるかどうかを示す。 |
 | <span id="IsWritable">書き込み可能</span> | ブーリアン |  |  | `Class` のこの`Property` の値を変更できるかどうかを示す。 |
 | <span id="MaxExclusive">最大排他</span> | リアル |  |  | 最大許容値、排他的。`Property` に定義された値を上書きする。 'inclusive' および 'exclusive' 値の両方を記入してはならない。 |
-| <span id="MaxInclusive">最大包含</span> | リアル |  |  | 最大許容値。`Property` に定義された値を上書きする。 'inclusive' および 'exclusive' 値の両方を記入してはならない。 |
+| <span id="MaxInclusive">最大包含</span> | リアル |  |  | 最大許容値。`Property` に定義された値を上書きする。 'inclusive' と 'exclusive' の両方の値を記入してはならない。 |
 | <span id="MinExclusive">最小排他</span> | リアル |  |  | 最小許容値、排他的。`Property` に定義された値を上書きする。 'inclusive' および 'exclusive' 値の両方を記入してはならない。 |
 | <span id="MinInclusive">最小包含</span> | リアル |  |  | 最小許容値。`Property` に定義された値を上書きする。 'inclusive' および 'exclusive' 値の両方を記入してはならない。 |
 | <span id="Pattern">パターン</span> | テキスト |  |  | 許容値を制限するための[XML Schema 正規表現](https://www.regular-expressions.info/xml.html)。Property に対して定義されたパターンを上書きします。 |
@@ -191,7 +191,7 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 | <span id="PropertyType">プロパティタイプ</span> | テキスト |  |  | `Class` の`Property` のタイプ：`Property` （デフォルト）または`Dependency` |
 | <span id="SortNumber">ソート番号</span> | 整数 |  |  | この`Property` のソート番号。`Class` |
 | <span id="Symbol">シンボル</span> | テキスト |  |  |  |
-| <span id="AllowedValues">許容値</span> | 許容値のリスト |  | ✅ | `ClassProperty` の許容値のリスト。`Property` のために定義された値を上書きする。 boolean タイプのプロパティには、これを使用しないこと。[AllowedValue](#AllowedValue)参照。 |
+| <span id="AllowedValues">許容値</span> | 許容値のリスト |  | ✅ | `ClassProperty` の許容値のリスト。`Property` のために定義された値をオーバーライドします。 boolean タイプのプロパティには、この値を使用しないでください。[AllowedValue](#AllowedValue)参照。 |
 | ~~外部プロパティUri~~ | ~~テキスト~~ |  |  | 廃止 - 代わりに`PropertyUri` を使用してください。 |
 
 
@@ -201,7 +201,7 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 
 | フィールド | データ型 | 必要ですか？ | 翻訳可能？ | 説明 |
 |--------------------------|----------|-----------|---------------|-----------------------------------------------------------------------------|
-| <span id="Code">コード</span> | テキスト | ✅ |  | Codeは、値の一意な識別情報です。これは、IFCモデルで識別子として使用される情報です。これは必須であり、ほとんどの場合、値と同じです。値やその説明の翻訳を可能にするために必要です。コード・バリデーションが適用されます：[コード・フォーマット](#code-format) |
+| <span id="Code">コード</span> | テキスト | ✅ |  | コードは、値の一意な識別情報です。IFCモデルで識別子として使用される情報です。これは必須であり、ほとんどの場合、値と同じです。値やその説明の翻訳を可能にするために必要です。コードのバリデーションが適用されます：[コード・フォーマット](#code-format)。 |
 | <span id="Value">価値</span> | テキスト | ✅ | ✅ | 値の名前：値の名前。これは主に翻訳用で、IFCモデルでは使用しません。 |
 | <span id="Description">説明</span> | テキスト |  | ✅ | 値の説明 |
 | <span id="Uri">Uri*。</span> | テキスト |  |  | * 所有Uriと重複するため、新モデルバージョンでは非推奨。 |
@@ -219,7 +219,7 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 | <span id="RelationType">関係タイプ</span> | テキスト | ✅ |  | 次のいずれか： `HasMaterial`、`HasReference`、`IsEqualTo`、`IsSimilarTo`、`IsParentOf`、`IsChildOf`、`HasPart`、`IsPartOf`.[関係タイプについて](#relation-types)もっと読む。 |
 | <span id="RelatedClassUri">関連クラスUri</span> | テキスト | ✅ |  | 関連する`Class` の完全 URI。`Dictionary` と同じでも異なっていてもかまいません。例： https://identifier.buildingsmart.org/uri/etim/etim/8.0/class/EC002987 |
 | <span id="RelatedClassName">関連クラス名</span> | テキスト |  |  |  |
-| <span id="Fraction">分数</span> | リアル |  |  | `HasMaterial` 関係にのみ適用される。オプションで、関係を所有するクラスに適用される総量（例：体積または重量）の端数を指定します。クラス/関係タイプごとの分数の合計は 1 でなければならない。[IfcMaterialConstituent](http://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMaterialConstituent.htm)の Fraction に類似。 |
+| <span id="Fraction">分数</span> | リアル |  |  | `HasMaterial` 関係にのみ適用される。オプションで、関係を所有するクラスに適用される総量（例：体積または重量）の端数を指定します。クラス/リレーションタイプごとの分数の合計は 1 でなければなりません。[IfcMaterialConstituent](http://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMaterialConstituent.htm)の Fraction に類似。 |
 | <span id="OwnedUri">所有Uri</span> | テキスト |  |  | ディクショナリ・レベルで`UseOwnUri = true` を指定した場合は、ClassRelation をグローバルに一意に識別する URI を指定する必要があります。 |
 
 
@@ -266,18 +266,18 @@ NB デフォルト値が適用されるのは、フィールドが指定され�
 
 <h3 id="defining-relations">関係の定義</h3>
 
-`ParentClassCode`-`Class` 同じ辞書内の、ツリーのような階層構造で編成できます。例えば「IfcCurtainWall」は、「IfcWall」のより具体的なクラスである。bSDDの用語では、IfcWall"は "IfcCurtainWall"**の親**であると言う。このような特殊化関係を定義するには、子オブジェクトの`ParentClassCode`属性を使用します。
+`ParentClassCode`-`Class` 同じ辞書内の、ツリーのような階層構造で編成できます。例えば「IfcPile」は、「IfcDeepFoundation」のより具体的なクラスです。bSDDの用語では、IfcDeepFoundation"は "IfcPile"**の親**であると言います。このような特殊化関係を定義するには、子オブジェクトの`ParentClassCode`属性を使用します。
 
 
 `ClassRelation`と`PropertyRelation` これらを使って、概念同士をリンクします。関係によって、他の辞書との親子リンクを定義することもできます。特殊化とは別に、分解 (`HasPart`タイプ、可能なタイプのリスト:[リレーション・タイプを](#relation-types)参照) のような他のタイプのリレーションを定義することもできます。
 
-`RelatedIfcEntityNamesList`-IFCは、ソフトウェア間の情報交換に使用されるトップレベルのスキーマ (基礎クラス) です。そのため、bSDD は、あなたのクラスをIFC に関連付けるための特別な方法を提供します。`RelatedIfcEntityNamesList`使用して、IFCのどのエンティティを参照または拡張しているかを示します。例えば、"Signalling LED diode" は、IFC の "IfcLamp" に関連します。 `RelatedIfcEntityNamesList`、bSDD 関連のツールで、可能なクラスのリストを特定のIFCカテゴリにフィルタリングするために使用できます。
+`RelatedIfcEntityNamesList`-IFCは、ソフトウェア間の情報交換に使用されるトップレベルのスキーマ (基礎クラス) です。そのため、bSDD は、あなたのクラスをIFC_PH_1804D42C に関連付けるための特別な方法を提供しています。`RelatedIfcEntityNamesList`使用して、IFCのどのエンティティを参照または拡張しているかを示します。たとえば、「信号LEDダイオード」は、IFCの「IfcLamp」に関連しています。 `RelatedIfcEntityNamesList`、bSDD 関連ツールで使用することができ、特定のIFCカテゴリにクラスのリストを絞り込むことができます。
 
 <h3 id="relation-types">関係タイプ</h3>
 
 `Properties`、`Classes`互いに関連付けることができます。各関係は、ソフトウェアが解釈できるように、特定の型を持たなければなりません。以下は、それぞれの型が意味することの説明です：
 * <span id='IsEqualTo'>`IsEqualTo`</span> - 2つの概念が明確で、同じ名前、コード、定義、説明を持っている場合。クラスもまた、同じクラス・プロパティを共有する必要がある。概念が同じであることは非常にまれです。使い方の例としては、ある概念に公式な翻訳がないにもかかわらず、誰かがその概念を新しい言語で新しい辞書を定義し、元の概念とまったく同じであると言いたい場合です。(私たちは常に、重複する辞書を作成する代わりに、元のデータ辞書に翻訳や改良を提案することを推奨します）。
-* <span id='IsSimilarTo'>`IsSimilarTo`</span> - 2つの概念がほぼ等しいが、名前、コード、定義、説明、またはクラス・プロパティのセットによって異なる場合。これは非常に一般的な関係タイプである。例えば、'IfcWall' が CCI の 'Wall System' と類似の概念であることを示すために使用されます。このようなリレーションシップの欠点は、類似性のレベルがわからないことです。
+* <span id='IsSimilarTo'>`IsSimilarTo`</span> - 2つの概念がほぼ等しいが、名前、コード、定義、説明、またはクラス・プロパティのセットによって異なる場合。これは非常に一般的な関係タイプです。例えば、IfcWall'は、CCIの'ウォール・システム'と類似した概念であると言う場合に使用されます。このようなリレーションシップの欠点は、類似性のレベルがわからないことです。
 * <span id='HasReference'>`HasReference`</span> - 2つの概念が互いに関連しているが、他の関係タイプが適用されない場合。例えば、"壁掛けランプ"（または"燭台）は壁を参照している。たとえ、それらは異なる概念であり、それらの間に階層がなくても。
 * **DEPRECATED** ~~IsSynonymOf - 二つの概念が同一であるが、名前が異なる場合。~~
 
@@ -294,7 +294,7 @@ ISO 8601シリーズに従った日付時刻形式を使用すること： `YYYY
 
 <h3 id="property-inheritance">財産相続</h3>
 
-* 親`Class`→ 子`Class`子`Class`、親`Class`プロパティを継承しません。子クラスにも親クラスのプロパティを持たせたい場合は、インポート・ファイルで意図的に指定する必要があります。例えば、[IfcWallは](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall) [IfcWallStandardCaseの](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallStandardCase)親クラスです。[IfcWallは](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall)プロパティ[AcousticRatingを持って](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall/prop/Pset_WallCommon/AcousticRating)いますが、[IfcWallStandardCaseは持って](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallStandardCase)いません。
+* 親`Class`→ 子`Class`子`Class`、親`Class`プロパティを継承しません。子クラスにも親クラスのプロパティを持たせたい場合は、インポート・ファイルで意図的に指定する必要があります。例えば、[IfcWall](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall)は[IfcWallStandardCase](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallStandardCase) の親クラスです。[IfcWallには](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall) [AcousticRatingという](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWall/prop/Pset_WallCommon/AcousticRating)プロパティがありますが、[IfcWallStandardCaseには](https://search.bsdd.buildingsmart.org/uri/buildingsmart/ifc/4.3/class/IfcWallStandardCase)ありません。
 
 
 
@@ -304,7 +304,7 @@ ISO 8601シリーズに従った日付時刻形式を使用すること： `YYYY
 
 <h3 id="latest-version">最新バージョン</h3>
 
-bSDDでは、すべてのリソースはURIという一意の識別子を持ちます。URIは、他の情報の中で、組織のコード、辞書とバージョン番号を含んでいます。例えば、.../uri/bs-agri/fruitvegs/1.**0.0/class/fruit** 特定のリソースを参照したいが、バージョンがわからない、あるいは、常に最新のバージョンを参照したい場合、私たちは"最新の"機能を実装しました。今、バージョン番号の代わりに"latest"を使用することが可能で、 bSDD はそのリソースを含む最新のアクティブバージョンまたはプレビューバージョンへのリンクを解決します: ...**/uri/bs-agri/fruitvegs/latest/class/fruit**.
+bSDDでは、すべてのリソースはURIという一意の識別子を持ちます。URIは、他の情報の中で、組織のコード、辞書とバージョン番号を含んでいます。例えば、.../uri/bs-agri/fruitvegs/1.**0.0/class/fruit** 特定のリソースを参照したいが、バージョンがわからない、あるいは、常に最新のバージョンを参照したい場合、私たちは"最新の"機能を実装しました。今、バージョン番号の代わりに"latest"を使うことが可能で、 bSDD はそのリソースを含む最新のアクティブバージョンまたはプレビューバージョンへのリンクを解決します: ...**/uri/bs-agri/fruitvegs/latest/class/fruit**.
 
 
 
@@ -323,14 +323,14 @@ https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/latest/class/fruit�
 
 例：*'[LCA指標とモジュール](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0)'の'[地球温暖化係数](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/class/GlobalWarmingPotential)'クラスは、4つのプロパティをグループ化している：[合計](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_total)'、'[生物起源](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_biogenic)'、'[化石燃料](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_fossil)'、'[土地利用](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_luluc)*。
 
-**プロパティのセット** `ClassProperty` を使用。`PropertySet`- プロパティをグループ化するためのIFC標準の概念。bSDD では、Class Property に対して定義されたテキスト・フィールドとして表現され、IFCデータにシリアル化されたときに、この Class Property がどのセットに含まれるかを示します。 
+**プロパティを** `ClassProperty``PropertySet`- グループ化するためのIFC標準の概念です。bSDD では、Class Property のために定義されたテキスト・フィールドとして表され、IFCデータにシリアル化されたときに、このクラス・プロパティがどのセットに表示されるべきかを示します。 
   * ISO 16739-1で定義されるプロパティセットはプロパティのグループであるが、プロパティのグループは必ずしもプロパティセットではない。
   * プロパティは、複数のプロパティ・グループのメンバになることができます。クラス・プロパティは、複数のプロパティ・セットのメンバになることはできません。
-  * 接頭辞'Pset_'は、公式IFCにのみ予約されている。
+  * 接頭辞'Pset_'は、公式のIFCにのみ予約されています。
 
-プロパティセットを使用して、IFCデータセットのどこにプロパティを配置するかを定義します。
+IFCデータセットのどこにプロパティを配置するかを定義するには、Property Set を使用します。
 
-例*例：'IfcWall' のプロパティ 'Concrete Cover' は、プロパティセット 'Pset_ConcreteElementGeneral' にあります：Pset_ConcreteElementGeneral にあります*。
+例*例：'IfcWall'のプロパティ'Concrete Cover'はプロパティセットにあります：Pset_ConcreteElementGeneral' にあります*。
 
 `Property``ConnectedPropertyCodes` "カレントプロパティに連結されているプロパティのリスト。接続は、特殊化または依存であることができます。" <sub>[iso12006-3、5.3.29]</sub>。
 
@@ -338,7 +338,7 @@ https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/latest/class/fruit�
 
 例*例：['地球温暖化係数-合計'（GWP）](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/GWP_total)プロパティは、製品のライフサイクルの各フェーズに対して定義されるべきである。各フェーズ（GWP_A1, GWP_A2、...）に個別にプロパティを定義することは望ましくない。その代わりに、GWP_A1, GWP_A2, ...は、別のプロパティである'[情報モジュール（PHASE）](https://search.bsdd.buildingsmart.org/uri/LCA/LCA/3.0/prop/information_module)'に接続され、18の可能な値（A1, A2, C3...）をとる。GWP値の意味を解釈するには、値のペアを見る必要がある：{GWP=1.0、PHASE=A1}、{GWP=15.0、PHASE=A3}などである*。 
 
-⚠️ この機能はISO標準に由来するが、ソフトウェア実装でサポートされることはほとんどない。また、IFCは、1つのプロパティセットの下で同じ名前を持つ複数のプロパティに対応していません。データ辞書をより利用しやすくするために、接続プロパティを避けることを検討してください。
+⚠️ この機能は ISO 標準に由来しますが、ソフトウェア実装でサポートされることはほとんどありません。また、IFCは、 1 つのプロパティセットの下で同名の複数のプロパティに対応していません。データ辞書をより利用しやすくするために、接続プロパティを避けることを検討してください。
 
 **動的プロパティ** `Property` を使用。`IsDynamic`および .`DynamicParameterPropertyCodes`"動的プロパティの関数のパラメータであるプロパティ" <sub>[ISO23386, 5.3.29]</sub>。言い換えれば、動的プロパティの値は、`DynamicParameterPropertyCodes`指定されたプロパティの値に依存する。bSDDには、機械的に解釈可能な形で式の正確な式を定義するフィールドはありません。 
 
@@ -362,7 +362,7 @@ https://search.bsdd.buildingsmart.org/uri/bs-agri/fruitvegs/latest/class/fruit�
 
 **2022-08 - 重要なお知らせ**
 
-> bSDD は、"http://identifier.buildingsmart.org" "で始まる識別子 (別名"Uri")"から https://identifier.buildingsmart.org" (http から https) に移行する過程にある。これは、これらの識別子をハイパーリンクとしても使いやすくするためである。&gt; 古い"http"識別子を使用するサポートはまもなく廃止されます！
+> bSDD は、"http://identifier.buildingsmart.org" "で始まる識別子 (別名"Uri")"から https://identifier.buildingsmart.org" (http から https) に移行する過程にある。これは、これらの識別子をハイパーリンクとしても使いやすくするためである。&gt; 古い"http"識別子を使用するサポートはまもなく廃止される予定です！
 
 
 
