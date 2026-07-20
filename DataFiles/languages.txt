@@ -122,3 +122,4 @@ external id;language code;language name;language name native;language code 2;fal
 123;sa-IN;Sanskrit;संस्कृतम्;sa;
 124;bo-CN;Tibetan;བོད་ཡིག;bo;
 125;ug-CN;Uyghur;ئۇيغۇرچە;ug;
+126;fr-CA;Canadian French;Français canadien;;fr-FR
