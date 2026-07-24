@@ -15,43 +15,43 @@
      alt="bSDD logo"
      style="width: 200px" />
 
-**bSDD（buildingSMARTデータディクショナリ**）は、分類、その特性、許容値、単位、翻訳などを含むデータディクショナリをホストするためのオンラインサービスです。データ品質と情報の一貫性を向上させるための標準化されたワークフローを提供します。
+**buildingSMARTデータディクショナリ（bSDD）は**、分類、そのプロパティ、許容値、単位、翻訳などを含むデータディクショナリをホストするためのオンラインサービスです。データ品質と情報の一貫性を向上させるための標準化されたワークフローを提供します。
 
-詳細はbSDDプロジェクトのページhttps://www.buildingsmart.org/users/services/buildingsmart-data-dictionary/。
+詳細はbSDDプロジェクトページをご覧ください：https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary/
 
 ### 概要
-bSDDの中心は、すべての辞書を相互に関連付けることができる正規データベースです。bSDDにアクセスする主な方法は、[API（アプリケーション・プログラミング・インターフェース）を通じて](https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1)行う。ほとんどのBIMソフトウェアやその他のアプリは、このようにしてbSDDに保存されたデータを使用することができる。それとは別に、人々がコンテンツを検索できる[bSDD Search ページが](https://search.bsdd.buildingsmart.org/)ある。著者は、[API](https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1)または[bSDD Manage ポータルを通じて](https://manage.bsdd.buildingsmart.org/) bSDD にコンテンツを公開することができます。アップロードするには、[組織登録フォームを](https://bsi-technicalservices.atlassian.net/servicedesk/customer/portal/3/group/4/create/25)使用して組織を登録してください。
+bSDDの中核をなすのは、すべての辞書を相互に関連付けられる正規データベースです。bSDDにアクセスする主な方法は[、そのAPI（アプリケーション・プログラミング・インターフェース）](https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1)を利用することです。これにより、ほとんどのBIMソフトウェアやその他のアプリケーションが、bSDDに保存されたデータを利用できるようになります。そのほか、[bSDD検索ページでは](https://search.bsdd.buildingsmart.org/)、ユーザーがコンテンツを検索することができます。作成者は、[APIまたは](https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1) [bSDD管理ポータル](https://manage.bsdd.buildingsmart.org/)を通じてbSDDにコンテンツを公開できます。コンテンツをアップロードするには、[組織登録フォーム](https://bsi-technicalservices.atlassian.net/servicedesk/customer/portal/3/group/4/create/25)を使用して組織を登録してください。
 
 <img src="https://github.com/buildingSMART/bSDD/assets/22922395/0b581c14-fd16-402f-baa8-c55eac500eff"
      alt="bSDD diagram"
      style="width: 500px" />
 
 ### クイックリンク
-* [bSDDプロジェクトページ](https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary/)
-* [bSDD検索ページ]()
-* [bSDD管理ポータル]()
-* [bSDD API Swaggerページ]()
-* [bSDD更新フォーラム]()
+* [bSDD プロジェクトページ](https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary/)
+* [bSDD 検索ページ](https://search.bsdd.buildingsmart.org/)
+* [bSDD 管理ポータル](https://manage.bsdd.buildingsmart.org/)
+* [bSDD APIのSwaggerページ]()
+* [bSDDのフォーラム更新情報](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889)
 * [bSDDデータ構造](/Documentation/bSDD%20JSON%20import%20model.md)
-* [bSDD JSON テンプレート](/Model/Import%20Model/bsdd-import-model.json)/[bSDD Excel テンプレート](/Model/Import%20Model/spreadsheet-import)
-* [bSDD&amp;](https://technical.buildingsmart.org/resources/software-implementations/?filter_5%5B%5D=bSDD%20read%20API&filter_5%5B%5D=bSDD%20submit%2Fmanage&filter_5%5B%5D=bSDD%20IFC%20export%20(including%20URIs)filter_1=&amp;gv_search=&amp;mode=any) を[統合するツール](https://technical.buildingsmart.org/resources/software-implementations/?filter_5%5B%5D=bSDD%20read%20API&filter_5%5B%5D=bSDD%20submit%2Fmanage&filter_5%5B%5D=bSDD%20IFC%20export%20(including%20URIs)。これは自主管理リストなので、足りないものは自由に追加してください。
+* [bSDD JSONテンプレート](/Model/Import%20Model/bsdd-import-model.json)/[bSDD Excelテンプレート](/Model/Import%20Model/spreadsheet-import)
+* bSDD&amp;filter_1=&amp;gv_search=&amp;mode=any を[統合したツール](https://technical.buildingsmart.org/resources/software-implementations/?filter_5%5B%5D=bSDD%20read%20API&filter_5%5B%5D=bSDD%20submit%2Fmanage&filter_5%5B%5D=bSDD%20IFC%20export%20(including%20URIs)。これは自主管理型のリストですので、記載漏れがあればお気軽に追加してください。
 * [bSDDにデータをアップロードするには？](/Documentation/bSDD%20import%20tutorial.md)
 
-### 開発者向け
-📢 予定されている、あるいは最近実施された bSDD のアップデートについては、このフォーラムのトピックでお知らせします：  
-[bSDD技術アップデート](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889)。
+### 開発者の皆様へ
+📢 bSDDの予定されているアップデートや最近実施されたアップデートについては、このフォーラムスレッド「[bSDD Tech Updates](https://forums.buildingsmart.org/t/bsdd-tech-updates/4889)」でお知らせしています。
 
-* **API ドキュメント**https://github.com/buildingSMART/bSDD/blob/master/Documentation/bSDD%20API.md
-* **API対話型ドキュメント：** Swagger上の https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1
 
-また、最新機能が最初にロールアウトされ、テストされる**TEST**環境も提供しています。確認したい場合は、ここに同等のページがあります（エンドユーザーは使用しないでください！）：
-* **TEST API ドキュメント：** Swagger 上の https://test.bsdd.buildingsmart.org/swagger/
-* **TEST GraphQL**環境のUI：[GraphQL UI](https://test.bsdd.buildingsmart.org/graphiql)  
-および関連する検索/管理ページ：
-* **TEST検索**ページ：https://search-test.bsdd.buildingsmart.org/
+* **APIドキュメント** [bSDD API](Documentation/bSDD%20API.md)
+* **APIインタラクティブドキュメント：** Swagger上の https://app.swaggerhub.com/apis/buildingSMART/Dictionaries/v1
+
+また、最新の機能が最初に導入され、テストが行われる**「TEST」**環境も提供しています。ご確認されたい場合は、以下のページをご覧ください（エンドユーザーの方はご利用にならないでください！）：
+* **Swagger上のTEST APIドキュメント**：https://test.bsdd.buildingsmart.org/swagger/
+***TEST GraphQL環境のUI**：[GraphQL UI](https://test.bsdd.buildingsmart.org/graphiql)および関連する検索・管理ページ：
+
+* **テスト用検索**ページ：https://search-test.bsdd.buildingsmart.org/
 * **TEST 管理**ポータル：https://manage-test.bsdd.buildingsmart.org/
 
 ## お問い合わせ
-お困りですか？ご提案がありますか？ご連絡ください：[お問い合わせフォーム](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h).
+ご不明な点やご提案がございましたら、[お問い合わせフォーム](https://share.hsforms.com/1RtgbtGyIQpCd7Cdwt2l67A2wx5h)よりご連絡ください。
 
-bSDDは、私たちの[戦略的プロジェクトの](https://www.buildingsmart.org/about/strategic-projects/)一つであり、buildingSMARTインターナショナルは、bSDDの改善のための資金を提供するために、業界のスポンサーを募っています。
+bSDDは当社の[戦略的プロジェクト](https://www.buildingsmart.org/about/strategic-projects/)の一つであり、buildingSMART Internationalは、bSDDの改善に向けた取り組みの実施資金を賄うため、業界各社からのスポンサーシップを募っています。

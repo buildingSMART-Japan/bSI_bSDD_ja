@@ -1,116 +1,116 @@
-# bSDDとISO規格間の属性のマッピング
-**⚠️ このページは進行中であり、参考のために使用しないでください ⚠️**
+# bSDDとISO規格間の属性対応表
+**⚠️ このページは現在作成中のため、参考資料として使用しないでください ⚠️**
 
-bSDDは、データ辞書を定義するISO12006-3とISO23386規格に基づいています。openBIMワークフローとの統合を容易にするため、bSDDは、建築環境を記述する相互に関連する用語とプロパティの定義という本質的な側面だけに絞られています。bSDDの制約には、単位リスト、言語リスト、概念間の関係の種類が含まれます（ISOはユーザーに定義の自由を委ねており、ソフトウェアによる解釈を妨げています）。ISO12006-3の継承構造（Root→Object→Concept→Subject/Property）は、bSDDでは1つのレベルに簡略化されている：クラスとプロパティである。 
+bSDDは、データディクショナリを定義するISO 12006-3およびISO 23386規格に基づいています。openBIMワークフローとの統合を容易にするため、bSDDは、建築環境を記述する相互に関連する用語やプロパティの定義という本質的な側面に絞り込まれています。 bSDDの制約には、指定された単位リスト、言語リスト、および概念間の関係の種類が含まれます（ISOは定義の自由度をユーザーに委ねているため、ソフトウェアによる解釈が妨げられています）。 ISO 12006-3の継承構造（ルート→オブジェクト→概念→主語／プロパティ）は、bSDDにおいて「クラス」と「プロパティ」の1レベルに簡略化されています。 
 
-ISOは、データ辞書の開発にとって重要な、各概念のバージョン管理を個別に許可している。bSDDでは、契約上の合意をサポートするために、各変更は完全な辞書の新しいバージョンとなる。これは、辞書が有効化されていない場合は適用されない。[bSDDにおけるコンテンツ・ライフサイクルの](https://github.com/buildingSMART/bSDD/blob/doc_update/Documentation/bSDD%20import%20tutorial.md)詳細を読む。
+このISO規格では、各概念を個別にバージョン管理することが可能であり、これはデータディクショナリの開発において重要です。bSDDでは、契約上の合意を遵守するため、変更が行われるたびにディクショナリ全体の新しいバージョンが生成されます。ただし、ディクショナリが有効化されていない場合は、この限りではありません。[bSDDにおけるコンテンツのライフサイクル](bSDD%20import%20tutorial.md#the-lifecycle-of-a-dictionary)について、詳細はこちらをご覧ください。
 
-bSDD の属性は[bSDD データモデルで](https://github.com/buildingSMART/bSDD/blob/doc_update/Documentation/bSDD%20JSON%20import%20model.md)定義されている。 
+以下は、bSDDとISO規格の属性を対応付けた表です。bSDDの属性は、[bSDDデータモデル](bSDD%20JSON%20import%20model.md)で定義されています。
 
-| **<nobr>bSDD</nobr>** | **<nobr>ISO23386</nobr>:2020** | **<nobr>ISO12006-3</nobr>:2022** | **<nobr>コメント</nobr>** |
+| **bSDD** | **ISO 23386:2020** | **ISO 12006-3:2022** | **コメント** |
 |---|---|---|---|
-| プロパティ/クラス：Uid、Uri | Property/GroupOfProperties：グローバル一意識別子 | xtdRoot：ユニークID | _(G)UIDはbSDDではオプション、ISOでは必須。bSDDではUIDの役割はUriに置き換えられ、UIDはそれを必要とするユースケースをサポートするためだけのものである。   Uriは、プロパティのメタデータを見ることを可能にする。_ |
-| プロパティ/クラス/辞書ステータス | プロパティステータス | ✖️ | _bSDDとISOには Active と Inactive があり、bSDDには Preview もある。_ |
-| (辞書を参照: ReleaseDate) | プロパティ/グループ作成日 | xtdObject：作成日 | _bSDD では、これは最初のバージョンの ReleaseDate の日付である。_ |
-| プロパティ/クラスアクティベーション日付 | プロパティ/グループ起動日 | ✖️ | _bSDDでは、ステータスが'Active'に変更された日付である。_ |
-| (辞書を参照: ReleaseDate) | プロパティ/グループ最終変更日 | ✖️ | _bSDDでは、変更が発生した最後のバージョンの日付である。_ |
-| プロパティ/クラスリビジョン日付 | プロパティ/グループ改定日 | ✖️ |  |
-| プロパティ/クラスバージョン日付 | プロパティ/グループバージョン日付 | ✖️ |  |
-| プロパティ/クラス   DeActivationDateUtc。 | プロパティ/グループ停止日 | ✖️ | _bSDDでは、ステータスが'Inactive'に変更された日付である。_ |
-| プロパティ/クラスバージョン番号 | プロパティ/グループバージョン番号 | xtdObject：メジャーバージョン | _ISO23386におけるバージョン番号は、ISO12006-3におけるメジャーバージョンと同じである(同様に、リビジョン番号はマイナーバージョンである)。bSDD では、属性は ISO23386 のように命名されるが、バージョンはすでに 3 つの番号を含んでいる： 1.2.3 - Major, Minor and Patch (Semantic Versioningの詳細はhttps://semver.org/)。_ |
-| プロパティ/クラスリビジョン番号 | プロパティ/グループリビジョン番号 | xtdObject：マイナーバージョン | _上の行を参照のこと。リビジョン番号は bSDD では冗長であるが、あるフィールドが何回リビジョンアップされたかを示すのに使用できる。_ |
-| プロパティ/クラス置換オブジェクトコード | Property/GroupOfProperties：置換されたプロパティのリスト | xtdObject：置き換えられたオブジェクト |  |
-| プロパティ/クラス   ReplacingObjectCodes | Property/GroupOfProperties：置換プロパティのリスト | ✖️ |  |
-| プロパティ/クラス非推奨説明 | Property/GroupOfProperties：廃止の説明 | xtdObject：非推奨の説明 |  |
-| プロパティ/クラス   CreatorLanguageIsoCode | プロパティ/グループ作成者の言語 | xtdConcept：作成者の言語 | _ISOではxtdLanguageオブジェクト：bSDD では、bSI 管理リスト：IsoCode, Name (https://api.bsdd.buildingsmart.org/api/Language/v1 ) を持つ bSI 管理リスト。_ |
-| プロパティ/クラス名前 | Property/GroupOfProperties：言語名 N | xtdObject：名前 |  |
-| プロパティ/クラス定義 | Property/GroupOfProperties：言語Nでの定義 | xtdConcept：定義 |  |
-| プロパティ説明 | プロパティ言語Nでの説明 | xtdConcept：説明 |  |
-| プロパティ例 | プロパティ言語Nでの例 | xtdConcept：例 |  |
-| プロパティ   ConnectedPropertyCodes | プロパティ接続物件 | ✖️ |  |
-| (スキーマ/API) | プロパティプロパティのグループ | ✖️ | _bSDD では、クラスプロパティはプロパティグループ（クラス型）の中にあることができます。_ |
-| プロパティ/クラス   VisualRepresentationUri | Property/GroupOfProperties：視覚的表現 | xtdConcept：視覚表現 | _ISOではMediaオブジェクトだが、bSDDでは外部の視覚表現へのリンクのみが許される。_ |
-| プロパティ/クラス使用国 | プロパティ/グループ使用国 | ✖️ | _bSDDでは、bSIによって管理される定義済みのリスト。_ |
-| プロパティ/クラス用途地域 | プロパティ/グループのプロパティ：用途地域 | ✖️ |  |
-| プロパティ/クラス原産国 | プロパティ/グループ原産国 | xtdConcept：原産国 | _bSDDでは、bSIによって管理される定義済みのリスト。_ |
-| プロパティ物理量 | 特性物理量 | xtdProperty：数量 |  |
-| プロパティ寸法 | プロパティ寸法 | xtdProperty：寸法 |  |
-| プロパティ測定方法 | 特性測定方法 | ✖️ |  |
-| プロパティDataType | プロパティデータ型 | xtdProperty：データ型 | _同じだが、bSDDがない。XTD_RATIONAL 、実装を簡単にするためにXTD_COMPLEX 。_ |
-| プロパティIsDynamic | プロパティダイナミック・プロパティ | ✖️ |  |
-| プロパティ   DynamicParameterPropertyCodes | プロパティ動的プロパティのパラメータ | ✖️ |  |
-| 物件単位 | 物件単位 | xtdProperty：単位 | _ISOでは寸法、記号、係数、スケール、ベース、オフセット bSDD では bS 管理リスト: https://api.bsdd.buildingsmart.org/api/Unit/v1、コードと名前がある。_ |
-| ✖️ | プロパティ：定義値の名前 | ✖️ | _ISOで値を定義することは、任意のカスタム属性でリストを拡張することである。bSDDでは、それは相互運用性を制限することになる。_ |
-| ✖️ | プロパティ値の定義 | ✖️ | _ISOで値を定義することは、任意のカスタム属性でリストを拡張することである。bSDDでは、それは相互運用性を制限することになる。_ |
-| ✖️ | プロパティ公差 | ✖️ | _ISO23386：数値の場合。特定の単位が変動することを許される総量。単位あたりの最大限界値と最小限界値の差。_ |
-| ✖️ | プロパティデジタルフォーマット | ✖️ | _ISO23386では、デジタル・テキスト・タイプの精度と単位のペアである。DataFormatパターンと混同しないように。_ |
-| プロパティテキストフォーマット | プロパティテキスト形式 | ✖️ |  |
-| プロパティ許容値 | プロパティ：言語Nで取り得る値のリスト | xtdProperty：可能な値 | _ISO: 'xtdPropertyの値の説明'。ISOには'NominalValue'があるが、bSDDにはDescription, Value, SortNumber, Uri, Codeがある。_ |
-| プロパティ最大排他、最大包含、最小排他、最小包含 | プロパティ境界値 | xtdProperty：境界値 | _ISO xtdInterval オブジェクトに含まれる：Minimum、MinimumIncluded、Maximum、MaximumIncluded。       bSDD では、最小排他(MinExclusive)、最小包含(MinInclusive)、最大排他(MaxExclusive)、最大包含(MaxInclusive)。_ |
-| PropertyRelation：（RelationType == IsSynonymOf）。 | ✖️ | xtdConcept：類似 | _IsSynonymOf"型のリレーションで解決されるbSDDでは_ |
-| (スキーマ/API) | ✖️ | xtdObject：辞書 | _bSDDでは、プロパティは特定の辞書に配置される。_ |
-| プロパティ/クラス   DocumentReference | ✖️ | xtdConcept：参照ドキュメント | _ISO では xtdExternalDocument だが、bSDD では bSI 管理リストの文字列: https://api.bsdd.buildingsmart.org/api/ReferenceDocument/v1_ |
-| プロパティ/クラスコード | ✖️ | ✖️ | _コードはUriを生成するために使用され、辞書内での識別に使用できる。_ |
-| プロパティDimensionLength | ✖️ | ✖️ |  |
-| プロパティDimensionMass | ✖️ | ✖️ |  |
-| プロパティDimensionTime | ✖️ | ✖️ |  |
-| プロパティ   DimensionElectricCurrent | ✖️ | ✖️ |  |
-| プロパティ   DimensionThermodynamicTemperature | ✖️ | ✖️ |  |
-| プロパティ物質量 | ✖️ | ✖️ |  |
-| プロパティ   DimensionLuminousIntensity | ✖️ | ✖️ |  |
-| プロパティ/クラス所有Uri | ✖️ | ✖️ |  |
-| プロパティパターン | ✖️ | xtdProperty：データフォーマット | _プロパティ値のパターン。パターンの意味は実装に依存します。_ |
-| プロパティPropertyValueKind | ✖️ | ✖️ | _bSDD 内：シングル/レンジ/リスト/コンプレックス/コンプレックスリスト_ |
-| プロパティプロパティ関係 | プロパティ：相互接続されたデータ辞書内のプロパティ識別子の関係 | ✖️ |  |
-| クラスプロパティ：IsRequired | ✖️ | ✖️ |  |
-| クラスプロパティ書き込み可能 | ✖️ | ✖️ |  |
-| クラスプロパティ：定義済み値 | ✖️ | ✖️ |  |
-| クラスプロパティプロパティコード | ✖️ | ✖️ |  |
-| クラスプロパティ：   PropertyUri | ✖️ | ✖️ |  |
-| クラスプロパティプロパティセット | ✖️ | ✖️ |  |
-| クラスプロパティ：PropertyType | ✖️ | ✖️ | _bSDDでは：プロパティ/依存_ |
-| クラスプロパティソート番号 | ✖️ | ✖️ | _ISOにはxtdOrderedValueオブジェクトがあります："定義済みの値のリストにおける順序と値を結びつける"。bSDDのAllowedValuesは、このオプションの順序属性を持っています。_ |
-| クラスプロパティシンボル | プロパティ：指定されたプロパティグループ内のプロパティのシンボル | xtdProperty：シンボル | _ISOではシンボル、サブジェクト bSDD では text 属性。_ |
-| クラスプロパティ単位 | ✖️ | ✖️ | _ClassPropは単数形、Propertyは複数形。説明は'単位'を参照。_ |
-| クラス関係 | GroupOfProperties：相互接続されたデータ辞書のプロパティ識別子のグループの関係。 | ✖️ | _リレーションで解くbSDDでは。_ |
-| クラス：ClassificationType | GroupOfProperties：プロパティのグループのカテゴリ | ✖️ | _ISO23386 Category of GroupOfProperties vs bSDD ClassType を参照のこと。_ |
-| クラス   ParentClassificationCode | GroupOfProperties：プロパティの親グループ | ✖️ |  |
-| クラス   ClassificationProperties | ✖️ | xtdSubject：プロパティ |  |
-| クラス分類関係 | ✖️ | xtdSubject：コネクテッド・サブジェクト |  |
-| クラスReferenceCode | ✖️ | ✖️ |  |
-| クラス関連IfcEntityNamesList | ✖️ | ✖️ | _IFC スキーマをカスタムクラスで拡張するユースケースをサポートする。_ |
-| クラス類義語 | ✖️ | ✖️ | _bSDD で同義語を定義するには、その属性で定義する方法と、"IsSynonymOf" 型の関係で定義する方法がある。_ |
-| ✖️ | ✖️ | xtd件名フィルター | _bSDDでは、リレーションは同じような役割を果たすが、使いやすさのためにFilterの概念は実装されていない。_ |
-| クラス・リレーション関連ClassificationUri | ✖️ | ✖️ |  |
-| クラス関連：関連分類名 | ✖️ | ✖️ |  |
-| クラス・リレーション：RelationType | ✖️ | ✖️ | _ISO12006-3 の xtdConcept/SimilarTo を参照。_ |
-| クラス関係分数 | ✖️ | ✖️ | _オプション関係を所有する分類に適用される、総量（体積または重量など）の端数の提供。分類／関係種別ごとの端数の合計は 1 でなければならない。_ |
-| PropertyRelation：関連プロパティ名 | ✖️ | ✖️ |  |
-| PropertyRelation：   RelatedPropertyUri | ✖️ | ✖️ |  |
-| PropertyRelation：RelationType | ✖️ | ✖️ |  |
-| 許容値コード | ✖️ | ✖️ | _コードはUriを生成するために使用され、辞書内での識別に使用できる。_ |
-| 許容値説明 | ✖️ | ✖️ |  |
-| AllowedValue：Uri。 | ✖️ | ✖️ |  |
-| 許容値ソート番号 | ✖️ | ✖️ |  |
-| 許容値：値 | ✖️ | ✖️ |  |
-| 辞書辞書コード | ✖️ | ✖️ | _コードはUriを生成するために使用され、組織内の識別に使用できる。_ |
-| 辞書辞書名 | ✖️ | ✖️ |  |
-| 辞書辞書Uri | ✖️ | ✖️ |  |
-| 辞書辞書バージョン | ✖️ | ✖️ |  |
-| 辞書言語IsoCode | ✖️ | ✖️ |  |
-| 辞書ライセンス | ✖️ | ✖️ |  |
-| 辞書ライセンス | ✖️ | ✖️ |  |
-| 辞書MoreInfoUrl | ✖️ | ✖️ |  |
-| 辞書組織コード | ✖️ | ✖️ |  |
-| 辞書品質保証手順 | ✖️ | ✖️ |  |
-| 辞書品質保証手続きURL | ✖️ | ✖️ |  |
-| 辞書リリース日 | ✖️ | ✖️ | _現在のバージョンの日付。_ |
+| プロパティ／クラス：Uid、 Uri | プロパティ／プロパティのグループ：グローバルに一意な識別子 | xtdRoot: UniqueId | _(G)UidはbSDDでは任意ですが、ISOでは必須です。bSDDでは、Uidの役割はURIに置き換えられており、Uidはそれを必要とするユースケースをサポートするためのみに存在します。URIを使用することで、プロパティのメタデータを閲覧することができます。_ |
+| プロパティ／クラス／辞書：ステータス | プロパティ／プロパティのグループ：ステータス | ✖️ | _bSDDとISOには「Active」と「Inactive」があります。bSDDにはさらに「Preview」もあるため、ISOの機能を拡張しています。_ |
+| （「辞書」の「ReleaseDate」を参照） | プロパティ／プロパティのグループ：作成日 | xtdObject: 作成日 | _bSDDでは、これは最初のバージョンの「ReleaseDate」の日付を指します。_ |
+| プロパティ／クラス：   ActivationDateUtc | プロパティ／プロパティのグループ：有効化日 | ✖️ | _bSDDでは、ステータスが'Active'に変更された日付を指します。_ |
+| （「辞書」の「ReleaseDate」を参照） | プロパティ／プロパティのグループ：最終変更日 | ✖️ | _bSDDでは、変更が行われたのは直近のバージョンの日付となります。_ |
+| プロパティ／クラス：   RevisionDateUtc | プロパティ／プロパティのグループ：改訂日 | ✖️ |  |
+| プロパティ／クラス：VersionDateUtc | プロパティ／プロパティのグループ：バージョンの日付 | ✖️ |  |
+| プロパティ／クラス：   DeActivationDateUtc | プロパティ／プロパティのグループ：無効化日 | ✖️ | _bSDDでは、ステータスが'非アクティブ'に変更された日付を指します。_ |
+| プロパティ／クラス：VersionNumber | プロパティ／プロパティのグループ：バージョン番号 | xtdObject: MajorVersion | _ISO 23386におけるバージョン番号は、ISO 12006-3におけるメジャーバージョンに相当します（同様に、リビジョン番号はマイナーバージョンに相当します）。 bSDDでは、属性の名称はISO 23386と同様ですが、バージョン番号にはすでに3つの数字（1.2.3）が含まれており、それぞれメジャー、マイナー、パッチを表しています（セマンティック・バージョニングの詳細については、https://semver.org/ をご覧ください）。_ |
+| プロパティ／クラス：RevisionNumber | プロパティ／プロパティのグループ：リビジョン番号 | xtdObject: マイナーバージョン | _上の行を参照してください。bSDDではリビジョン番号は冗長ですが、特定のフィールドに対して何回リビジョンが行われたかを示すために使用することができます。_ |
+| プロパティ／クラス：   ReplacedObjectCodes | プロパティ／プロパティのグループ：置換されたプロパティの一覧 | xtdObject: 置換されたオブジェクト |  |
+| プロパティ／クラス：   ReplacingObjectCodes | プロパティ／プロパティのグループ：置換対象のプロパティの一覧 | ✖️ |  |
+| プロパティ／クラス：非推奨の理由 | プロパティ／プロパティのグループ：非推奨の理由 | xtdObject: 非推奨の理由 |  |
+| プロパティ／クラス：   CreatorLanguageIsoCode | プロパティ／プロパティのグループ：作成者の言語 | xtdConcept: 創造者の言語 | _ISO では、以下のプロパティを持つ xtdLanguage オブジェクト：EnglishName（ISO 639 シリーズに基づく）、NativeName、Comments、Code。bSDD では、以下のプロパティを持つ bSI 管理リスト：IsoCode、Name（https://api.bsdd.buildingsmart.org/api/Language/v1）_ |
+| プロパティ／クラス：名前 | プロパティ／プロパティのグループ：言語 N での名称 | xtdObject: 名前 |  |
+| プロパティ／クラス：定義 | プロパティ／プロパティのグループ：言語Nにおける定義 | xtdConcept：定義 |  |
+| プロパティ：説明 | プロパティ：言語 N による説明 | xtdConcept：説明 |  |
+| プロパティ：例 | プロパティ：言語Nにおける例 | xtdConcept：例 |  |
+| プロパティ:   ConnectedPropertyCodes | プロパティ：関連するプロパティ | ✖️ |  |
+| (スキーマ/API) | プロパティ：プロパティのグループ | ✖️ | _bSDDでは、プロパティはプロパティのグループ（クラスの一種）内に含まれることがあります。_ |
+| プロパティ／クラス：   VisualRepresentationUri | プロパティ／プロパティのグループ：視覚的表現 | xtdConcept: 視覚的表現 | _ISOでは「Media」オブジェクトですが、bSDDでは外部の視覚的表現へのリンクのみが許可されています。_ |
+| プロパティ／クラス：CountriesOfUse | プロパティ／プロパティのグループ：使用国 | ✖️ | _bSDDでは、bSIによって規定された事前定義済みのリストです。_ |
+| プロパティ／クラス：   SubdivisionsOfUse | プロパティ／プロパティのグループ：用途の細分化 | ✖️ |  |
+| プロパティ／クラス：原産国 | プロパティ／プロパティのグループ：原産国 | xtdConcept: 原産国 | _bSDDでは、bSIによって規定された事前定義済みのリストです。_ |
+| プロパティ：PhysicalQuantity | 属性：物理量 | xtdProperty: QuantityKinds |  |
+| プロパティ：ディメンション | プロパティ：ディメンション | xtdProperty: 次元 |  |
+| プロパティ：MethodOfMeasurement | 特性：測定方法 | ✖️ |  |
+| プロパティ：DataType | プロパティ：データ型 | xtdProperty: データ型 | _上記と同様ですが、bSDDが省略されています。実装を簡略化するため、XTD_RATIONALおよびXTD_COMPLEXを使用しています。_ |
+| プロパティ: IsDynamic | プロパティ：動的プロパティ | ✖️ |  |
+| プロパティ:   DynamicParameterPropertyCodes | プロパティ：動的プロパティのパラメータ | ✖️ |  |
+| プロパティ：ユニット | プロパティ：ユニット | xtdProperty: 単位 | _ISOには、次のような項目があります：Dimension、Symbol、Coefficient、Scale、Base、Offset。bSDDでは、bSが管理するリスト「https://api.bsdd.buildingsmart.org/api/Unit/v1」があり、CodeとNameが含まれています。_ |
+| ✖️ | プロパティ：定義値の名前 | ✖️ | _ISOにおける値の定義では、任意のカスタム属性をリストに追加しています。bSDDでは、これにより相互運用性が制限されることになります。_ |
+| ✖️ | プロパティ：値の定義 | ✖️ | _ISOにおける値の定義では、任意のカスタム属性をリストに追加しています。bSDDでは、これにより相互運用性が制限されることになります。_ |
+| ✖️ | プロパティ：許容誤差 | ✖️ | _ISO 23386：数値について、特定の単位が許容される変動範囲の合計値。これは、単位あたりの上限値と下限値の差である。_ |
+| ✖️ | 特徴：デジタル形式 | ✖️ | _ISO 23386 では、これは数値テキスト型における精度と単位の組み合わせを指します。DataFormat パターンと混同しないでください。_ |
+| プロパティ：TextFormat | プロパティ：テキスト形式 | ✖️ |  |
+| プロパティ：AllowedValues | プロパティ：言語 N における取り得る値の一覧 | xtdProperty: 可能な値 | _ISO：「xtdProperty の値の説明」。ISO には「NominalValue」があるのに対し、bSDD には Description、Value、SortNumber、Uri、Code がある。_ |
+| プロパティ：最大排他、最大包含、最小排他、最小包含 | プロパティ：境界値 | xtdProperty: BoundaryValues | _ISOのxtdIntervalオブジェクトには、Minimum、MinimumIncluded、Maximum、MaximumIncludedが含まれています。一方、bSDDでは、これと同じ機能を実現するために、MinExclusive、MinInclusive、最大排他、最大包含という個別の属性が用意されています。_ |
+| PropertyRelation:   (RelationType == IsSynonymOf) | ✖️ | xtdConcept: SimilarTo | _IsSynonymOf"型の関係を用いて解決された bSDD において_ |
+| (スキーマ/API) | ✖️ | xtdObject: 辞書 | _bSDDでは、プロパティは特定の辞書内に格納されています。_ |
+| プロパティ／クラス：   DocumentReference | ✖️ | xtdConcept: 参照文書 | _ISO xtdExternalDocument では、bSDD では bSI の管理リストからの文字列：https://api.bsdd.buildingsmart.org/api/ReferenceDocument/v1_ |
+| プロパティ／クラス：コード | ✖️ | ✖️ | _コードはURIを生成するために使用され、辞書内での識別にも利用できます。_ |
+| プロパティ：DimensionLength | ✖️ | ✖️ |  |
+| プロパティ：DimensionMass | ✖️ | ✖️ |  |
+| プロパティ：DimensionTime | ✖️ | ✖️ |  |
+| プロパティ： DimensionElectricCurrent | ✖️ | ✖️ |  |
+| プロパティ:   DimensionThermodynamicTemperature | ✖️ | ✖️ |  |
+| プロパティ：物質量 | ✖️ | ✖️ |  |
+| プロパティ： DimensionLuminousIntensity | ✖️ | ✖️ |  |
+| プロパティ／クラス: 所有Uri | ✖️ | ✖️ |  |
+| プロパティ：パターン | ✖️ | xtdProperty: DataFormat | _プロパティ値のパターン。このパターンの意味は、実装に依存する。_ |
+| プロパティ：PropertyValueKind | ✖️ | ✖️ | _bSDDでは：単一／範囲／リスト／複合／複合リスト_ |
+| プロパティ：PropertyRelations | プロパティ：相互接続されたデータディクショナリにおけるプロパティ識別子の関係 | ✖️ |  |
+| ClassProperty: IsRequired | ✖️ | ✖️ |  |
+| ClassProperty: IsWritable | ✖️ | ✖️ |  |
+| ClassProperty: 事前定義値 | ✖️ | ✖️ |  |
+| ClassProperty: PropertyCode | ✖️ | ✖️ |  |
+| ClassProperty:   PropertyUri | ✖️ | ✖️ |  |
+| ClassProperty: PropertySet | ✖️ | ✖️ |  |
+| ClassProperty: PropertyType | ✖️ | ✖️ | _bSDDにおける：プロパティ／依存関係_ |
+| クラスプロパティ：SortNumber | ✖️ | ✖️ | _ISOにはxtdOrderedValueオブジェクトがあり、「値を、事前定義された値のリストにおけるその順序と関連付ける」ためのものです。bSDDでは、AllowedValuesにこのオプションのorder属性があります。_ |
+| ClassProperty: シンボル | プロパティ：指定されたプロパティグループ内のプロパティのシンボル | xtdProperty: シンボル | _ISOには：記号、主題      bSDDでは：テキスト属性。_ |
+| クラスプロパティ：単位 | ✖️ | ✖️ | _ClassProp については単数形、Property については複数形となります。詳細については'単位'の項を参照してください。_ |
+| クラス関係 | GroupOfProperties: 相互に連携したデータ辞書内のプロパティ識別子のグループ間の関係 | ✖️ | _bSDDでは、関係を用いて解かれる。_ |
+| クラス: ClassificationType | GroupOfProperties: プロパティグループのカテゴリ | ✖️ | _ISO 23386 の「GroupOfProperties」カテゴリと bSDD の「ClassType」の比較_ |
+| クラス:   親分類コード | GroupOfProperties: プロパティの親グループ | ✖️ |  |
+| クラス:   ClassificationProperties | ✖️ | xtdSubject: プロパティ |  |
+| クラス: ClassificationRelations | ✖️ | xtdSubject: 関連する主題 |  |
+| クラス: ReferenceCode | ✖️ | ✖️ |  |
+| クラス:   RelatedIfcEntityNamesList | ✖️ | ✖️ | _IFCスキーマをカスタムクラスで拡張するというユースケースをサポートするため。_ |
+| クラス：同義語 | ✖️ | ✖️ | _bSDD では、同義語を定義する方法が 2 つあります。それは、`that` 属性を使用する方法と、`"IsSynonymOf"` 型の関係を使用する方法です。_ |
+| ✖️ | ✖️ | xtd件名：フィルター | _bSDDにおいても、リレーションは同様の役割を果たしますが、使いやすさを考慮して、「フィルター」の概念は実装されていません。_ |
+| ClassRelation:   RelatedClassificationUri | ✖️ | ✖️ |  |
+| ClassRelation:   関連する分類名 | ✖️ | ✖️ |  |
+| ClassRelation: RelationType | ✖️ | ✖️ | _ISO 12006-3 の「xtdConcept/SimilarTo」を参照してください。_ |
+| クラス関係：分数 | ✖️ | ✖️ | _ 関係を持つ分類に適用される総量（例：体積または重量）の割合を、任意で指定することができます。分類／関係タイプごとの割合の合計は、必ず1でなければなりません。_ |
+| PropertyRelation:   RelatedPropertyName | ✖️ | ✖️ |  |
+| PropertyRelation:   RelatedPropertyUri | ✖️ | ✖️ |  |
+| PropertyRelation: RelationType | ✖️ | ✖️ |  |
+| AllowedValue: コード | ✖️ | ✖️ | _コードはURIを生成するために使用され、辞書内での識別にも利用できます。_ |
+| AllowedValue: 説明 | ✖️ | ✖️ |  |
+| AllowedValue: Uri | ✖️ | ✖️ |  |
+| AllowedValue: SortNumber | ✖️ | ✖️ |  |
+| AllowedValue: 値 | ✖️ | ✖️ |  |
+| 辞書: DictionaryCode | ✖️ | ✖️ | _コードはURIを生成するために使用され、組織内での識別にも利用できます。_ |
+| 辞書: 辞書名 | ✖️ | ✖️ |  |
+| 辞書:   DictionaryUri | ✖️ | ✖️ |  |
+| 辞書: DictionaryVersion | ✖️ | ✖️ |  |
+| 辞書: LanguageIsoCode | ✖️ | ✖️ |  |
+| 用語集：ライセンス | ✖️ | ✖️ |  |
+| 辞書: LicenseUrl | ✖️ | ✖️ |  |
+| 辞書: MoreInfoUrl | ✖️ | ✖️ |  |
+| 辞書：OrganizationCode | ✖️ | ✖️ |  |
+| 用語集：品質保証手順 | ✖️ | ✖️ |  |
+| 辞書:   品質保証手順URL | ✖️ | ✖️ |  |
+| 辞書：ReleaseDate | ✖️ | ✖️ | _現在のバージョンの日付。_ |
 
 ## 単位
-未定...
+未定…
 
-## ISO23386 Category of GroupOfProperties vs bSDD ClassType。
-未定...
+## ISO 23386 の「GroupOfProperties」カテゴリと bSDD の「ClassType」の比較
+未定…
 
-## 追記
-- ISO12006-3によると、すべての名称/定義には英語表記が義務付けられている。
+## 補足事項
+- ISO 12006-3 によれば、すべての名称および定義について、英語での用語を記載することが義務付けられています。

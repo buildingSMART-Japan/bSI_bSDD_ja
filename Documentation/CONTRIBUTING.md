@@ -1,24 +1,24 @@
-# 投稿方法
-このプロジェクトを実現させるためには、貢献者が必要だからだ。私たちは、あなたがワクワクするようなことに取り組んでほしいのです。
+# 寄稿方法
+この文章を読んでくださって本当に嬉しいです。というのも、このプロジェクトを成功させるためには、協力者が必要だからです。私たちは、皆さんが'これならやりたい！と思えるようなことに取り組んでいただきたいと思っています。
 
-このGitHubのリポジトリは、buildingSMARTのオープンスタンダードの作成者や実装者などが一緒に作業する場所です。GitHubは通常、IT指向の人々のためのプラットフォームでした。今では、技術者でない人々もアクセスできるようになってきています。迷わずワークフローを学んでください。 
+GitHub上のこのリポジトリは、buildingSMARTのオープンスタンダードの策定者や実装者、そしてその他の関係者が協力して活動する場です。GitHubはかつて、主にIT分野に携わる人々のためのプラットフォームでしたが、現在では技術に詳しくない人々にとっても、ますます利用しやすくなってきています。ですから、遠慮せずにワークフローを学んでみてください。 
 
-重要な資料をいくつか紹介しよう：
+以下に、重要なリソースをいくつかご紹介します：
 
-  * [buildingSMARTに関する情報は](https://www.buildingsmart.org/)、私たちがどのような会社であるかをお伝えするものです、
-  * [このウェブサイトは](http://www.buildingsmart-tech.org/)、最新規格の発表の場です。
-  * 私たちの日々の交流や議論は、[ディスコースで](https://forums.buildingsmart.org)行われている。
-  * バグ？はい、存在します。私たちはそれを知りたいので、[Githubで](https://github.com/buildingSMART/bSDD/issues)報告してください。
-  * 機能？はい、アイデアやコメントをお寄せください。遠慮なく[ここで]((https://github.com/buildingSMART/bSDD/issues)共有してください)
+  * [buildingSMARTに関する情報では](https://www.buildingsmart.org/)、私たちがどのような組織であるかをご紹介しています。
+  * [buildingSMART Technicalは](https://technical.buildingsmart.org/standards/)、当社の最新規格を公開するプラットフォームです
+  * 日々の意見交換や議論は、[Discourse](https://forums.buildingsmart.org)で行っています。
+  * バグ？　はい、確かにあります。私たちもその内容を把握したいので、[GitHubで](https://github.com/buildingSMART/bSDD/issues)報告してください。
+  * 機能について？　はい、今回も皆様のアイデアやご意見をお待ちしています。ぜひ[こちら](https://github.com/buildingSMART/bSDD/issues)からご投稿ください。
   
-## 変更の提出
-[GitHub Pull Requestに](https://github.com/buildingSMART/bSDD/pull/new/master)、あなたが行ったことを明確にリストアップして送ってください（[プルリクエストについては](http://help.github.com/pull-requests/)こちらをお読みください）。プルリクエストを送信する際に、サンプルを含めていただければ、私たちはあなたを一生愛します。テストカバレッジはいつでも増やせます。私たちのコーディング規約（下記）に従い、すべてのコミットがアトミック（1つのコミットにつき1つの機能）であることを確認してください。
+## 変更の送信
+[GitHubのプルリクエスト](https://github.com/buildingSMART/bSDD/pull/new/master)を送信する際は、実施した内容を明確にリストアップしてください（[プルリクエストの](https://docs.github.com/en/pull-requests/reference/pull-requests)詳細はこちら）。プルリクエストを送信する際、サンプルコードを添付していただければ、私たちはあなたを永遠に愛します。テストカバレッジは常に高ければ高いほど良いものです。以下のコーディング規約に従い、すべてのコミットがアトミック（1つのコミットにつき1つの機能）であることを確認してください。
 
-コミットには常に明確なログメッセージを書くこと。小さな変更であれば1行のメッセージでも構いませんが、大きな変更であれば以下のように書くべきです：
+コミット時には、常に明確なログメッセージを記述してください。小さな変更であれば1行のメッセージで構いませんが、大規模な変更の場合は次のような形式にする必要があります：
 
     $ git commit -m "A brief summary of the commit
     > 
     > A paragraph describing what changed and its impact."
 
-ありがとう、  
-bSIデジタル・インフラストラクチャー・チームおよびオープンBIMの導入に尽力するその他のすべての人々
+bSIデジタルインフラストラクチャチーム、そしてOpen BIMの実用化に向けて尽力してくださっているすべての皆様、ありがとうございます。
+

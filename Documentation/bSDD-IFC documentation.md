@@ -1,51 +1,51 @@
-# IFCおよびIDSでbSDDを参照する
-外部参照（bSDD など）のクラスをIFCモデル内のオブジェクトに関連付けるには、以下のドキュメントを使用します。
+# IFCおよび IDS における bSDD の参照
+外部参照（bSDDなど）のクラスをIFCモデルのオブジェクトに関連付けるには、以下のドキュメントを参照してください。
 
-主に使用されるIFCコンセプト・テンプレートは次のとおりです。
+使用する主なIFCコンセプトテンプレートは、「[分類の関連付け](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Classification_Association/content.html)」です。
 
-主な関係主体は以下の通りである：
+主な関係主体は以下の通りです：
 - [*IfcClassification*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcClassification.htm)
 - [*IfcClassificationReference*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcClassificationReference.htm)
 - [*IfcRelAssociatesClassification*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRelAssociatesClassification.htm)
 
-次のセクションでは、bSDDデータモデルとIFC概念との間のマッピングルールを示す。これをサポートするために、IFCファイルとbSDD辞書ファイルのスニペット(✂️)を例として報告する。
+次のセクションでは、bSDDデータモデルと、クラスに使用されるIFCの概念との間のマッピング規則について説明します。これを補足するため、IFCファイルおよびbSDD辞書ファイルの抜粋（✂️）を例として掲載しています。クリックすると開きます。
 
 
 ## openBIMワークフロー
-buildingSMARTデータディクショナリーは、多くのopenBIMワークフローにおける重要なコンポーネントです。特に以下のことが可能です：
-- **openBIMモデルを充実さ**せるために、さまざまな標準にアクセスする。
-- コンプライアンスをチェックする
-- 情報デリバリー仕様（IDS）の概念を提供する。
-- IFC規格の拡張
-- その他多くの情報は、[bSDDウェブサイトを](https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary/)ご覧ください。
+buildingSMARTデータディクショナリは、多くのopenBIMワークフローにおいて重要な構成要素です。これによって、とりわけ次のようなことが可能になります：
+- さまざまな規格を活用して、**OpenBIMモデルを充実させる**
+- データのコンプライアンス確認
+- 情報提供仕様書（IDS）の概念を提示する
+- IFC規格を拡張する
+- その他にもさまざまな情報が掲載されています。詳細は、[bSDDのウェブサイト](https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary/)をご覧ください。
 
-## bSDD -IFCマッピング
-マッピングルールは以下の概念について定義されている：
+## bSDD -IFCのマッピング
+以下の概念について、マッピングルールが定義されています：
 
-- [ IFCおよび IDS で bSDD を参照。](#referencing-bsdd-in-ifc-and-ids)
+- [ IFCおよび IDS における bSDD の参照](#referencing-bsdd-in-ifc-and-ids)
 	- [openBIMワークフロー](#openbim-workflows)
-	- [bSDD -IFCマッピング](#bsdd---ifc-mapping)
+	- [bSDD -IFCのマッピング](#bsdd---ifc-mapping)
 		- [1. bSDD辞書](#1-bsdd-dictionary)
-		- [2. bSDDクラス（オブジェクト）](#2-bsdd-classes-objects)
-		- [3. bSDD材料](#3-bsdd-materials)
+		- [2. bSDDクラス（オブジェクト）](#2-bsdd-class-objects)
+		- [3. bSDDの資料](#3-bsdd-materials)
 		- [4. bSDDの特性](#4-bsdd-properties)
 
 ---
 <h3 id="dictionary">1. bSDD辞書</h3>
 
-**bSDDでは**、ディクショナリ（別名、クラスシステム）とは、1つの組織が所有し維持する、オブジェクトの定義、プロパティ、およびマテリアルの標準化されたコレクションである。1つの組織は、1つ以上の辞書を所有することができる。
+**bSDDにおいて**、辞書（別名：クラスシステム）とは、ある組織が所有・管理する、オブジェクトの定義、プロパティ、およびマテリアルを標準化した集合体です。1つの組織は、1つまたは複数の辞書を所有することができます。
 
- **IFCでは**、辞書情報は[*IfcClassificationを*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcClassification.htm)使用して取り込まれる。以下は、IFCのバージョン別のマッピング・ルールです。
+ **IFCでは**、[*IfcClassification*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcClassification.htm) を使用して辞書情報が取得されます。以下に、さまざまなIFCバージョンに対するマッピング規則を示します。
 
 |  | bSDD | IFC4x3_ADD2 | IFC4 | IFC2x3 | IDS1.0 |
 |--------------------|------------------------------|---------------------------------|-------------------------------|-------------------------------|---------|
-| **辞書名** | 辞書名 | IfcClassification.Name | IfcClassification.Name | IfcClassification.Name | ids:分類システム |
-| **辞書ソース** | *辞書の Uri *。* | IfcClassification.Specification | IfcClassification.Location | ❌ (IfcClassification.Sourceは回避策として使用可能) | ids:classification.uri。 |
-| **辞書バージョン** | 辞書バージョン | IfcClassification.Edition | IfcClassification.Edition | IfcClassification.Edition | ❌ (uri経由)*。 |
-| **辞書の所有者** | 組織コード | IfcClassification.Source | IfcClassification.Source | IfcClassification.Source | ❌ (uri経由)*。 |
-| **辞書日付** | リリース日 | IfcClassification.EditionDate | IfcClassification.EditionDate | IfcClassification.EditionDate | ❌ (uri経由)*。 |
+| **辞書名** | 辞書名 | IfcClassification.Name | IfcClassification.Name | IfcClassification.Name | ids:分類.システム |
+| **辞書の出典** | *辞書のURI* | IfcClassification.Specification | IfcClassification.Location | ❌ （IfcClassification.Source を回避策として使用できます） | ids:分類.uri |
+| **辞書版** | 辞書バージョン | IfcClassification.Edition | IfcClassification.Edition | IfcClassification.Edition | ❌ (uri)* |
+| **辞書の所有者** | 組織コード | IfcClassification.Source | IfcClassification.Source | IfcClassification.Source | ❌ (uri)* |
+| **辞書の日付** | 発売日 | IfcClassification.EditionDate | IfcClassification.EditionDate | IfcClassification.EditionDate | ❌ (uri)* |
 
-Uri* IDSは、bSDDの内容をコピーする代わりに、URIを使ってbSDDを参照する。そのおかげで、URIのリンクをたどっても情報にアクセスできる。uri="``http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/...``."_URIには、多くの情報が含まれていることに注意。
+_\* IDSは、bSDDのコンテンツをコピーするのではなく、URIを使用して参照しています。そのため、URIリンクにアクセスすれば、引き続きその情報にアクセスできます。なお、URIには以下の情報などが含まれています：uri="```http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/...```."_
 
 **スニペット**
 <details><summary>✂️ bSDD</summary>
@@ -94,19 +94,19 @@ Uri* IDSは、bSDDの内容をコピーする代わりに、URIを使ってbSDD�
 
 ---
 
-<h3 id="class">2. bSDDクラス（オブジェクト）</h3>
+<h3 id="class">2. bSDD クラス（オブジェクト）</h3>
 
-**bSDD では**、クラスは、任意の（抽象的な）オブジェクト（[*IfcWall*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcWall.htm) など）、抽象概念（*原価計算など*）、またはプロセス（*設置など*）である。
+**bSDDでは**、クラスは任意の（抽象的な）オブジェクト（例：[*IfcWall*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcWall.htm)）、抽象的な概念（例：*原価計算*）、またはプロセス（例：*設置）*であることができます。
 
- **IFCでは**、クラス情報は[*IfcClassificationReferenceを*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcClassificationReference.htm)使用して取り込まれます。以下は、IFCのバージョン別のマッピング・ルールです。
+ **IFCでは**、クラス情報は[*IfcClassificationReference*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcClassificationReference.htm) を使用して記述されます。以下に、IFCの各バージョンに対するマッピング規則を示します。
 
-|  | bSDD | IFC4x3_ADD2&amp;IFC4 | IFC2x3 | IDS1.0 |
+|  | bSDD | IFC4x3_ADD2およびIFC4 | IFC2x3 | IDS1.0 |
 |---------------------------|--------------------------------------|-------------------------------------------|------------------------------------------|-------|
-| **クラス名** | *クラス*名 | IfcClassificationReference.Name | IfcClassificationReference.Name | ❌ (uri経由)*。 |
+| **クラス名** | *クラスの*名前 | IfcClassificationReference.Name | IfcClassificationReference.Name | ❌ (URI経由)* |
 | **クラスコード** | *クラスの*コード | IfcClassificationReference.Identification | IfcClassificationReference.ItemReference | ids:分類.値 |
-| **クラス識別子** | *クラスの*Uri***。 | IfcClassificationReference.Location | IfcClassificationReference.Location | ids:classification.uri。 |
+| **クラス識別子** | *クラスの*URI | IfcClassificationReference.Location | IfcClassificationReference.Location | ids:分類.uri |
 
-Uri* IDSは、bSDDの内容をコピーする代わりに、URIを使ってbSDDを参照する。そのおかげで、URIのリンクをたどっても情報にアクセスできる。uri="``http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/class/<ClassCode>``."_URIには、多くの情報が含まれていることに注意してください。
+_\* IDSは、bSDDのコンテンツをコピーするのではなく、URIを使用して参照しています。そのため、URIリンクにアクセスすることで、引き続きその情報にアクセスすることができます。なお、URIには以下の情報の多くが含まれています：uri="```http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/class/<ClassCode>```."_
 
 **スニペット**
 <details><summary>✂️ bSDDクラス</summary>
@@ -181,7 +181,7 @@ Uri* IDSは、bSDDの内容をコピーする代わりに、URIを使ってbSDD�
 ```
 </details>
 
-<details><summary>✂️ IFC4x3_ADD2& IFC4</summary>
+<details><summary>✂️ IFC4x3_ADD2 & IFC4</summary>
 	
     /*  		 Source,   Edition, EditionDate,  Name,                Description,            Specification,                                                      ReferenceTokens   */
     #1=IFCCLASSIFICATION('Molio',  '1.0',   '2023-08-27', 'CCI Construction',  'List of codes...',    'https://identifier.buildingsmart.org/uri/molio/cciconstruction/1.0', ('.'));
@@ -228,27 +228,27 @@ Uri* IDSは、bSDDの内容をコピーする代わりに、URIを使ってbSDD�
 
 ---
 
-<h3 id="material">3. bSDD材料</h3>
+<h3 id="material">3. bSDDの資料</h3>
 
-**bSDD では**、材料は 'Material' タイプのクラスで定義されます。主な違いは、IFCモデルのマッピングルールです。**材料'タイプのbSDDクラスは**、[*IfcMaterialに*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMaterial.htm)リンクする必要があり、[*IfcObjectに*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm)リンクします。
+**bSDDでは**、マテリアルは'Material'型のクラスで定義されます。主な違いは、IFCモデルのマッピングルールにあります。**タイプ'Material'のbSDDクラスは**、[*IFC_PH*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMaterial.htm)_1_39D0226Cにリンクされ、そのIfcMaterialは、さらに[*さまざまなIfcObjectに*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcObject.htm)リンクされる必要があります。
  
- **IFCでは**、[*IfcMaterial*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMaterial.htm)は[*IfcRelAssociatesMaterial の*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRelAssociatesMaterial.htm)関係を通じてオブジェクトと関連付けられます。ただし、1つの要素に複数の材料が関連付けられている場合は、レイヤーセット、プロファイル、または構成要素（含有率）を通じて、この関係を定義する方法が数多く考えられます。詳しくはこちら：[素材の関連](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/content.html)、特に[素材構成要素セット](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Constituent_Set/content.html)、[素材レイヤーセットの使用法](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Constituent_Set/content.html)、[素材プロファイルセットの使用法](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Profile_Set_Usage/content.html)、[素材セット](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Set/content.html)、[素材シングル](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Single/content.html)。
+ **IFCおよび** [*IfcMaterial は*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcMaterial.htm)、[*IfcRelAssociatesMaterial*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcRelAssociatesMaterial.htm)関係を通じてオブジェクトに関連付けられています。ただし、1つの要素に複数の材料が関連付けられている場合、レイヤーセット、プロファイル、または構成要素（含有率）を通じてこの関係を定義する方法は数多くあります。詳細については、「[材料の関連付け](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/content.html)」、特に「[材料構成要素セット](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Constituent_Set/content.html)」、「[材料レイヤーセットの使用](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Layer_Set_Usage/content.html)」、「[材料プロファイルセットの使用](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Profile_Set_Usage/content.html)」、「[材料セット](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Set/content.html)」、[「単一材料](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/concepts/Object_Association/Material_Association/Material_Single/content.html)」を参照してください。
 
-以下は、IFCのバージョン別のマッピング・ルールです。
+以下は、IFCの各バージョンにおけるマッピング規則です。
 
-|  | bSDD | IFC4x3_ADD2&amp;IFC4 | IFC2x3 | IDS1.0 |
+|  | bSDD | IFC4x3_ADD2およびIFC4 | IFC2x3 | IDS1.0 |
 |---------------------------------------------------|--------------------------------------------------------------------|-------------------------|-----------|-----|
-| **材料名** | クラス(素材).**名前** | IfcMaterial.**Name**&amp;IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**Name** | IfcMaterial.**Name** | ❌ (uri経由)*。 |
-| **材料コード** | クラス（素材）.**コード** | IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**識別情報** | IfcMaterialClassificationRelationship.IfcClassificationReference.**Itemリファレンス** | ids:材料.値 |
-| **材料識別子** | クラス(材料).**Uri** | IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**場所** | IfcMaterialClassificationRelationship.IfcClassificationReference.**Location** | ids:材料.uri |
+| **材料名** | Class(Material).**Name** | IfcMaterial.**Name**およびIfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**Name** | IfcMaterial.**Name** | ❌ (uri)* |
+| **材料コード** | Class(Material).**Code** | IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**識別** | IfcMaterialClassificationRelationship.IfcClassificationReference.**アイテム参照** | ids:material.value |
+| **材料識別子** | Class(Material).**Uri** | IfcExternalReferenceRelationship.RelatingReference.IfcClassificationReference.**場所** | IfcMaterialClassificationRelationship.IfcClassificationReference.**所在地** | ids:material.uri |
 
-Uri* IDSは、bSDDの内容をコピーする代わりに、URIを使ってbSDDを参照する。そのおかげで、URIのリンクをたどっても情報にアクセスできる。uri="``http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/class/<MaterialCode>``."_URIには、多くの情報が含まれていることに注意してください。
+_\* IDSは、bSDDの内容をコピーするのではなく、URIを使用して参照しています。そのため、URIリンクにアクセスすることで、引き続きその情報にアクセスすることができます。なお、URIには以下の情報の多くが含まれています：uri="```http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/class/<MaterialCode>```."_
 
 **スニペット**
 
-*bSDDのスニペットについては、[bSDDのクラス（オブジェクト）を見て](#2.-bSDD-classes-(objects)ください。)*
+*bSDDのスニペットについては、[bSDDのクラス（オブジェクト）](#2-bsdd-class-objects)を参照してください*。
 
-<details><summary>✂️ IFC4x3_ADD2& IFC4</summary>
+<details><summary>✂️ IFC4x3_ADD2 & IFC4</summary>
 
     /*    		 Source, Edition, EditionDate,  Name,                Description,            Specification,                                                      ReferenceTokens   */
     #1=IFCCLASSIFICATION('bs-agri',  '1.1',     '2022-12-26', 'Fruit and vegetables', 'Demonstration dictionary', 'https://identifier.buildingsmart.org/uri/bs-agri/fruitvegs/1.1', ('.'));
@@ -297,32 +297,32 @@ Uri* IDSは、bSDDの内容をコピーする代わりに、URIを使ってbSDD�
 
 <h3 id="property">4. bSDDの特性</h3>
 
-**bSDD では**、1 つのクラス (オブジェクト) は複数のプロパティを持つことができ、1 つのプロパティは多くのクラス (オブジェクト) の一部になることができる。
+**bSDDでは**、クラス（オブジェクト）は複数のプロパティを持つことができ、また、1つのプロパティは一部のクラス（オブジェクト）に属することができます。
 
- **IFCでは**、プロパティ情報は[*IfcPropertyを*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcProperty.htm)使用して取り込まれます（そして[*IfcPropertySetを*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySet.htm)使用してグループ化されます）。[*IfcPropertyは*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcProperty.htm)抽象定義であり、インスタンス化することはできません。[*IfcPropertySingleValueが*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySingleValue.htm)最も一般的です。 
+ **IFCでは**、プロパティ情報は[*IfcProperty*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcProperty.htm)を使用して取得され（[*IfcPropertySet*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySet.htm) を使用してグループ化されます）。[*IfcPropertyは*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcProperty.htm)抽象定義であるため、インスタンス化することはできません。その代わり、さまざまな形態をとることが可能であり、最も一般的なものは[*IfcPropertySingleValue*](https://ifc43-docs.standards.buildingsmart.org/IFC/RELEASE/IFC4x3/HTML/lexical/IfcPropertySingleValue.htm)です。 
 
-以下は、IFCのバージョン別のマッピング・ルールです。
+以下は、IFCの各バージョンにおけるマッピング規則です。
 
-|  | bSDD | IFC4x3_ADD2 | IFC4&amp;IFC2x3 | IDS1.0 |
+|  | bSDD | IFC4x3_ADD2 | IFC4およびIFC2x3 | IDS1.0 |
 |------------------------------------------------|-------------------------------------------|----------------------------------------------|----------------------------------------------|-----------------------|
-| **物件名** | プロパティコード*（ClassPropertyの）* | IfcPropertySingleValue.Name | IfcPropertySingleValue.Name | ids:property.baseName |
-| **プロパティの識別子** | uri*(ClassPropertyの)**。 | IfcPropertySingleValue.Specification | IfcPropertySingleValue.Description | ids:property.uri。 |
-| **プロパティ事前定義値**（単一値） | *(ClassPropertyの)*定義済み値 | IfcPropertySingleValue.NominalValue | IfcPropertySingleValue.NominalValue | ❌ (uri経由)*。 |
-| **プロパティ単位**（単一値または列挙から） | *(PropertyまたはClassPropertyの)*定義済み値。 | IfcPropertySingleValue.Unit | IfcPropertySingleValue.Unit | ❌ (uri経由)*。 |
-| **プロパティの許容値**（列挙から） | AllowedValues *（Property または ClassProperty の）*。 | IfcPropertyEnumeratedValue.EnumerationValues | IfcPropertyEnumeratedValue.列挙値 | ❌ (uri経由)*。 |
-| **プロパティセット名** | プロパティセット*（ClassPropertyの）* | IfcPropertySet.Name | IfcPropertySet.Name | - (uri経由)*。 |
+| **物件名** | PropertyCode*（ClassPropertyの）* | IfcPropertySingleValue.Name | IfcPropertySingleValue.Name | ids:property.baseName |
+| **プロパティ識別子** | uri*（ClassProperty の）* | IfcPropertySingleValue.Specification | IfcPropertySingleValue.Description | ids:property.uri |
+| **プロパティの事前定義値**（単一値） | 事前定義値*（ClassProperty の）* | IfcPropertySingleValue.NominalValue | IfcPropertySingleValue.NominalValue | ❌ (URI経由)* |
+| **プロパティ単位**（単一値または列挙型） | 事前定義値*（プロパティまたはクラスプロパティの）* | IfcPropertySingleValue.Unit | IfcPropertySingleValue.Unit | ❌ (uri)* |
+| **プロパティの許容値**（列挙型から） | AllowedValues*（プロパティまたはClassPropertyの）* | IfcPropertyEnumeratedValue.列挙値 | IfcPropertyEnumeratedValue.列挙値 | ❌ (uri)* |
+| **PropertySet名** | PropertySet*（ClassPropertyの）* | IfcPropertySet.Name | IfcPropertySet.Name | - (uri経由)* |
 
-Uri* IDSは、bSDDの内容をコピーする代わりに、URIを使ってbSDDを参照する。そのおかげで、URIのリンクをたどっても情報にアクセスできる。uri="``http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/prop/<PropertyCode>``."_URIには、多くの情報が含まれていることに注意してください。
+_\* IDSは、bSDDの内容をコピーするのではなく、URIを使用して参照しています。そのため、URIリンクにアクセスすることで、引き続きその情報にアクセスすることができます。なお、URIには以下の情報の多くが含まれています：uri="```http://identifier.buildingsmart.org/uri/<OrganizationCode>/<DictionaryCode>/<DictionaryVersion>/prop/<PropertyCode>```."_
 
-⚠️ **重要**bSDD では、プロパティは、それらが割り当てられているクラス (オブジェクト) とは無関係に存在します。したがって
+⚠️ **重要**bSDD では、プロパティは、それが割り当てられる可能性のあるクラス（オブジェクト）とは独立して存在します。したがって：
 
 
-- `Property` の`AllowedValues` は、各プロパティのレベルで定義される。
-- `Property` の`PredefinedValues` は、各クラス（オブジェクト）のレベルで定義される。
-- プロパティとそのプロパティ・セットの関係は、各クラス（オブジェクト）のレベルで定義される。
-- `AllowedValue`は、各クラス（オブジェクト）のレベルでも定義できる。この場合、`Property` のレベルで定義された`AllowedValue` は上書きされます。
+- `Property` の`AllowedValues` は、各プロパティのレベルで定義されます。
+- `Property` の`PredefinedValues` は、各クラス（オブジェクト）のレベルで定義されます。
+- プロパティとそのプロパティセットとの関係は、各クラス（オブジェクト）のレベルで定義されます。
+- `AllowedValue`s は各クラス（オブジェクト）のレベルでも定義できます。その場合、`Property` のレベルで定義された`AllowedValue` は上書きされます。
 
-IFCでは、bSDDに存在する人間が読みやすく翻訳可能な*名前は*反映されません。そのため、*コードは* IFCデータセットで使用され、*名前は*bSDDから名前を読み取ることができるソフトウェアによってのみ表示されることを覚えておくことが重要です。この理由は、ユーザーに表示される言語に関係なく、データセットが一貫した用語に従う必要があるからである。 
+bSDD に存在する、人間が読み取り可能で翻訳可能な「*Name」*は、IFC には反映されていません。そのため、*コードは* IFCデータセットで使用され、「*Name*」はbSDDから名前を読み取ることができるソフトウェアでのみ表示されることを覚えておくことが重要です。その理由は、ユーザーに表示される言語にかかわらず、データセットが一貫した用語に従う必要があるためです。 
  
 **スニペット**
 <details><summary>✂️ bSDD プロパティ</summary>
